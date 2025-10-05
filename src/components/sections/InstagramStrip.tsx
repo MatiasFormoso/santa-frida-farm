@@ -1,0 +1,61 @@
+// src/components/sections/InstagramStrip.tsx
+import { Section } from "@/components/ui/primitives";
+import { CONFIG } from "@/lib/config";
+
+// Permalinks + thumbnails locales (asegurate de colocar los archivos en /public/images/instagram/)
+const POSTS = [
+  { url: "https://www.instagram.com/p/DPWtK6kk6ZI/", thumb: "/images/instagram/ig-1.jpg", alt: "Post 1 de Instagram" },
+  { url: "https://www.instagram.com/p/DPRqghTk4SA/", thumb: "/images/instagram/ig-2.jpg", alt: "Post 2 de Instagram" },
+  { url: "https://www.instagram.com/p/DPCJC6bE1VB/", thumb: "/images/instagram/ig-3.jpg", alt: "Post 3 de Instagram" },
+  { url: "https://www.instagram.com/p/DO6bfK_k9FX/", thumb: "/images/instagram/ig-4.jpg", alt: "Post 4 de Instagram" },
+  { url: "https://www.instagram.com/p/DO1iI_zE3aL/", thumb: "/images/instagram/ig-5.jpg", alt: "Post 5 de Instagram" },
+  { url: "https://www.instagram.com/p/DOsFzR6iLTw/", thumb: "/images/instagram/ig-6.jpg", alt: "Post 6 de Instagram" },
+];
+
+export default function InstagramStrip() {
+  return (
+    <Section
+      tone="alt"
+      id="instagram"
+      eyebrow="Comunidad"
+      title="Lo que compartimos"
+      intro="Cosechas, procesos y vida en finca. Más en nuestro Instagram."
+    >
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        {POSTS.map((p, i) => (
+          <a
+            key={i}
+            href={p.url || CONFIG.contact.instagram}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`Abrir publicación de Instagram ${i + 1}`}
+            title="Ver en Instagram"
+            className="group block overflow-hidden rounded-2xl border border-stone-200 bg-white"
+          >
+            <div className="aspect-square overflow-hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={p.thumb}
+                alt={p.alt}
+                loading="lazy"
+                decoding="async"
+                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+              />
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div className="mt-6">
+        <a
+          href={CONFIG.contact.instagram}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center rounded-2xl px-5 py-3 font-semibold text-emerald-800 hover:bg-emerald-50 border border-emerald-200 transition"
+        >
+          Seguir en Instagram
+        </a>
+      </div>
+    </Section>
+  );
+}
