@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import { CONFIG } from "@/lib/config";
 import { Container } from "@/components/ui/primitives";
+import LocaleSwitcher from "@/components/LocaleSwitcher";
+import type { Dict, Locale } from "@/i18n/config";
 
 function InstagramIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -34,7 +36,12 @@ function CloseIcon(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export default function Header() {
+type HeaderProps = {
+  t: Dict;
+  locale: Locale;
+};
+
+export default function Header({ t, locale }: HeaderProps) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -53,32 +60,35 @@ export default function Header() {
   return (
     <header className={`sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-stone-200/70 ${scrolled ? "shadow-sm" : ""}`}>
       <Container className="flex items-center justify-between h-16">
-        {/* Marca */}
-        <a href="/" className="font-black tracking-tight text-xl text-stone-900">
+        {/* Marca — respeta idioma actual */}
+        <a href={`/${locale}`} className="font-black tracking-tight text-xl text-stone-900">
           {CONFIG.brand.logoText}
         </a>
 
         {/* Navegación desktop */}
         <nav className="hidden md:flex items-center gap-6 text-stone-700">
-          <a href="#sobre" className={linkCls}>Sobre</a>
-          <a href="#productos" className={linkCls}>Cultivos</a>
-          <a href="#experiencias" className={linkCls}>Visitas</a>
-          <a href="#instagram" className={linkCls}>Galería</a>
-          <a href="#contacto" className={linkCls}>Contacto</a>
+          <a href="#sobre" className={linkCls}>{t.nav.about}</a>
+          <a href="#productos" className={linkCls}>{t.nav.products}</a>
+          <a href="#experiencias" className={linkCls}>{t.process.title}</a>
+          <a href="#instagram" className={linkCls}>{t.mediaKit?.title ?? "Galería"}</a>
+          <a href="#contacto" className={linkCls}>{t.nav.contact}</a>
         </nav>
 
-        {/* Acción lateral desktop: Instagram */}
-        <a
-          href={CONFIG.contact.instagram}
-          target="_blank"
-          rel="noreferrer"
-          aria-label="Instagram"
-          title="Instagram"
-          className="hidden md:inline-flex items-center justify-center rounded-xl border border-emerald-200 text-emerald-800 hover:bg-emerald-50 p-2 outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-        >
-          <InstagramIcon className="w-5 h-5" />
-          <span className="sr-only">Instagram</span>
-        </a>
+        {/* Acción lateral desktop: Instagram + Switcher */}
+        <div className="hidden md:flex items-center gap-2">
+          <a
+            href={CONFIG.contact.instagram}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Instagram"
+            title="Instagram"
+            className="inline-flex items-center justify-center rounded-xl border border-emerald-200 text-emerald-800 hover:bg-emerald-50 p-2 outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+          >
+            <InstagramIcon className="w-5 h-5" />
+            <span className="sr-only">Instagram</span>
+          </a>
+          <LocaleSwitcher size="sm" />
+        </div>
 
         {/* Botón mobile */}
         <button
@@ -96,9 +106,7 @@ export default function Header() {
       {/* Panel mobile */}
       <div
         id="mobile-menu"
-        className={`md:hidden fixed inset-x-0 top-16 z-50 transition ${
-          open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-        }`}
+        className={`md:hidden fixed inset-x-0 top-16 z-50 transition ${open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
         aria-hidden={!open}
       >
         <div className="mx-3 rounded-2xl border border-stone-200 bg-white/95 backdrop-blur shadow-lg">
@@ -115,22 +123,23 @@ export default function Header() {
           </div>
           <nav className="px-4 pb-4 text-stone-800">
             <ul className="space-y-2">
-              <li><a onClick={close} href="#sobre" className="block rounded-lg px-3 py-2 hover:bg-stone-50">Sobre</a></li>
-              <li><a onClick={close} href="#productos" className="block rounded-lg px-3 py-2 hover:bg-stone-50">Cultivos</a></li>
-              <li><a onClick={close} href="#experiencias" className="block rounded-lg px-3 py-2 hover:bg-stone-50">Visitas</a></li>
-              <li><a onClick={close} href="#instagram" className="block rounded-lg px-3 py-2 hover:bg-stone-50">Galería</a></li>
-              <li><a onClick={close} href="#contacto" className="block rounded-lg px-3 py-2 hover:bg-stone-50">Contacto</a></li>
-              <li className="pt-1">
+              <li><a onClick={close} href="#sobre" className="block rounded-lg px-3 py-2 hover:bg-stone-50">{t.nav.about}</a></li>
+              <li><a onClick={close} href="#productos" className="block rounded-lg px-3 py-2 hover:bg-stone-50">{t.nav.products}</a></li>
+              <li><a onClick={close} href="#experiencias" className="block rounded-lg px-3 py-2 hover:bg-stone-50">{t.process.title}</a></li>
+              <li><a onClick={close} href="#instagram" className="block rounded-lg px-3 py-2 hover:bg-stone-50">{t.mediaKit?.title ?? "Galería"}</a></li>
+              <li><a onClick={close} href="#contacto" className="block rounded-lg px-3 py-2 hover:bg-stone-50">{t.nav.contact}</a></li>
+              <li className="pt-1 flex items-center gap-2">
                 <a
                   onClick={close}
                   href={CONFIG.contact.instagram}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-1 inline-flex items-center gap-2 rounded-xl border border-emerald-200 px-3 py-2 text-emerald-800 hover:bg-emerald-50"
+                  className="inline-flex items-center gap-2 rounded-xl border border-emerald-200 px-3 py-2 text-emerald-800 hover:bg-emerald-50"
                 >
                   <InstagramIcon className="w-4 h-4" />
                   Instagram
                 </a>
+                <LocaleSwitcher size="sm" />
               </li>
             </ul>
           </nav>
