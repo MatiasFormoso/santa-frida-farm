@@ -23,11 +23,11 @@ export default async function HomeByLocale({ params }: Props) {
       <Header t={t} locale={params.locale} />
       <Hero t={t} locale={params.locale} />
       <About t={t} locale={params.locale} />
-      <Products />
-      <Experiences />
+      <Products t={t} locale={params.locale} />      {/* ← nuevo */}
+      <Experiences t={t} locale={params.locale} />   {/* ← nuevo */}
       <InstagramStrip />
       <Contact />
-      <Footer />
+      <Footer t={t} locale={params.locale} />
     </main>
   );
 }

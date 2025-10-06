@@ -1,8 +1,11 @@
 // src/components/sections/Products.tsx
 import { Section, Card, Img, Button } from "@/components/ui/primitives";
+import type { Dict, Locale } from "@/i18n/config";
+
+type ProductKey = "avocado" | "coffee" | "greens";
 
 type Product = {
-  key: string;
+  key: ProductKey;
   name: string;
   summary: string;
   bullets: string[];
@@ -10,6 +13,7 @@ type Product = {
   alt: string;
 };
 
+// Dataset base (ES) — lo dejamos tal cual
 const PRODUCTS: Product[] = [
   {
     key: "avocado",
@@ -40,17 +44,52 @@ const PRODUCTS: Product[] = [
   },
 ];
 
-export default function Products() {
+// Overrides EN autoinclusivos (no requieren tocar diccionario)
+const EN_OVERRIDES: Record<ProductKey, Partial<Product>> = {
+  avocado: {
+    name: "Hass Avocados",
+    summary:
+      "Orchards in steady growth with responsible management. Consistent quality for local partners.",
+    bullets: ["Batch-level traceability", "Integrated pest management", "Timely harvests"],
+    alt: "Hass avocados on the tree",
+  },
+  coffee: {
+    name: "Specialty Coffee",
+    summary:
+      "Balanced profiles in small lots and ongoing training in roasting and cupping.",
+    bullets: ["Freshly roasted", "Consistent profiles", "Quality control"],
+    alt: "Ripe coffee cherries on the plant",
+  },
+  greens: {
+    name: "Fresh Greens",
+    summary:
+      "Seasonal vegetables and leafy greens. Harvested close to consumption for kitchens and families.",
+    bullets: ["Weekly selection", "Cold chain", "Local delivery"],
+    alt: "Rows of lettuce in a greenhouse",
+  },
+};
+
+export default function Products({ t, locale }: { t: Dict; locale: Locale }) {
+  // merge local según idioma (mantiene tus imágenes/estilos)
+  const items =
+    locale === "en"
+      ? PRODUCTS.map((p) => ({ ...p, ...(EN_OVERRIDES[p.key] || {}) }))
+      : PRODUCTS;
+
   return (
     <Section
       tone="alt"
       id="productos"
-      eyebrow="Cultivos"
-      title="Lo que cultivamos"
-      intro="Tres líneas que representan el corazón de la finca. Si querés conocer cómo trabajamos el suelo, el agua y la trazabilidad, visitá la sección Sobre."
+      eyebrow={t.nav.products}          // "Cultivos" / "Crops"
+      title={t.varietals.title}         // "Cultivos" / "Crops"
+      intro={
+        locale === "en"
+          ? "Three lines that represent the heart of the farm. To learn how we work soil, water and traceability, visit the About section."
+          : "Tres líneas que representan el corazón de la finca. Si querés conocer cómo trabajamos el suelo, el agua y la trazabilidad, visitá la sección Sobre."
+      }
     >
       <div className="grid md:grid-cols-3 gap-6">
-        {PRODUCTS.map((p) => (
+        {items.map((p) => (
           <Card key={p.key} className="p-5 flex flex-col">
             <Img src={p.img} alt={p.alt} />
             <h3 className="mt-4 text-xl font-semibold text-stone-900">{p.name}</h3>
@@ -61,7 +100,9 @@ export default function Products() {
               ))}
             </ul>
             <div className="mt-5 pt-4 border-t">
-              <Button href="#sobre" variant="ghost">Conocer prácticas</Button>
+              <Button href="#sobre" variant="ghost">
+                {locale === "en" ? "Learn about practices" : "Conocer prácticas"}
+              </Button>
             </div>
           </Card>
         ))}

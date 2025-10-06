@@ -18,7 +18,6 @@ export type Dict = {
   about: {
     title: string;
     body: string;
-    // 👇 nuevo: cards por idioma (3 items: propósito, prácticas, comunidad)
     cards?: { title: string; body: string }[];
   };
   process: {
@@ -29,6 +28,14 @@ export type Dict = {
     title: string;
     items: string[];
   };
+
+  // 👇 NUEVO: textos por producto (name/summary/bullets)
+  products: {
+    avocado: { name: string; summary: string; bullets: string[] };
+    coffee: { name: string; summary: string; bullets: string[] };
+    greens: { name: string; summary: string; bullets: string[] };
+  };
+
   mediaKit?: {
     title: string;
     subtitle?: string;

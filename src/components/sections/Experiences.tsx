@@ -1,6 +1,7 @@
 // src/components/sections/Experiences.tsx
 import { Section, Card, Img, Pill, Button } from "@/components/ui/primitives";
 import { CONFIG } from "@/lib/config";
+import type { Dict, Locale } from "@/i18n/config";
 
 type Experience = {
   title: string;
@@ -21,14 +22,15 @@ const EXPERIENCES: Experience[] = [
   },
 ];
 
-export default function Experiences() {
-  const href = CONFIG.contact.instagram; // consulta por IG (suave)
+export default function Experiences({ t, locale }: { t: Dict; locale: Locale }) {
+  const href = CONFIG.contact.instagram;
 
   return (
     <Section
       id="experiencias"
-      eyebrow="Visitas"
-      title="Conocer la finca"
+      eyebrow={t.process.title} // "Visitas" / "Visits"
+      title={locale === "en" ? "Visit the farm" : "Conocer la finca"}
+      // intro: mantenemos tu copy original en ES (para no inventar traducción)
       intro="Abrimos espacios de visita y aprendizaje en fechas puntuales. Cupos limitados y enfoque educativo."
     >
       <div className="grid md:grid-cols-2 gap-6">
@@ -42,14 +44,16 @@ export default function Experiences() {
                   {it.bullets.map((b) => <li key={b}>{b}</li>)}
                 </ul>
               </div>
-              <Pill>Cupos limitados</Pill>
+              <Pill>{locale === "en" ? "Limited availability" : "Cupos limitados"}</Pill>
             </div>
           </Card>
         ))}
       </div>
 
       <div className="mt-8">
-        <Button href={href} variant="ghost">Consultar próximas fechas</Button>
+        <Button href={href} variant="ghost">
+          {locale === "en" ? "Check next dates" : "Consultar próximas fechas"}
+        </Button>
       </div>
     </Section>
   );

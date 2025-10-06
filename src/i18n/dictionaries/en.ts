@@ -54,6 +54,29 @@ const en: Dict = {
     title: "Crops",
     items: ["Hass Avocados", "Specialty Coffee", "Fresh Greens"],
   },
+
+  // 👇 NUEVO
+  products: {
+    avocado: {
+      name: "Hass Avocados",
+      summary:
+        "Orchards in steady growth with responsible management. Consistent quality for local partners.",
+      bullets: ["Batch-level traceability", "Integrated pest management", "Timely harvests"],
+    },
+    coffee: {
+      name: "Specialty Coffee",
+      summary:
+        "Balanced profiles in small lots and ongoing training in roasting and cupping.",
+      bullets: ["Freshly roasted", "Consistent profiles", "Quality control"],
+    },
+    greens: {
+      name: "Fresh Greens",
+      summary:
+        "Seasonal vegetables and leafy greens. Harvested close to consumption for kitchens and families.",
+      bullets: ["Weekly selection", "Cold chain", "Local delivery"],
+    },
+  },
+
   mediaKit: {
     title: "Community",
     subtitle: "Harvests, processes and daily life at the farm. More on Instagram.",

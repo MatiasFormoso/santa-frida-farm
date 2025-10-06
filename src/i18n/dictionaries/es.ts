@@ -54,6 +54,29 @@ const es: Dict = {
     title: "Cultivos",
     items: ["Hass Avocados", "Specialty Coffee", "Fresh Greens"],
   },
+
+  // 👇 NUEVO
+  products: {
+    avocado: {
+      name: "Hass Avocados",
+      summary:
+        "Huertos en crecimiento y manejo responsable. Calidad consistente para aliados locales.",
+      bullets: ["Trazabilidad por lote", "Manejo integrado de plagas", "Cosecha oportuna"],
+    },
+    coffee: {
+      name: "Specialty Coffee",
+      summary:
+        "Perfiles equilibrados en lotes pequeños y formación continua en tueste y cata.",
+      bullets: ["Tueste reciente", "Perfiles consistentes", "Control de calidad"],
+    },
+    greens: {
+      name: "Fresh Greens",
+      summary:
+        "Hortalizas y hojas de temporada. Cosecha cercana al consumo para cocinas y familias.",
+      bullets: ["Selección semanal", "Cadena en frío", "Entrega local"],
+    },
+  },
+
   mediaKit: {
     title: "Comunidad",
     subtitle: "Cosechas, procesos y vida en finca. Más en nuestro Instagram.",
