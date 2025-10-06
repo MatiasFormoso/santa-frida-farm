@@ -3,23 +3,25 @@ import type { Metadata } from "next";
 import { CONFIG } from "@/lib/config";
 
 export function getSiteUrl() {
-  const url = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");
-  return url || "http://localhost:3000";
+  return process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 }
 
 export const defaultMetadata: Metadata = {
-  metadataBase: new URL(getSiteUrl()),
-  title: `${CONFIG.site.name} — Sitio oficial`,
-  description: CONFIG.site.description,
+  // ⬇️ título limpio, sin “Sitio oficial”
+  title: CONFIG.site.name,
+
+  description: CONFIG.site.description ?? CONFIG.site.tagline,
   alternates: { canonical: "/" },
-  robots: { index: true, follow: true },
+
   openGraph: {
-    type: "website",
+    title: CONFIG.site.name,
     siteName: CONFIG.site.name,
-    title: `${CONFIG.site.name} `,
-    description: CONFIG.site.description,
     url: "/",
-    images: ["/opengraph-image"], // generado abajo
+    type: "website"
   },
-  twitter: { card: "summary_large_image" },
+
+  twitter: {
+    card: "summary_large_image",
+    title: CONFIG.site.name
+  }
 };
