@@ -16,7 +16,7 @@ export const defaultMetadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: CONFIG.site.name,
-    title: `${CONFIG.site.name} — Sitio oficial`,
+    title: `${CONFIG.site.name} `,
     description: CONFIG.site.description,
     url: "/",
     images: ["/opengraph-image"], // generado abajo
