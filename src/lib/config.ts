@@ -3,16 +3,14 @@ export const CONFIG = {
   site: {
     name: "Santa Frida Farm",
     lang: "es",
+    url: "https://santa-frida-farm.vercel.app", // ← agrega/ajusta tu dominio
     description:
       "Cultivamos con amor en Marinilla, Antioquia. Aguacate Hass, café de especialidad y hortalizas frescas — cultivo consciente en el oriente antioqueño.",
     tagline: "Conscious farming in Antioquia",
   },
 
-  // ← NUEVO: usado por Header.tsx
   brand: {
-    // El Header usa brand.logoText. Lo dejamos igual al nombre del sitio.
     logoText: "Santa Frida Farm",
-    // (opcional) si después querés, podés agregar: logoSrc, logoAlt, etc.
   },
 
   contact: {
