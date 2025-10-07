@@ -1,4 +1,4 @@
-import type { Dict } from "../config";
+import type { Dict } from "@/i18n/config";
 
 const en: Dict = {
   meta: {
@@ -6,13 +6,21 @@ const en: Dict = {
     description:
       "Grown with love in Marinilla, Antioquia. Hass avocados, specialty coffee and fresh greens — conscious cultivation in eastern Antioquia.",
   },
-  nav: { home: "Home", about: "About", products: "Crops", contact: "Contact" },
+
+  nav: {
+    home: "Home",
+    about: "About",
+    products: "Crops",
+    contact: "Contact",
+  },
+
   hero: {
     title: "Santa Frida Farm",
     subtitle:
       "Grown with love in Marinilla, Antioquia. Hass avocados, specialty coffee and fresh greens — conscious cultivation in eastern Antioquia.",
     cta: "Visit the farm",
   },
+
   about: {
     title: "Who we are",
     body:
@@ -21,45 +29,61 @@ const en: Dict = {
       "Practices — Responsible soil and water management, integrated pest monitoring and control, timely harvests and a focus on traceability and continuous improvement.\n\n" +
       "Community — We share our progress and farm activities on social media and open learning visits whenever spots are available.",
   },
+
   process: {
     title: "Visits",
     items: [
-      "Coffee Tour (3 h) — From tree to cup; Guided harvest; Basic process and tasting. Limited availability.",
-      "Garden Workshop — Planting/transplanting; Compost and irrigation; Seasonal harvest. Limited availability.",
+      "Coffee Tour (3 h) — From tree to cup; guided harvest; basic process & tasting. Limited availability.",
+      "Garden Workshop — Planting/transplanting; compost & irrigation; seasonal harvest. Limited availability.",
     ],
   },
-  varietals: { title: "Crops", items: ["Hass Avocados", "Specialty Coffee", "Fresh Greens"] },
-  mediaKit: { title: "Community", subtitle: "Harvests, processes and daily life at the farm. More on Instagram." },
+
+  varietals: {
+    title: "Crops",
+    items: ["Hass Avocados", "Specialty Coffee", "Fresh Greens"],
+  },
+
+  mediaKit: {
+    title: "Community",
+    subtitle: "Harvests, processes and daily life at the farm. More on Instagram.",
+  },
+
   contact: {
     title: "Orders and inquiries",
     subtitle:
-      "Official contact channels. Where we are — Marinilla, Antioquia, Colombia. Eastern Antioquia — ideal microclimates for Hass avocados and coffee.",
+      "Official contact channels. WhatsApp and email will be activated once confirmed.\n\n" +
+      "Where we are — Marinilla, Antioquia, Colombia. Eastern Antioquia — ideal microclimates for Hass avocados and coffee.",
     whatsappCta: "Open WhatsApp",
-    whatsappPreset:
-      "Hi Santa Frida Farm 👋 I'm {your name}. I'd like to ask about orders, visits or trainings. Thanks!",
-  },
-  footer: {
-    description:
-      "Grown with love in Marinilla, Antioquia. Hass avocados, specialty coffee and fresh greens.",
-    rights: "All rights reserved.",
   },
 
+  footer: {
+    rights: "© 2025 Santa Frida Farm. All rights reserved.",
+  },
+
+  /* ====== COMPANY / HISTORY ====== */
   company: {
     historyTitle: "History",
-    historyBody: "PLACEHOLDER TEXT...",
+    historyBody:
+      "PLACEHOLDER TEXT: farm story, origins and evolution. This content will be replaced by official material.",
     visionTitle: "Vision",
-    visionBody: "PLACEHOLDER TEXT...",
+    visionBody:
+      "PLACEHOLDER TEXT: medium and long-term outlook. This content will be replaced by official material.",
     missionTitle: "Mission",
-    missionBody: "PLACEHOLDER TEXT...",
+    missionBody:
+      "PLACEHOLDER TEXT: operational purpose and values in action. This content will be replaced by official material.",
     specialtyTitle: "Specialty",
-    specialtyBody: "PLACEHOLDER TEXT...",
+    specialtyBody:
+      "PLACEHOLDER TEXT: quality focus, differentiators and processes. This content will be replaced by official material.",
     participationTitle: "Participation / Partnerships",
-    participationBody: "PLACEHOLDER TEXT...",
+    participationBody:
+      "PLACEHOLDER TEXT: events, trainings and institutional ties.",
   },
+
   participation: {
     eyebrow: "Community & Institutions",
     title: "Participation in events & programs",
-    intro: "PLACEHOLDER TEXT — We participate in events and programs.",
+    intro:
+      "PLACEHOLDER TEXT — We participate in events, programs and trainings with local institutions and agricultural entities in Colombia.",
     items: [
       "Government of Colombia — agricultural entities",
       "Municipality / local programs",
@@ -67,10 +91,12 @@ const en: Dict = {
       "Producer networks and coffee communities",
     ],
   },
+
   training: {
     eyebrow: "Learning visits",
     title: "Workshops & Trainings",
-    intro: "PLACEHOLDER TEXT — Practical sessions in coffee and garden.",
+    intro:
+      "PLACEHOLDER TEXT — Practical sessions in coffee and garden, focused on processes, good practices and traceability.",
     cta: "See updates on Instagram",
     items: [
       { title: "Training 1", body: "PLACEHOLDER TEXT" },

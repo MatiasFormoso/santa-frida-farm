@@ -14,8 +14,8 @@ export const CONFIG = {
   },
 
   contact: {
-    whatsappNumber: "+97509081460",
-    whatsappIntl: "+975 090 814 60",
+    whatsappNumber: "+975109081460",
+    whatsappIntl: "+971 50 908 1460",
     email: "santafrida.colombia@gmail.com",
     instagram: "https://www.instagram.com/santafridafarm/",
     locationLabel: "Marinilla, Antioquia, Colombia",
