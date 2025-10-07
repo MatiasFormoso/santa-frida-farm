@@ -3,7 +3,7 @@ export const CONFIG = {
   site: {
     name: "Santa Frida Farm",
     lang: "es",
-    url: "https://santa-frida-farm.vercel.app", // ← agrega/ajusta tu dominio
+    url: "https://santa-frida-farm.vercel.app", // ← ajusta tu dominio si cambia
     description:
       "Cultivamos con amor en Marinilla, Antioquia. Aguacate Hass, café de especialidad y hortalizas frescas — cultivo consciente en el oriente antioqueño.",
     tagline: "Conscious farming in Antioquia",
@@ -14,7 +14,8 @@ export const CONFIG = {
   },
 
   contact: {
-    whatsappNumber: "+975109081460",
+    // ✅ Número corregido (formato internacional y sin espacios)
+    whatsappNumber: "+971509081460",
     whatsappIntl: "+971 50 908 1460",
     email: "santafrida.colombia@gmail.com",
     instagram: "https://www.instagram.com/santafridafarm/",
