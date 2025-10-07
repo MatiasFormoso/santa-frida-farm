@@ -29,7 +29,12 @@ function OrgJsonLd() {
     url: getSiteUrl(),
     sameAs: [CONFIG.contact.instagram],
   };
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
 }
 
 function WebSiteJsonLd() {
@@ -44,12 +49,18 @@ function WebSiteJsonLd() {
       "query-input": "required name=search_term_string",
     },
   };
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang={CONFIG.site.lang} className="scroll-smooth">
+    // Lang fijo para evitar depender de CONFIG.site.lang (que no existe)
+    <html lang="es" className="scroll-smooth">
       <body className={`${inter.className} min-h-screen bg-white text-stone-800`}>
         {children}
         <OrgJsonLd />
