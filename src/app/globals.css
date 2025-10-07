@@ -1,4 +1,52 @@
 @import "tailwindcss";
 
+/* ==== Tokens base ==== */
+:root {
+  --sf-bg: #ffffff;
+  --sf-bg-alt: #fafaf9; /* stone-50 */
+  --sf-text: #0c0a09;   /* stone-950 */
+  --sf-muted: #57534e;  /* stone-600 */
+  --sf-border: rgba(28, 25, 23, 0.12);
+  --sf-accent: #047857; /* emerald-700 */
+}
+
 html, body { height: 100%; }
-body { font-feature-settings: "rlig" 1, "calt" 1; }
+body {
+  font-feature-settings: "rlig" 1, "calt" 1;
+  color: var(--sf-text);
+  background: var(--sf-bg);
+}
+
+/* Tipografía base y headings */
+h1, h2, h3, h4 { letter-spacing: -0.01em; }
+h1 { line-height: 1.1; }
+.prose { color: var(--sf-text); }
+.prose p { color: #1c1917; }          /* stone-900 */
+.prose li { color: var(--sf-muted); } /* stone-600 */
+.prose a { text-decoration: underline; text-underline-offset: 4px; }
+
+/* Enlaces globales */
+a {
+  text-decoration-color: transparent;
+  transition: color .15s ease, text-decoration-color .15s ease;
+}
+a:hover { text-decoration-color: currentColor; }
+a:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(5, 150, 105, .4), 0 0 0 4px #fff; /* ring */
+}
+
+/* Secciones alternadas (por si se usan utilidades sin Section) */
+.section-plain { background: var(--sf-bg); }
+.section-alt { background: var(--sf-bg-alt); }
+
+/* Cards */
+.sf-card {
+  border: 1px solid var(--sf-border);
+  border-radius: 1.25rem; /* rounded-2xl/3xl */
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+/* Utilidades pequeñas */
+.hr-soft { border-top: 1px solid var(--sf-border); }

@@ -1,6 +1,8 @@
-"use client";
 // src/components/layout/Header.tsx
+"use client";
+
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { CONFIG } from "@/lib/config";
 import { Container } from "@/components/ui/primitives";
@@ -36,6 +38,8 @@ type HeaderProps = { t: Dict; locale: Locale };
 export default function Header({ t, locale }: HeaderProps) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname() || "/";
+  const isHistory = /\/(es|en)\/historia\/?$/.test(pathname);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -48,45 +52,61 @@ export default function Header({ t, locale }: HeaderProps) {
     "hover:text-stone-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:rounded-md";
   const close = () => setOpen(false);
 
+  const Brand = (
+    <a href={`/${locale}`} className="flex items-center gap-2" aria-label="Santa Frida Farm — Home">
+      <span className="inline-flex h-8 w-8 items-center justify-center">
+        <Image
+          src="/logo-santa-frida.png" /* ajustá si tu logo está en otro path */
+          alt="Santa Frida Farm"
+          width={32}
+          height={32}
+          priority
+          className="h-8 w-8 object-contain"
+        />
+      </span>
+      <span className="whitespace-nowrap text-xl font-black tracking-tight text-stone-900">
+        {CONFIG.brand.logoText}
+      </span>
+    </a>
+  );
+
+  // ===== Variante mínima para /historia =====
+  if (isHistory) {
+    return (
+      <header className={`sticky top-0 z-40 border-b border-stone-200/70 bg-white/80 backdrop-blur ${scrolled ? "shadow-sm" : ""}`}>
+        <Container className="flex h-14 items-center justify-between">
+          {Brand}
+          {/* sin menú; si querés, acá se puede dejar <LocaleSwitcher size="sm" /> */}
+        </Container>
+      </header>
+    );
+  }
+
+  // ===== Header completo (resto del sitio) =====
   return (
-    <header className={`sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-stone-200/70 ${scrolled ? "shadow-sm" : ""}`}>
-      <Container className="flex items-center justify-between h-16">
-        {/* Marca (logo + fallback texto) */}
-        <a href={`/${locale}`} className="flex items-center gap-2">
-          <span className="inline-flex items-center justify-center w-8 h-8">
-            <Image
-              src="/logo-santa-frida.png"   // en /public
-              alt="Santa Frida Farm"
-              width={32}
-              height={32}
-              priority
-              className="w-8 h-8 object-contain"
-            />
-          </span>
-          <span className="font-black tracking-tight text-xl text-stone-900 whitespace-nowrap">
-            {CONFIG.brand.logoText}
-          </span>
-        </a>
+    <header className={`sticky top-0 z-40 border-b border-stone-200/70 bg-white/80 backdrop-blur ${scrolled ? "shadow-sm" : ""}`}>
+      <Container className="flex h-16 items-center justify-between">
+        {Brand}
 
         {/* Navegación desktop */}
-        <nav className="hidden md:flex items-center gap-6 text-stone-700">
+        <nav className="hidden items-center gap-6 text-stone-700 md:flex">
           <a href="#sobre" className={linkCls}>{t.nav.about}</a>
           <a href="#productos" className={linkCls}>{t.nav.products}</a>
           <a href="#instagram" className={linkCls}>{t.mediaKit?.title ?? "Galería"}</a>
           <a href="#contacto" className={linkCls}>{t.nav.contact}</a>
         </nav>
 
-        {/* Acción lateral */}
-        <div className="hidden md:flex items-center gap-2">
+        {/* Acciones derechas */}
+        <div className="hidden items-center gap-2 md:flex">
           <a
             href={CONFIG.contact.instagram}
             target="_blank"
             rel="noreferrer"
             aria-label="Instagram"
             title="Instagram"
-            className="inline-flex items-center justify-center rounded-xl border border-emerald-200 text-emerald-800 hover:bg-emerald-50 p-2 outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+            className="inline-flex items-center justify-center rounded-xl border border-emerald-200 p-2 text-emerald-800 hover:bg-emerald-50 outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
           >
-            <InstagramIcon className="w-5 h-5" />
+            <InstagramIcon className="h-5 w-5" />
             <span className="sr-only">Instagram</span>
           </a>
           <LocaleSwitcher size="sm" />
@@ -96,19 +116,19 @@ export default function Header({ t, locale }: HeaderProps) {
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="md:hidden inline-flex items-center justify-center rounded-xl border border-stone-300 p-2 text-stone-700 hover:bg-stone-50 outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+          className="inline-flex items-center justify-center rounded-xl border border-stone-300 p-2 text-stone-700 hover:bg-stone-50 outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white md:hidden"
           aria-label="Abrir menú"
           aria-controls="mobile-menu"
           aria-expanded={open}
         >
-          <MenuIcon className="w-6 h-6" />
+          <MenuIcon className="h-6 w-6" />
         </button>
       </Container>
 
       {/* Panel mobile */}
       <div
         id="mobile-menu"
-        className={`md:hidden fixed inset-x-0 top-16 z-50 transition ${open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+        className={`fixed inset-x-0 top-16 z-50 transition md:hidden ${open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"}`}
         aria-hidden={!open}
       >
         <div className="mx-3 rounded-2xl border border-stone-200 bg-white/95 backdrop-blur shadow-lg">
@@ -120,7 +140,7 @@ export default function Header({ t, locale }: HeaderProps) {
               className="inline-flex items-center justify-center rounded-lg border border-stone-300 p-2 text-stone-700 hover:bg-stone-50 outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               aria-label="Cerrar menú"
             >
-              <CloseIcon className="w-5 h-5" />
+              <CloseIcon className="h-5 w-5" />
             </button>
           </div>
           <nav className="px-4 pb-4 text-stone-800">
@@ -129,7 +149,7 @@ export default function Header({ t, locale }: HeaderProps) {
               <li><a onClick={close} href="#productos" className="block rounded-lg px-3 py-2 hover:bg-stone-50">{t.nav.products}</a></li>
               <li><a onClick={close} href="#instagram" className="block rounded-lg px-3 py-2 hover:bg-stone-50">{t.mediaKit?.title ?? "Galería"}</a></li>
               <li><a onClick={close} href="#contacto" className="block rounded-lg px-3 py-2 hover:bg-stone-50">{t.nav.contact}</a></li>
-              <li className="pt-1 flex items-center gap-2">
+              <li className="flex items-center gap-2 pt-1">
                 <a
                   onClick={close}
                   href={CONFIG.contact.instagram}
@@ -137,7 +157,7 @@ export default function Header({ t, locale }: HeaderProps) {
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 rounded-xl border border-emerald-200 px-3 py-2 text-emerald-800 hover:bg-emerald-50"
                 >
-                  <InstagramIcon className="w-4 h-4" />
+                  <InstagramIcon className="h-4 w-4" />
                   Instagram
                 </a>
                 <LocaleSwitcher size="sm" />
@@ -145,13 +165,7 @@ export default function Header({ t, locale }: HeaderProps) {
             </ul>
           </nav>
         </div>
-        <button
-          type="button"
-          className="fixed inset-0 -z-10 h-[calc(100vh-4rem)] bg-black/10"
-          onClick={close}
-          aria-hidden
-          tabIndex={-1}
-        />
+        <button type="button" className="fixed inset-0 -z-10 h-[calc(100vh-4rem)] bg-black/10" onClick={close} aria-hidden tabIndex={-1} />
       </div>
     </header>
   );
