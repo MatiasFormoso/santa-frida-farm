@@ -1,3 +1,4 @@
+// src/components/LocaleSwitcher.tsx
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
@@ -35,18 +36,20 @@ export default function LocaleSwitcher({
   const other: Locale = current === "es" ? "en" : "es";
   const label = current === "es" ? "ES / EN" : "EN / ES";
 
-  const btnCls =
-    size === "sm"
-      ? "px-3 py-1.5 text-sm rounded-xl border"
-      : "px-4 py-2 text-base rounded-xl border";
+  const sizeCls = size === "sm" ? "px-3 py-1.5 text-sm" : "px-4 py-2 text-base";
+
+  // Estilo en NEGRO (neutro), con hover/focus sutiles
+  const baseBtn =
+    "inline-flex items-center justify-center rounded-xl border " +
+    "border-stone-300 text-stone-800 " +
+    "transition hover:bg-stone-50 hover:shadow-sm active:scale-[0.98] " +
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-400/50 " +
+    "focus-visible:ring-offset-2 focus-visible:ring-offset-white select-none";
 
   const onSwitch = () => {
     const base = replaceLocale(pathname, other);
-    const search =
-      typeof window !== "undefined" ? window.location.search : "";
-    const hash =
-      typeof window !== "undefined" ? window.location.hash : "";
-    // no scrollear arriba y conservar ?query y #hash
+    const search = typeof window !== "undefined" ? window.location.search : "";
+    const hash = typeof window !== "undefined" ? window.location.hash : "";
     router.push(`${base}${search}${hash}`, { scroll: false });
   };
 
@@ -54,8 +57,8 @@ export default function LocaleSwitcher({
     <button
       type="button"
       aria-label="Cambiar idioma"
-      className={`${btnCls} ${className ?? ""}`}
       onClick={onSwitch}
+      className={[baseBtn, sizeCls, className ?? ""].join(" ")}
     >
       {label}
     </button>

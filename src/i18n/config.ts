@@ -1,3 +1,4 @@
+// src/i18n/config.ts
 export type Dict = {
   meta: {
     title: string;
@@ -17,7 +18,7 @@ export type Dict = {
   about: {
     title: string;
     body: string;
-    /** Opcional: para tarjetas de Propósito / Prácticas / Comunidad */
+    // opcional: si querés sobreescribir las cards desde el diccionario
     cards?: { title: string; body: string }[];
   };
   process: {
@@ -38,10 +39,11 @@ export type Dict = {
     whatsappCta: string;
   };
   footer: {
+    description: string; // <- NUEVO
     rights: string;
   };
 
-  /* NUEVO */
+  // NUEVO: secciones extendidas
   company: {
     historyTitle: string;
     historyBody: string;

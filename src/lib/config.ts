@@ -1,22 +1,28 @@
 // src/lib/config.ts
+
+/** Datos públicos del sitio y de contacto */
 export const CONFIG = {
   site: {
     name: "Santa Frida Farm",
-    tagline: "Grown with love in Marinilla, Antioquia",
-    description:
-      "Hass avocados, specialty coffee and fresh greens — cultivo consciente en el oriente antioqueño.",
-    lang: "es",
   },
   brand: {
     logoText: "Santa Frida Farm",
   },
   contact: {
-    // SIN inventar: placeholders hasta confirmar
-    whatsappIntl: "",                // ej: "+57 323 000 0000"
-    whatsappUrl: "",                 // ej: "https://wa.me/57XXXXXXXXXX"
-    email: "hola@sitio-ejemplo.com", // placeholder
+    /** Número para wa.me (el código ya le quita símbolos/espacios). */
+    whatsappNumber: "97509081460",
+    /** Cómo se muestra en la UI (podés cambiar el formato visual). */
+    whatsappIntl: "+97509081460",
+    /** (Opcional) Link directo si preferís usar API custom. Déjalo vacío si no. */
+    whatsappUrl: "",
+
+    /** Email oficial */
+    email: "santafrida.colombia@gmail.com",
+
+    /** Redes y ubicación */
     instagram: "https://www.instagram.com/santafridafarm/",
     locationLabel: "Marinilla, Antioquia, Colombia",
-    mapsUrl: "https://maps.google.com/?q=Marinilla%20Antioquia",
+    mapsUrl:
+      "https://www.google.com/maps/search/?api=1&query=Marinilla%2C%20Antioquia%2C%20Colombia",
   },
-};
+} as const;

@@ -28,45 +28,38 @@ const en: Dict = {
       "Garden Workshop — Planting/transplanting; Compost and irrigation; Seasonal harvest. Limited availability.",
     ],
   },
-  varietals: {
-    title: "Crops",
-    items: ["Hass Avocados", "Specialty Coffee", "Fresh Greens"],
-  },
-  mediaKit: {
-    title: "Community",
-    subtitle: "Harvests, processes and daily life at the farm. More on Instagram.",
-  },
+  varietals: { title: "Crops", items: ["Hass Avocados", "Specialty Coffee", "Fresh Greens"] },
+  mediaKit: { title: "Community", subtitle: "Harvests, processes and daily life at the farm. More on Instagram." },
   contact: {
     title: "Orders and inquiries",
     subtitle:
-      "Official contact channels. WhatsApp and email will be activated once confirmed.\n\n" +
-      "Where we are — Marinilla, Antioquia, Colombia. Eastern Antioquia — ideal microclimates for Hass avocados and coffee.",
+      "Official contact channels. Where we are — Marinilla, Antioquia, Colombia. Eastern Antioquia — ideal microclimates for Hass avocados and coffee.",
     whatsappCta: "Open WhatsApp",
+    whatsappPreset:
+      "Hi Santa Frida Farm 👋 I'm {your name}. I'd like to ask about orders, visits or trainings. Thanks!",
   },
-  footer: { rights: "© 2025 Santa Frida Farm. All rights reserved." },
+  footer: {
+    description:
+      "Grown with love in Marinilla, Antioquia. Hass avocados, specialty coffee and fresh greens.",
+    rights: "All rights reserved.",
+  },
 
   company: {
     historyTitle: "History",
-    historyBody:
-      "PLACEHOLDER TEXT: farm story, origins and evolution. This content will be replaced by official material.",
+    historyBody: "PLACEHOLDER TEXT...",
     visionTitle: "Vision",
-    visionBody:
-      "PLACEHOLDER TEXT: medium and long-term outlook. This content will be replaced by official material.",
+    visionBody: "PLACEHOLDER TEXT...",
     missionTitle: "Mission",
-    missionBody:
-      "PLACEHOLDER TEXT: operational purpose and values in action. This content will be replaced by official material.",
+    missionBody: "PLACEHOLDER TEXT...",
     specialtyTitle: "Specialty",
-    specialtyBody:
-      "PLACEHOLDER TEXT: quality focus, differentiators and processes. This content will be replaced by official material.",
+    specialtyBody: "PLACEHOLDER TEXT...",
     participationTitle: "Participation / Partnerships",
-    participationBody:
-      "PLACEHOLDER TEXT: events, trainings and institutional ties.",
+    participationBody: "PLACEHOLDER TEXT...",
   },
   participation: {
     eyebrow: "Community & Institutions",
     title: "Participation in events & programs",
-    intro:
-      "PLACEHOLDER TEXT — We participate in events, programs and trainings with local institutions and agricultural entities in Colombia.",
+    intro: "PLACEHOLDER TEXT — We participate in events and programs.",
     items: [
       "Government of Colombia — agricultural entities",
       "Municipality / local programs",
@@ -77,8 +70,7 @@ const en: Dict = {
   training: {
     eyebrow: "Learning visits",
     title: "Workshops & Trainings",
-    intro:
-      "PLACEHOLDER TEXT — Practical sessions in coffee and garden, focused on processes, good practices and traceability.",
+    intro: "PLACEHOLDER TEXT — Practical sessions in coffee and garden.",
     cta: "See updates on Instagram",
     items: [
       { title: "Training 1", body: "PLACEHOLDER TEXT" },

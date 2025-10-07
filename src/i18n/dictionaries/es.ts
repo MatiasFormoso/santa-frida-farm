@@ -6,12 +6,7 @@ const es: Dict = {
     description:
       "Cultivamos con amor en Marinilla, Antioquia. Aguacate Hass, café de especialidad y hortalizas frescas — cultivo consciente en el oriente antioqueño.",
   },
-  nav: {
-    home: "Inicio",
-    about: "Sobre la finca",
-    products: "Cultivos",
-    contact: "Contacto",
-  },
+  nav: { home: "Inicio", about: "Sobre la finca", products: "Cultivos", contact: "Contacto" },
   hero: {
     title: "Santa Frida Farm",
     subtitle:
@@ -25,12 +20,6 @@ const es: Dict = {
       "Propósito — Producir alimentos nobles y consistentes, respetando los ritmos del territorio y priorizando vínculos de confianza con nuestra comunidad.\n\n" +
       "Prácticas — Manejo responsable de suelos y agua, monitoreo y control integrado de plagas, cosecha oportuna y foco en trazabilidad y mejora continua.\n\n" +
       "Comunidad — Compartimos avances y actividades de la finca en redes, y abrimos espacios de visita y aprendizaje cuando hay cupos disponibles.",
-    // Opcional: si querés traer las cards desde el diccionario, podés agregar:
-    // cards: [
-    //   { title: "Propósito", body: "…" },
-    //   { title: "Prácticas", body: "…" },
-    //   { title: "Comunidad", body: "…" },
-    // ],
   },
   process: {
     title: "Visitas",
@@ -50,48 +39,40 @@ const es: Dict = {
   contact: {
     title: "Pedidos y consultas",
     subtitle:
-      "Canales oficiales para escribirnos. WhatsApp y correo se activarán en cuanto estén confirmados.\n\n" +
-      "Dónde estamos — Marinilla, Antioquia, Colombia. Oriente antioqueño — microclimas ideales para aguacate Hass y café.",
+      "Canales oficiales para escribirnos. Dónde estamos — Marinilla, Antioquia, Colombia. Oriente antioqueño — microclimas ideales para aguacate Hass y café.",
     whatsappCta: "Abrir WhatsApp",
+    // Mensaje preescrito para WhatsApp
+    whatsappPreset:
+      "Hola Santa Frida Farm 👋 Soy {tu nombre}. Me gustaría consultar sobre pedidos, visitas o capacitaciones. ¡Gracias!",
   },
   footer: {
-    rights: "© 2025 Santa Frida Farm. Todos los derechos reservados.",
+    description:
+      "Cultivamos con amor en Marinilla, Antioquia. Aguacate Hass, café de especialidad y hortalizas frescas.",
+    rights: "Todos los derechos reservados.",
   },
 
   company: {
     historyTitle: "Historia",
-    historyBody:
-      "TEXTO DE RELLENO: historia de la finca, orígenes y evolución. Este contenido será reemplazado por material oficial.",
+    historyBody: "TEXTO DE RELLENO...",
     visionTitle: "Visión",
-    visionBody:
-      "TEXTO DE RELLENO: mirada a mediano y largo plazo. Este contenido será reemplazado por material oficial.",
+    visionBody: "TEXTO DE RELLENO...",
     missionTitle: "Misión",
-    missionBody:
-      "TEXTO DE RELLENO: propósito operativo y valores en acción. Este contenido será reemplazado por material oficial.",
+    missionBody: "TEXTO DE RELLENO...",
     specialtyTitle: "Especialidad",
-    specialtyBody:
-      "TEXTO DE RELLENO: foco de calidad, diferenciales y procesos. Este contenido será reemplazado por material oficial.",
+    specialtyBody: "TEXTO DE RELLENO...",
     participationTitle: "Participación / Alianzas",
-    participationBody:
-      "TEXTO DE RELLENO: eventos, capacitaciones y vínculos institucionales.",
+    participationBody: "TEXTO DE RELLENO...",
   },
   participation: {
     eyebrow: "Comunidad e instituciones",
     title: "Participación en eventos y programas",
-    intro:
-      "TEXTO DE RELLENO — Participamos en eventos, programas y capacitaciones con instituciones y entidades agrícolas en Colombia.",
-    items: [
-      "Gobierno de Colombia — entidades agrícolas",
-      "Municipio / programas locales",
-      "Talleres técnicos y jornadas de campo",
-      "Redes de productores y comunidades de café",
-    ],
+    intro: "TEXTO DE RELLENO — Participamos en eventos y programas.",
+    items: ["Gobierno de Colombia", "Programas locales", "Talleres técnicos", "Redes de productores"],
   },
   training: {
     eyebrow: "Visitas de aprendizaje",
     title: "Capacitaciones y talleres",
-    intro:
-      "TEXTO DE RELLENO — Sesiones prácticas en café y huerto, enfocadas en procesos, buenas prácticas y trazabilidad.",
+    intro: "TEXTO DE RELLENO — Sesiones prácticas en café y huerto.",
     cta: "Ver actualizaciones en Instagram",
     items: [
       { title: "Capacitación 1", body: "TEXTO DE RELLENO" },

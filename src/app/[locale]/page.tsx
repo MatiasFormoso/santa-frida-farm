@@ -33,10 +33,8 @@ export default async function HomeByLocale({ params }: Props) {
 
       <Products t={t} locale={params.locale} />
 
-      {/* Pasar i18n a estas secciones */}
-      <InstagramStrip t={t} locale={params.locale} />
-      <Contact t={t} locale={params.locale} />
-
+      <InstagramStrip t={t} locale={params.locale} /> {/* <- props */}
+      <Contact t={t} locale={params.locale} />       {/* <- props */}
       <Footer t={t} locale={params.locale} />
     </main>
   );
