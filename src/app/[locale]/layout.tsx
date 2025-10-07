@@ -1,48 +1,61 @@
-// src/app/[locale]/layout.tsx
+// src/app/layout.tsx
 import type { Metadata } from "next";
+import "./globals.css";
+import { defaultMetadata, getSiteUrl } from "@/lib/seo";
+import { CONFIG } from "@/lib/config";
+import { Inter } from "next/font/google";
 
-const BASE = "https://santa-frida-farm.vercel.app";
-const LOCALES = ["es", "en"] as const;
-type L = typeof LOCALES[number];
+export const metadata: Metadata = {
+  ...defaultMetadata,
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+    other: [{ rel: "maskable", url: "/icon-maskable-512.png" }],
+  },
+};
 
-export function generateStaticParams() {
-  return LOCALES.map((locale) => ({ locale }));
+// Fuente profesional (display: swap para performance)
+const inter = Inter({ subsets: ["latin"], display: "swap" });
+
+function OrgJsonLd() {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: CONFIG.site.name,
+    url: getSiteUrl(),
+    sameAs: [CONFIG.contact.instagram],
+  };
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
 
-export function generateMetadata(
-  { params }: { params: { locale: L } }
-): Metadata {
-  const locale = params.locale;
-
-  // 👇 Título unificado para ambos idiomas (usa "absolute" para ignorar templates del root)
-  const titleAbs = "Santa Frida Farm — Conscious farming in Antioquia";
-
-  // Descripción sigue por idioma (podés ajustar el copy si querés)
-  const description =
-    locale === "en"
-      ? "Grown with love in Marinilla, Antioquia. Hass avocados, specialty coffee and fresh greens — conscious cultivation in eastern Antioquia."
-      : "Café de especialidad y cultivo consciente en Marinilla, Antioquia.";
-
-  return {
-    title: { absolute: titleAbs },
-    description,
-    alternates: {
-      languages: {
-        "es-ES": `${BASE}/es`,
-        en: `${BASE}/en`,
-      },
-    },
-    openGraph: {
-      title: titleAbs,
-      description,
-      url: `${BASE}/${locale}`,
-      type: "website",
-      locale: locale === "en" ? "en_US" : "es_ES",
+function WebSiteJsonLd() {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: CONFIG.site.name,
+    url: getSiteUrl(),
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${getSiteUrl()}/?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
     },
   };
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
 
-// No envolvemos con <html>/<body> para no chocar con el root layout
-export default function LocaleLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    // ⬇⬇⬇  Fijamos 'es' aquí. El lang por idioma lo maneja tu layout de [locale] si lo tenés.
+    <html lang="es" className="scroll-smooth">
+      <body className={`${inter.className} min-h-screen bg-white text-stone-800`}>
+        {children}
+        <OrgJsonLd />
+        <WebSiteJsonLd />
+      </body>
+    </html>
+  );
 }
