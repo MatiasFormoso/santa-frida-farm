@@ -4,8 +4,10 @@ import Footer from "@/components/layout/Footer";
 
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
+import Company from "@/components/sections/Company";
+import Participation from "@/components/sections/Participation";
+import Training from "@/components/sections/Training";
 import Products from "@/components/sections/Products";
-import Experiences from "@/components/sections/Experiences";
 import InstagramStrip from "@/components/sections/InstagramStrip";
 import Contact from "@/components/sections/Contact";
 
@@ -22,11 +24,19 @@ export default async function HomeByLocale({ params }: Props) {
     <main>
       <Header t={t} locale={params.locale} />
       <Hero t={t} locale={params.locale} />
+
       <About t={t} locale={params.locale} />
-      <Products t={t} locale={params.locale} />      {/* ← nuevo */}
-      <Experiences t={t} locale={params.locale} />   {/* ← nuevo */}
-      <InstagramStrip />
-      <Contact />
+      <Company t={t} locale={params.locale} />
+
+      <Participation t={t} locale={params.locale} />
+      <Training t={t} locale={params.locale} />
+
+      <Products t={t} locale={params.locale} />
+
+      {/* Pasar i18n a estas secciones */}
+      <InstagramStrip t={t} locale={params.locale} />
+      <Contact t={t} locale={params.locale} />
+
       <Footer t={t} locale={params.locale} />
     </main>
   );

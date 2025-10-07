@@ -13,7 +13,7 @@ type Product = {
   alt: string;
 };
 
-// Dataset base (ES) — lo dejamos tal cual
+// Dataset base (ES)
 const PRODUCTS: Product[] = [
   {
     key: "avocado",
@@ -44,7 +44,7 @@ const PRODUCTS: Product[] = [
   },
 ];
 
-// Overrides EN autoinclusivos (no requieren tocar diccionario)
+// Overrides EN
 const EN_OVERRIDES: Record<ProductKey, Partial<Product>> = {
   avocado: {
     name: "Hass Avocados",
@@ -70,7 +70,7 @@ const EN_OVERRIDES: Record<ProductKey, Partial<Product>> = {
 };
 
 export default function Products({ t, locale }: { t: Dict; locale: Locale }) {
-  // merge local según idioma (mantiene tus imágenes/estilos)
+  // merge según idioma (arreglado el } extra)
   const items =
     locale === "en"
       ? PRODUCTS.map((p) => ({ ...p, ...(EN_OVERRIDES[p.key] || {}) }))
@@ -78,10 +78,9 @@ export default function Products({ t, locale }: { t: Dict; locale: Locale }) {
 
   return (
     <Section
-      tone="alt"
-      id="productos"
-      eyebrow={t.nav.products}          // "Cultivos" / "Crops"
-      title={t.varietals.title}         // "Cultivos" / "Crops"
+      id="productos"                         // fondo BLANCO
+      eyebrow={t.nav.products}               // "Cultivos" / "Crops"
+      title={t.varietals.title}              // "Cultivos" / "Crops"
       intro={
         locale === "en"
           ? "Three lines that represent the heart of the farm. To learn how we work soil, water and traceability, visit the About section."
@@ -95,7 +94,7 @@ export default function Products({ t, locale }: { t: Dict; locale: Locale }) {
             <h3 className="mt-4 text-xl font-semibold text-stone-900">{p.name}</h3>
             <p className="mt-2 text-stone-600">{p.summary}</p>
             <ul className="mt-3 space-y-1 text-stone-700">
-              {p.bullets.map((b, i) => (
+              {p.bullets?.map((b, i) => (
                 <li key={i} className="flex gap-2">• <span>{b}</span></li>
               ))}
             </ul>

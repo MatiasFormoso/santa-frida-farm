@@ -1,6 +1,7 @@
 // src/components/sections/InstagramStrip.tsx
 import { Section } from "@/components/ui/primitives";
 import { CONFIG } from "@/lib/config";
+import type { Dict, Locale } from "@/i18n/config";
 
 // Permalinks + thumbnails locales (asegurate de colocar los archivos en /public/images/instagram/)
 const POSTS = [
@@ -12,15 +13,20 @@ const POSTS = [
   { url: "https://www.instagram.com/p/DOsFzR6iLTw/", thumb: "/images/instagram/ig-6.jpg", alt: "Post 6 de Instagram" },
 ];
 
-export default function InstagramStrip() {
+export default function InstagramStrip({ t, locale }: { t: Dict; locale: Locale }) {
+  const eyebrow = t.mediaKit?.title ?? (locale === "en" ? "Community" : "Comunidad");
+  const title = locale === "en" ? "What we share" : "Lo que compartimos";
+  const intro =
+    t.mediaKit?.subtitle ??
+    (locale === "en"
+      ? "Harvests, processes and daily life at the farm. More on our Instagram."
+      : "Cosechas, procesos y vida en finca. Más en nuestro Instagram.");
+
+  const ariaPrefix = locale === "en" ? "Open Instagram post" : "Abrir publicación de Instagram";
+  const cta = locale === "en" ? "Follow on Instagram" : "Seguir en Instagram";
+
   return (
-    <Section
-      tone="alt"
-      id="instagram"
-      eyebrow="Comunidad"
-      title="Lo que compartimos"
-      intro="Cosechas, procesos y vida en finca. Más en nuestro Instagram."
-    >
+    <Section tone="alt" id="instagram" eyebrow={eyebrow} title={title} intro={intro}>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
         {POSTS.map((p, i) => (
           <a
@@ -28,8 +34,8 @@ export default function InstagramStrip() {
             href={p.url || CONFIG.contact.instagram}
             target="_blank"
             rel="noreferrer"
-            aria-label={`Abrir publicación de Instagram ${i + 1}`}
-            title="Ver en Instagram"
+            aria-label={`${ariaPrefix} ${i + 1}`}
+            title={locale === "en" ? "View on Instagram" : "Ver en Instagram"}
             className="group block overflow-hidden rounded-2xl border border-stone-200 bg-white"
           >
             <div className="aspect-square overflow-hidden">
@@ -53,7 +59,7 @@ export default function InstagramStrip() {
           rel="noreferrer"
           className="inline-flex items-center rounded-2xl px-5 py-3 font-semibold text-emerald-800 hover:bg-emerald-50 border border-emerald-200 transition"
         >
-          Seguir en Instagram
+          {cta}
         </a>
       </div>
     </Section>

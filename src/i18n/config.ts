@@ -1,4 +1,3 @@
-// src/i18n/config.ts
 export type Dict = {
   meta: {
     title: string;
@@ -18,6 +17,7 @@ export type Dict = {
   about: {
     title: string;
     body: string;
+    /** Opcional: para tarjetas de Propósito / Prácticas / Comunidad */
     cards?: { title: string; body: string }[];
   };
   process: {
@@ -28,14 +28,6 @@ export type Dict = {
     title: string;
     items: string[];
   };
-
-  // 👇 NUEVO: textos por producto (name/summary/bullets)
-  products: {
-    avocado: { name: string; summary: string; bullets: string[] };
-    coffee: { name: string; summary: string; bullets: string[] };
-    greens: { name: string; summary: string; bullets: string[] };
-  };
-
   mediaKit?: {
     title: string;
     subtitle?: string;
@@ -47,6 +39,33 @@ export type Dict = {
   };
   footer: {
     rights: string;
+  };
+
+  /* NUEVO */
+  company: {
+    historyTitle: string;
+    historyBody: string;
+    visionTitle: string;
+    visionBody: string;
+    missionTitle: string;
+    missionBody: string;
+    specialtyTitle: string;
+    specialtyBody: string;
+    participationTitle: string;
+    participationBody: string;
+  };
+  participation: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    items: string[];
+  };
+  training: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    cta: string;
+    items: { title: string; body: string }[];
   };
 };
 

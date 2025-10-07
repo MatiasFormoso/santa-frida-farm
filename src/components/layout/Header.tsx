@@ -1,6 +1,7 @@
 "use client";
 // src/components/layout/Header.tsx
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { CONFIG } from "@/lib/config";
 import { Container } from "@/components/ui/primitives";
 import LocaleSwitcher from "@/components/LocaleSwitcher";
@@ -9,18 +10,12 @@ import type { Dict, Locale } from "@/i18n/config";
 function InstagramIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
-      <path
-        d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Z"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-      />
+      <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Z" fill="none" stroke="currentColor" strokeWidth="1.5" />
       <circle cx="12" cy="12" r="3.5" fill="none" stroke="currentColor" strokeWidth="1.5" />
       <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" />
     </svg>
   );
 }
-
 function MenuIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
@@ -36,10 +31,7 @@ function CloseIcon(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-type HeaderProps = {
-  t: Dict;
-  locale: Locale;
-};
+type HeaderProps = { t: Dict; locale: Locale };
 
 export default function Header({ t, locale }: HeaderProps) {
   const [open, setOpen] = useState(false);
@@ -54,27 +46,37 @@ export default function Header({ t, locale }: HeaderProps) {
 
   const linkCls =
     "hover:text-stone-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:rounded-md";
-
   const close = () => setOpen(false);
 
   return (
     <header className={`sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-stone-200/70 ${scrolled ? "shadow-sm" : ""}`}>
       <Container className="flex items-center justify-between h-16">
-        {/* Marca — respeta idioma actual */}
-        <a href={`/${locale}`} className="font-black tracking-tight text-xl text-stone-900">
-          {CONFIG.brand.logoText}
+        {/* Marca (logo + fallback texto) */}
+        <a href={`/${locale}`} className="flex items-center gap-2">
+          <span className="inline-flex items-center justify-center w-8 h-8">
+            <Image
+              src="/logo-santa-frida.png"   // en /public
+              alt="Santa Frida Farm"
+              width={32}
+              height={32}
+              priority
+              className="w-8 h-8 object-contain"
+            />
+          </span>
+          <span className="font-black tracking-tight text-xl text-stone-900 whitespace-nowrap">
+            {CONFIG.brand.logoText}
+          </span>
         </a>
 
         {/* Navegación desktop */}
         <nav className="hidden md:flex items-center gap-6 text-stone-700">
           <a href="#sobre" className={linkCls}>{t.nav.about}</a>
           <a href="#productos" className={linkCls}>{t.nav.products}</a>
-          <a href="#experiencias" className={linkCls}>{t.process.title}</a>
           <a href="#instagram" className={linkCls}>{t.mediaKit?.title ?? "Galería"}</a>
           <a href="#contacto" className={linkCls}>{t.nav.contact}</a>
         </nav>
 
-        {/* Acción lateral desktop: Instagram + Switcher */}
+        {/* Acción lateral */}
         <div className="hidden md:flex items-center gap-2">
           <a
             href={CONFIG.contact.instagram}
@@ -125,7 +127,6 @@ export default function Header({ t, locale }: HeaderProps) {
             <ul className="space-y-2">
               <li><a onClick={close} href="#sobre" className="block rounded-lg px-3 py-2 hover:bg-stone-50">{t.nav.about}</a></li>
               <li><a onClick={close} href="#productos" className="block rounded-lg px-3 py-2 hover:bg-stone-50">{t.nav.products}</a></li>
-              <li><a onClick={close} href="#experiencias" className="block rounded-lg px-3 py-2 hover:bg-stone-50">{t.process.title}</a></li>
               <li><a onClick={close} href="#instagram" className="block rounded-lg px-3 py-2 hover:bg-stone-50">{t.mediaKit?.title ?? "Galería"}</a></li>
               <li><a onClick={close} href="#contacto" className="block rounded-lg px-3 py-2 hover:bg-stone-50">{t.nav.contact}</a></li>
               <li className="pt-1 flex items-center gap-2">
@@ -144,12 +145,11 @@ export default function Header({ t, locale }: HeaderProps) {
             </ul>
           </nav>
         </div>
-        {/* Fondo clickeable para cerrar */}
         <button
           type="button"
           className="fixed inset-0 -z-10 h-[calc(100vh-4rem)] bg-black/10"
           onClick={close}
-          aria-hidden="true"
+          aria-hidden
           tabIndex={-1}
         />
       </div>

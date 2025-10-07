@@ -8,10 +8,12 @@ type Props = {
   locale: Locale;
 };
 
+type AboutCard = { title: string; body: string };
+
 export default function About({ t, locale }: Props) {
   const [intro] = t.about.body.split("\n\n");
-  const cards = t.about.cards ?? [
-    // Fallback por si falta en algún idioma (no debería pasar)
+
+  const fallbackCards: AboutCard[] = [
     {
       title: locale === "en" ? "Purpose" : "Propósito",
       body:
@@ -35,10 +37,12 @@ export default function About({ t, locale }: Props) {
     },
   ];
 
+  const cards: AboutCard[] = t.about.cards ?? fallbackCards;
+
   return (
     <Section id="sobre" eyebrow={t.nav.about} title={t.about.title} intro={intro}>
       <div className="grid md:grid-cols-3 gap-6">
-        {cards.map((c, i) => (
+        {cards.map((c: AboutCard, i: number) => (
           <Card key={i} className="p-6">
             <h4 className="font-semibold text-stone-900">{c.title}</h4>
             <p className="mt-2 text-stone-600">{c.body}</p>

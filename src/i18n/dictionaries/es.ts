@@ -2,9 +2,9 @@ import type { Dict } from "../config";
 
 const es: Dict = {
   meta: {
-    title: "Santa Frida Farm",
+    title: "Santa Frida Farm — Conscious farming in Antioquia",
     description:
-      "Grown with love in Marinilla, Antioquia. Hass avocados, specialty coffee and fresh greens — cultivo consciente en el oriente antioqueño.",
+      "Cultivamos con amor en Marinilla, Antioquia. Aguacate Hass, café de especialidad y hortalizas frescas — cultivo consciente en el oriente antioqueño.",
   },
   nav: {
     home: "Inicio",
@@ -15,7 +15,7 @@ const es: Dict = {
   hero: {
     title: "Santa Frida Farm",
     subtitle:
-      "Grown with love in Marinilla, Antioquia. Hass avocados, specialty coffee and fresh greens — cultivo consciente en el oriente antioqueño.",
+      "Cultivamos con amor en Marinilla, Antioquia. Aguacate Hass, café de especialidad y hortalizas frescas — cultivo consciente en el oriente antioqueño.",
     cta: "Conocer la finca",
   },
   about: {
@@ -25,23 +25,12 @@ const es: Dict = {
       "Propósito — Producir alimentos nobles y consistentes, respetando los ritmos del territorio y priorizando vínculos de confianza con nuestra comunidad.\n\n" +
       "Prácticas — Manejo responsable de suelos y agua, monitoreo y control integrado de plagas, cosecha oportuna y foco en trazabilidad y mejora continua.\n\n" +
       "Comunidad — Compartimos avances y actividades de la finca en redes, y abrimos espacios de visita y aprendizaje cuando hay cupos disponibles.",
-    cards: [
-      {
-        title: "Propósito",
-        body:
-          "Producir alimentos nobles y consistentes, respetando los ritmos del territorio y priorizando vínculos de confianza con nuestra comunidad.",
-      },
-      {
-        title: "Prácticas",
-        body:
-          "Manejo responsable de suelos y agua, monitoreo y control integrado de plagas, cosecha oportuna y foco en trazabilidad y mejora continua.",
-      },
-      {
-        title: "Comunidad",
-        body:
-          "Compartimos avances y actividades de la finca en redes y abrimos visitas de aprendizaje cuando hay cupos disponibles.",
-      },
-    ],
+    // Opcional: si querés traer las cards desde el diccionario, podés agregar:
+    // cards: [
+    //   { title: "Propósito", body: "…" },
+    //   { title: "Prácticas", body: "…" },
+    //   { title: "Comunidad", body: "…" },
+    // ],
   },
   process: {
     title: "Visitas",
@@ -52,31 +41,8 @@ const es: Dict = {
   },
   varietals: {
     title: "Cultivos",
-    items: ["Hass Avocados", "Specialty Coffee", "Fresh Greens"],
+    items: ["Aguacate Hass", "Café de especialidad", "Hortalizas frescas"],
   },
-
-  // 👇 NUEVO
-  products: {
-    avocado: {
-      name: "Hass Avocados",
-      summary:
-        "Huertos en crecimiento y manejo responsable. Calidad consistente para aliados locales.",
-      bullets: ["Trazabilidad por lote", "Manejo integrado de plagas", "Cosecha oportuna"],
-    },
-    coffee: {
-      name: "Specialty Coffee",
-      summary:
-        "Perfiles equilibrados en lotes pequeños y formación continua en tueste y cata.",
-      bullets: ["Tueste reciente", "Perfiles consistentes", "Control de calidad"],
-    },
-    greens: {
-      name: "Fresh Greens",
-      summary:
-        "Hortalizas y hojas de temporada. Cosecha cercana al consumo para cocinas y familias.",
-      bullets: ["Selección semanal", "Cadena en frío", "Entrega local"],
-    },
-  },
-
   mediaKit: {
     title: "Comunidad",
     subtitle: "Cosechas, procesos y vida en finca. Más en nuestro Instagram.",
@@ -90,6 +56,47 @@ const es: Dict = {
   },
   footer: {
     rights: "© 2025 Santa Frida Farm. Todos los derechos reservados.",
+  },
+
+  company: {
+    historyTitle: "Historia",
+    historyBody:
+      "TEXTO DE RELLENO: historia de la finca, orígenes y evolución. Este contenido será reemplazado por material oficial.",
+    visionTitle: "Visión",
+    visionBody:
+      "TEXTO DE RELLENO: mirada a mediano y largo plazo. Este contenido será reemplazado por material oficial.",
+    missionTitle: "Misión",
+    missionBody:
+      "TEXTO DE RELLENO: propósito operativo y valores en acción. Este contenido será reemplazado por material oficial.",
+    specialtyTitle: "Especialidad",
+    specialtyBody:
+      "TEXTO DE RELLENO: foco de calidad, diferenciales y procesos. Este contenido será reemplazado por material oficial.",
+    participationTitle: "Participación / Alianzas",
+    participationBody:
+      "TEXTO DE RELLENO: eventos, capacitaciones y vínculos institucionales.",
+  },
+  participation: {
+    eyebrow: "Comunidad e instituciones",
+    title: "Participación en eventos y programas",
+    intro:
+      "TEXTO DE RELLENO — Participamos en eventos, programas y capacitaciones con instituciones y entidades agrícolas en Colombia.",
+    items: [
+      "Gobierno de Colombia — entidades agrícolas",
+      "Municipio / programas locales",
+      "Talleres técnicos y jornadas de campo",
+      "Redes de productores y comunidades de café",
+    ],
+  },
+  training: {
+    eyebrow: "Visitas de aprendizaje",
+    title: "Capacitaciones y talleres",
+    intro:
+      "TEXTO DE RELLENO — Sesiones prácticas en café y huerto, enfocadas en procesos, buenas prácticas y trazabilidad.",
+    cta: "Ver actualizaciones en Instagram",
+    items: [
+      { title: "Capacitación 1", body: "TEXTO DE RELLENO" },
+      { title: "Capacitación 2", body: "TEXTO DE RELLENO" },
+    ],
   },
 };
 
