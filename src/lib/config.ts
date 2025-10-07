@@ -1,28 +1,28 @@
 // src/lib/config.ts
-
-/** Datos públicos del sitio y de contacto */
 export const CONFIG = {
   site: {
     name: "Santa Frida Farm",
+    lang: "es",
+    description:
+      "Cultivamos con amor en Marinilla, Antioquia. Aguacate Hass, café de especialidad y hortalizas frescas — cultivo consciente en el oriente antioqueño.",
+    tagline: "Conscious farming in Antioquia",
   },
+
+  // ← NUEVO: usado por Header.tsx
   brand: {
+    // El Header usa brand.logoText. Lo dejamos igual al nombre del sitio.
     logoText: "Santa Frida Farm",
+    // (opcional) si después querés, podés agregar: logoSrc, logoAlt, etc.
   },
+
   contact: {
-    /** Número para wa.me (el código ya le quita símbolos/espacios). */
-    whatsappNumber: "97509081460",
-    /** Cómo se muestra en la UI (podés cambiar el formato visual). */
-    whatsappIntl: "+97509081460",
-    /** (Opcional) Link directo si preferís usar API custom. Déjalo vacío si no. */
-    whatsappUrl: "",
-
-    /** Email oficial */
+    whatsappNumber: "+97509081460",
+    whatsappIntl: "+975 090 814 60",
     email: "santafrida.colombia@gmail.com",
-
-    /** Redes y ubicación */
     instagram: "https://www.instagram.com/santafridafarm/",
     locationLabel: "Marinilla, Antioquia, Colombia",
-    mapsUrl:
-      "https://www.google.com/maps/search/?api=1&query=Marinilla%2C%20Antioquia%2C%20Colombia",
+    mapsUrl: "https://maps.google.com/?q=Marinilla,%20Antioquia,%20Colombia",
+    whatsappPreset:
+      "Hola Santa Frida Farm, me gustaría coordinar una visita / hacer una consulta. ¡Gracias!",
   },
 } as const;

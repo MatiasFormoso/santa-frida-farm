@@ -4,6 +4,7 @@ import "./globals.css";
 import { defaultMetadata, getSiteUrl } from "@/lib/seo";
 import { CONFIG } from "@/lib/config";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   ...defaultMetadata,
@@ -21,24 +22,17 @@ export const metadata: Metadata = {
 // Fuente profesional (display: swap para performance)
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
-function OrgJsonLd() {
-  const data = {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  // JSON-LD estático (se evalúa en el server, sin depender de window)
+  const orgJson = {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: CONFIG.site.name,
     url: getSiteUrl(),
     sameAs: [CONFIG.contact.instagram],
   };
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
-  );
-}
 
-function WebSiteJsonLd() {
-  const data = {
+  const websiteJson = {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: CONFIG.site.name,
@@ -49,22 +43,26 @@ function WebSiteJsonLd() {
       "query-input": "required name=search_term_string",
     },
   };
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
-  );
-}
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    // Lang fijo para evitar depender de CONFIG.site.lang (que no existe)
-    <html lang="es" className="scroll-smooth">
+    <html lang={CONFIG.site.lang} className="scroll-smooth">
+      <head>
+        {/* Render en SSR y antes de hidratar: evita mismatches */}
+        <Script
+          id="org-jsonld"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJson) }}
+        />
+        <Script
+          id="website-jsonld"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJson) }}
+        />
+      </head>
       <body className={`${inter.className} min-h-screen bg-white text-stone-800`}>
         {children}
-        <OrgJsonLd />
-        <WebSiteJsonLd />
       </body>
     </html>
   );

@@ -18,7 +18,7 @@ export type Dict = {
   about: {
     title: string;
     body: string;
-    // opcional: si querés sobreescribir las cards desde el diccionario
+    /** ← para poder usar t.about.cards en About.tsx */
     cards?: { title: string; body: string }[];
   };
   process: {
@@ -37,13 +37,16 @@ export type Dict = {
     title: string;
     subtitle?: string;
     whatsappCta: string;
+    /** opcional, por si lo tomás desde i18n */
+    whatsappPreset?: string;
   };
   footer: {
-    description: string; // <- NUEVO
     rights: string;
+    /** opcional si cargás la descripción desde i18n para evitar spanglish */
+    description?: string;
   };
 
-  // NUEVO: secciones extendidas
+  // Secciones extendidas (las que ya venimos usando)
   company: {
     historyTitle: string;
     historyBody: string;
@@ -76,9 +79,9 @@ export type Locale = "es" | "en";
 export async function getDictionary(locale: Locale) {
   switch (locale) {
     case "en":
-      return (await import("./dictionaries/en")).default;
+      return (await import("./dictionaries/en")).default as Dict;
     case "es":
     default:
-      return (await import("./dictionaries/es")).default;
+      return (await import("./dictionaries/es")).default as Dict;
   }
 }
