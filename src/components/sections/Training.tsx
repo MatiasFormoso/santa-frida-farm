@@ -7,7 +7,6 @@ export default function Training({ t, locale }: { t: Dict; locale: Locale }) {
   return (
     <Section
       id="capacitaciones"
-      tone="alt"
       eyebrow={t.training.eyebrow}
       title={t.training.title}
       intro={t.training.intro}

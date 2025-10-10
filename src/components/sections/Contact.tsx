@@ -8,7 +8,6 @@ type Props = { t: Dict; locale: Locale };
 export default function Contact({ t, locale }: Props) {
   const hasWhats = Boolean(CONFIG.contact.whatsappNumber);
 
-  // Evita ts(2367): forzamos a string y solo verificamos si hay valor
   const email = String(CONFIG.contact.email || "");
   const hasEmail = email.trim().length > 0;
 
@@ -18,10 +17,7 @@ export default function Contact({ t, locale }: Props) {
       : "¡Hola! Me gustaría contactar a Santa Frida Farm por productos. ¿Podrían compartir disponibilidad y precios? Gracias.";
 
   const waUrl = hasWhats
-    ? `https://wa.me/${String(CONFIG.contact.whatsappNumber).replace(
-        /^\+/,
-        ""
-      )}?text=${encodeURIComponent(preset)}`
+    ? `https://wa.me/${String(CONFIG.contact.whatsappNumber).replace(/^\+/, "")}?text=${encodeURIComponent(preset)}`
     : undefined;
 
   const strings = {
@@ -40,17 +36,10 @@ export default function Contact({ t, locale }: Props) {
   };
 
   return (
-    <Section
-      id="contacto"
-      eyebrow={strings.contact}
-      title={t.contact.title}
-      intro={t.contact.subtitle}
-    >
+    <Section id="contacto" eyebrow={strings.contact} title={t.contact.title} intro={t.contact.subtitle}>
       <div className="grid lg:grid-cols-2 gap-8 items-start">
         <Card className="p-6">
-          <h3 className="text-lg font-semibold text-stone-900">
-            {strings.whatsapp}
-          </h3>
+          <h3 className="text-lg font-semibold text-stone-900">{strings.whatsapp}</h3>
           <p className="mt-2 text-stone-700">
             {CONFIG.contact.whatsappIntl || CONFIG.contact.whatsappNumber}
           </p>
@@ -60,9 +49,7 @@ export default function Contact({ t, locale }: Props) {
         </Card>
 
         <Card className="p-6">
-          <h3 className="text-lg font-semibold text-stone-900">
-            {strings.email}
-          </h3>
+          <h3 className="text-lg font-semibold text-stone-900">{strings.email}</h3>
           <p className="mt-2 text-stone-700">{hasEmail ? email : ""}</p>
           {hasEmail && (
             <div className="mt-4">

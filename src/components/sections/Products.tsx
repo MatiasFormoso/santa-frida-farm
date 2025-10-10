@@ -13,13 +13,11 @@ type Product = {
   alt: string;
 };
 
-// Dataset base (ES)
 const PRODUCTS: Product[] = [
   {
     key: "avocado",
     name: "Hass Avocados",
-    summary:
-      "Huertos en crecimiento y manejo responsable. Calidad consistente para aliados locales.",
+    summary: "Huertos en crecimiento y manejo responsable. Calidad consistente para aliados locales.",
     bullets: ["Trazabilidad por lote", "Manejo integrado de plagas", "Cosecha oportuna"],
     img: "/images/products/avocado-1200.webp",
     alt: "Aguacates Hass en árbol",
@@ -27,8 +25,7 @@ const PRODUCTS: Product[] = [
   {
     key: "coffee",
     name: "Specialty Coffee",
-    summary:
-      "Perfiles equilibrados en lotes pequeños y formación continua en tueste y cata.",
+    summary: "Perfiles equilibrados en lotes pequeños y formación continua en tueste y cata.",
     bullets: ["Tueste reciente", "Perfiles consistentes", "Control de calidad"],
     img: "/images/products/coffee-1200.webp",
     alt: "Cerezas de café maduras en la planta",
@@ -36,51 +33,43 @@ const PRODUCTS: Product[] = [
   {
     key: "greens",
     name: "Fresh Greens",
-    summary:
-      "Hortalizas y hojas de temporada. Cosecha cercana al consumo para cocinas y familias.",
+    summary: "Hortalizas y hojas de temporada. Cosecha cercana al consumo para cocinas y familias.",
     bullets: ["Selección semanal", "Cadena en frío", "Entrega local"],
     img: "/images/products/greens-1200.webp",
     alt: "Filas de lechuga en invernadero",
   },
 ];
 
-// Overrides EN
 const EN_OVERRIDES: Record<ProductKey, Partial<Product>> = {
   avocado: {
     name: "Hass Avocados",
-    summary:
-      "Orchards in steady growth with responsible management. Consistent quality for local partners.",
+    summary: "Orchards in steady growth with responsible management. Consistent quality for local partners.",
     bullets: ["Batch-level traceability", "Integrated pest management", "Timely harvests"],
     alt: "Hass avocados on the tree",
   },
   coffee: {
     name: "Specialty Coffee",
-    summary:
-      "Balanced profiles in small lots and ongoing training in roasting and cupping.",
+    summary: "Balanced profiles in small lots and ongoing training in roasting and cupping.",
     bullets: ["Freshly roasted", "Consistent profiles", "Quality control"],
     alt: "Ripe coffee cherries on the plant",
   },
   greens: {
     name: "Fresh Greens",
-    summary:
-      "Seasonal vegetables and leafy greens. Harvested close to consumption for kitchens and families.",
+    summary: "Seasonal vegetables and leafy greens. Harvested close to consumption for kitchens and families.",
     bullets: ["Weekly selection", "Cold chain", "Local delivery"],
     alt: "Rows of lettuce in a greenhouse",
   },
 };
 
 export default function Products({ t, locale }: { t: Dict; locale: Locale }) {
-  // merge según idioma (arreglado el } extra)
-  const items =
-    locale === "en"
-      ? PRODUCTS.map((p) => ({ ...p, ...(EN_OVERRIDES[p.key] || {}) }))
-      : PRODUCTS;
+  const items = locale === "en" ? PRODUCTS.map((p) => ({ ...p, ...(EN_OVERRIDES[p.key] || {}) })) : PRODUCTS;
 
   return (
     <Section
-      id="productos"                         // fondo BLANCO
-      eyebrow={t.nav.products}               // "Cultivos" / "Crops"
-      title={t.varietals.title}              // "Cultivos" / "Crops"
+      id="productos"
+      tone="alt"
+      eyebrow={t.nav.products}
+      title={t.varietals.title}
       intro={
         locale === "en"
           ? "Three lines that represent the heart of the farm. To learn how we work soil, water and traceability, visit the About section."

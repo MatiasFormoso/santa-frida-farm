@@ -3,7 +3,6 @@ import { Section } from "@/components/ui/primitives";
 import { CONFIG } from "@/lib/config";
 import type { Dict, Locale } from "@/i18n/config";
 
-// Permalinks + thumbnails locales (asegurate de colocar los archivos en /public/images/instagram/)
 const POSTS = [
   { url: "https://www.instagram.com/p/DPWtK6kk6ZI/", thumb: "/images/instagram/ig-1.jpg", alt: "Post 1 de Instagram" },
   { url: "https://www.instagram.com/p/DPRqghTk4SA/", thumb: "/images/instagram/ig-2.jpg", alt: "Post 2 de Instagram" },
@@ -26,7 +25,7 @@ export default function InstagramStrip({ t, locale }: { t: Dict; locale: Locale 
   const cta = locale === "en" ? "Follow on Instagram" : "Seguir en Instagram";
 
   return (
-    <Section tone="alt" id="instagram" eyebrow={eyebrow} title={title} intro={intro}>
+    <Section id="instagram" tone="alt" eyebrow={eyebrow} title={title} intro={intro}>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
         {POSTS.map((p, i) => (
           <a
@@ -39,7 +38,6 @@ export default function InstagramStrip({ t, locale }: { t: Dict; locale: Locale 
             className="group block overflow-hidden rounded-2xl border border-stone-200 bg-white"
           >
             <div className="aspect-square overflow-hidden">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={p.thumb}
                 alt={p.alt}

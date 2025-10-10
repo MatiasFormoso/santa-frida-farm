@@ -56,7 +56,7 @@ export default function Header({ t, locale }: HeaderProps) {
     <a href={`/${locale}`} className="flex items-center gap-2" aria-label="Santa Frida Farm — Home">
       <span className="inline-flex h-8 w-8 items-center justify-center">
         <Image
-          src="/logo-santa-frida.png" /* ajustá si tu logo está en otro path */
+          src="/logo-santa-frida.png"
           alt="Santa Frida Farm"
           width={32}
           height={32}
@@ -69,6 +69,9 @@ export default function Header({ t, locale }: HeaderProps) {
       </span>
     </a>
   );
+
+  // etiqueta para "Cultivos"
+  const cropsLabel = locale === "en" ? "Crops" : "Cultivos";
 
   // ===== Variante mínima para /historia =====
   if (isHistory) {
@@ -91,7 +94,8 @@ export default function Header({ t, locale }: HeaderProps) {
         {/* Navegación desktop */}
         <nav className="hidden items-center gap-6 text-stone-700 md:flex">
           <a href="#sobre" className={linkCls}>{t.nav.about}</a>
-          <a href="#productos" className={linkCls}>{t.nav.products}</a>
+          {/* Cultivos -> sección Hass */}
+          <a href="#hass" className={linkCls}>{cropsLabel}</a>
           <a href="#instagram" className={linkCls}>{t.mediaKit?.title ?? "Galería"}</a>
           <a href="#contacto" className={linkCls}>{t.nav.contact}</a>
         </nav>
@@ -146,7 +150,8 @@ export default function Header({ t, locale }: HeaderProps) {
           <nav className="px-4 pb-4 text-stone-800">
             <ul className="space-y-2">
               <li><a onClick={close} href="#sobre" className="block rounded-lg px-3 py-2 hover:bg-stone-50">{t.nav.about}</a></li>
-              <li><a onClick={close} href="#productos" className="block rounded-lg px-3 py-2 hover:bg-stone-50">{t.nav.products}</a></li>
+              {/* Cultivos -> sección Hass */}
+              <li><a onClick={close} href="#hass" className="block rounded-lg px-3 py-2 hover:bg-stone-50">{cropsLabel}</a></li>
               <li><a onClick={close} href="#instagram" className="block rounded-lg px-3 py-2 hover:bg-stone-50">{t.mediaKit?.title ?? "Galería"}</a></li>
               <li><a onClick={close} href="#contacto" className="block rounded-lg px-3 py-2 hover:bg-stone-50">{t.nav.contact}</a></li>
               <li className="flex items-center gap-2 pt-1">
@@ -165,7 +170,13 @@ export default function Header({ t, locale }: HeaderProps) {
             </ul>
           </nav>
         </div>
-        <button type="button" className="fixed inset-0 -z-10 h-[calc(100vh-4rem)] bg-black/10" onClick={close} aria-hidden tabIndex={-1} />
+        <button
+          type="button"
+          className="fixed inset-0 -z-10 h-[calc(100vh-4rem)] bg-black/10"
+          onClick={close}
+          aria-hidden
+          tabIndex={-1}
+        />
       </div>
     </header>
   );

@@ -6,6 +6,7 @@ export default function Participation({ t, locale }: { t: Dict; locale: Locale }
   return (
     <Section
       id="participacion"
+      tone="alt"
       eyebrow={t.participation.eyebrow}
       title={t.participation.title}
       intro={t.participation.intro}
