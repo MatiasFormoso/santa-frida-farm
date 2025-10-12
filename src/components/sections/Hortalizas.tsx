@@ -1,5 +1,5 @@
 // src/components/sections/Greens.tsx
-import { Section } from "@/components/ui/primitives";
+import { Section, Card, Button } from "@/components/ui/primitives";
 import type { Dict, Locale } from "@/i18n/config";
 
 type Props = { t: Dict; locale: Locale };
@@ -35,42 +35,31 @@ export default function Greens({ t, locale }: Props) {
 
   return (
     <Section id="greens" eyebrow={eyebrow} title={title}>
-      {/* mismo layout que Hass/Catimori: texto izq., collage der. */}
-      <div className="grid gap-10 md:grid-cols-12 items-start">
-        {/* Columna texto */}
+      {/* Mobile layout: tarjetas -> fotos -> botón */}
+      <div className="space-y-8 md:space-y-0 md:grid md:gap-12 md:grid-cols-12 md:items-start">
+        {/* Contenido - izquierda en desktop */}
         <div className="md:col-span-7">
-          <p className="text-stone-700 leading-relaxed">
+          <p className="text-slate-600 text-lg leading-relaxed mb-8">
             {locale === "en" ? introEN : introES}
           </p>
 
-          <dl className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {/* Tarjetas - primero en mobile */}
+          <dl className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
             {stats.map(([label, value]) => (
-              <div
-                key={label}
-                className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm hover:shadow-md transition"
-              >
-                <dt className="text-xs font-medium uppercase tracking-wide text-stone-500">
+              <Card key={label} variant="subtle" className="p-6 group hover:shadow-md transition-all duration-200">
+                <dt className="text-xs font-semibold uppercase tracking-wider text-emerald-700 mb-3">
                   {label}
                 </dt>
-                <dd className="mt-1 text-stone-900 font-semibold">{value}</dd>
-              </div>
+                <dd className="text-slate-900 font-bold text-lg">{value}</dd>
+              </Card>
             ))}
           </dl>
-
-          <div className="mt-7">
-            <a
-              href="#contacto"
-              className="inline-flex items-center justify-center rounded-xl border px-5 py-2.5 text-green-800 border-green-800 hover:bg-green-50 transition font-semibold"
-            >
-              {locale === "en" ? "Check availability" : "Consultar disponibilidad"}
-            </a>
-          </div>
         </div>
 
-        {/* Columna imagen (collage) */}
+        {/* Imagen - derecha en desktop */}
         <div className="md:col-span-5">
           <figure className="group">
-            <div className="overflow-hidden rounded-2xl border border-stone-200 ring-1 ring-stone-200/70 shadow-sm">
+            <div className="overflow-hidden rounded-2xl border border-slate-200/60 ring-1 ring-slate-200/40 shadow-sm hover:shadow-md transition-all duration-300">
               <picture>
                 <source
                   type="image/webp"
@@ -90,19 +79,29 @@ export default function Greens({ t, locale }: Props) {
                       ? "Fresh greens collage: lettuces, cabbage, chilies and garden at the farm"
                       : "Collage de hortalizas: lechugas, repollo, ajíes y huerto en la finca"
                   }
-                  className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.015] rounded-[22px]"
+                  className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                   loading="lazy"
                   decoding="async"
                 />
               </picture>
             </div>
-            <figcaption className="mt-3 text-sm text-stone-500">
+            <figcaption className="mt-3 text-sm text-slate-500">
               {locale === "en"
                 ? "Collage: seasonal garden at Santa Frida Farm."
                 : "Collage: huerto de temporada en Santa Frida Farm."}
             </figcaption>
           </figure>
         </div>
+      </div>
+
+      {/* Botón de disponibilidad - al final en mobile */}
+      <div className="flex justify-center md:justify-start mt-8">
+        <a
+          href="#contacto"
+          className="inline-flex items-center justify-center rounded-xl border px-6 py-3 text-green-800 border-green-800 hover:bg-green-50 transition-all duration-200 font-semibold hover:shadow-sm hover:scale-[1.02] active:scale-[0.98]"
+        >
+          {locale === "en" ? "Check availability" : "Consultar disponibilidad"}
+        </a>
       </div>
     </Section>
   );

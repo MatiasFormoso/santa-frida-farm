@@ -1,52 +1,136 @@
 @import "tailwindcss";
 
-/* ==== Tokens base ==== */
+/* ==== Tokens base mejorados ==== */
 :root {
   --sf-bg: #ffffff;
-  --sf-bg-alt: #fafaf9; /* stone-50 */
-  --sf-text: #0c0a09;   /* stone-950 */
-  --sf-muted: #57534e;  /* stone-600 */
-  --sf-border: rgba(28, 25, 23, 0.12);
-  --sf-accent: #047857; /* emerald-700 */
+  --sf-bg-alt: #f8fafc; /* slate-50 - más frío y moderno */
+  --sf-bg-subtle: #f1f5f9; /* slate-100 */
+  --sf-text: #0f172a;   /* slate-900 - más moderno */
+  --sf-text-muted: #475569;  /* slate-600 */
+  --sf-text-subtle: #64748b; /* slate-500 */
+  --sf-border: rgba(15, 23, 42, 0.08);
+  --sf-border-subtle: rgba(15, 23, 42, 0.05);
+  --sf-accent: #059669; /* emerald-600 - más vibrante */
+  --sf-accent-light: #10b981; /* emerald-500 */
+  --sf-accent-dark: #047857; /* emerald-700 */
+  --sf-accent-warm: #d97706; /* amber-600 - para acentos cálidos */
+  --sf-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --sf-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --sf-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
-html, body { height: 100%; }
+html, body { 
+  height: 100%; 
+  scroll-behavior: smooth;
+}
+
 body {
-  font-feature-settings: "rlig" 1, "calt" 1;
+  font-feature-settings: "rlig" 1, "calt" 1, "kern" 1;
   color: var(--sf-text);
   background: var(--sf-bg);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Tipografía base y headings */
-h1, h2, h3, h4 { letter-spacing: -0.01em; }
-h1 { line-height: 1.1; }
-.prose { color: var(--sf-text); }
-.prose p { color: #1c1917; }          /* stone-900 */
-.prose li { color: var(--sf-muted); } /* stone-600 */
-.prose a { text-decoration: underline; text-underline-offset: 4px; }
+/* Tipografía mejorada */
+h1, h2, h3, h4 { 
+  letter-spacing: -0.025em; 
+  font-weight: 600;
+  line-height: 1.2;
+}
 
-/* Enlaces globales */
+h1 { 
+  line-height: 1.1; 
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  letter-spacing: -0.02em;
+}
+
+.prose { color: var(--sf-text); }
+.prose p { 
+  color: #1c1917; 
+  line-height: 1.7;
+}
+.prose li { color: var(--sf-text-muted); }
+.prose a { 
+  text-decoration: underline; 
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  transition: all 0.2s ease;
+}
+
+/* Enlaces globales mejorados */
 a {
   text-decoration-color: transparent;
-  transition: color .15s ease, text-decoration-color .15s ease;
-}
-a:hover { text-decoration-color: currentColor; }
-a:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(5, 150, 105, .4), 0 0 0 4px #fff; /* ring */
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
 }
 
-/* Secciones alternadas (por si se usan utilidades sin Section) */
+a:hover { 
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 2px;
+}
+
+a:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.3), 0 0 0 1px rgba(5, 150, 105, 0.8);
+  border-radius: 4px;
+}
+
+/* Secciones mejoradas */
 .section-plain { background: var(--sf-bg); }
 .section-alt { background: var(--sf-bg-alt); }
 
-/* Cards */
+/* Cards mejoradas */
 .sf-card {
-  border: 1px solid var(--sf-border);
-  border-radius: 1.25rem; /* rounded-2xl/3xl */
+  border: 1px solid var(--sf-border-subtle);
+  border-radius: 1.5rem;
   background: #fff;
-  box-shadow: 0 1px 1px rgba(0,0,0,.04);
+  box-shadow: var(--sf-shadow-sm);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Utilidades pequeñas */
-.hr-soft { border-top: 1px solid var(--sf-border); }
+.sf-card:hover {
+  box-shadow: var(--sf-shadow-md);
+  border-color: var(--sf-border);
+  transform: translateY(-2px);
+}
+
+/* Utilidades mejoradas */
+.hr-soft { 
+  border-top: 1px solid var(--sf-border-subtle); 
+  margin: 2rem 0;
+}
+
+/* Animaciones sutiles */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Mejoras de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}

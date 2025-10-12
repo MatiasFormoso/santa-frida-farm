@@ -49,7 +49,7 @@ export default function Company({ t, locale }: Props) {
         <Link
           href={href}
           aria-label={ctaLabel}
-          className="text-green-700 hover:text-green-800 hover:underline font-medium"
+          className="text-emerald-600 hover:text-emerald-700 hover:underline font-medium"
         >
           {ctaLabel} →
         </Link>

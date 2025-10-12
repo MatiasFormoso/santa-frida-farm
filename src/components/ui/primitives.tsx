@@ -31,22 +31,26 @@ export const Section = ({
 }: SectionProps) => (
   <section
     id={id}
-    className={`py-20 sm:py-24 scroll-mt-24 ${tone === "alt" ? "bg-stone-50" : "bg-white"} ${className}`}
+    className={`py-24 sm:py-32 scroll-mt-20 ${tone === "alt" ? "bg-slate-50" : "bg-white"} ${className}`}
   >
     <Container>
       {(eyebrow || title || intro) && (
-        <header className="mb-10 sm:mb-12 max-w-3xl">
+        <header className="mb-16 sm:mb-20 max-w-4xl">
           {eyebrow && (
-            <p className="uppercase tracking-widest text-sm text-emerald-700 font-semibold">
+            <p className="uppercase tracking-wider text-xs text-emerald-600 font-semibold mb-4 opacity-90">
               {eyebrow}
             </p>
           )}
           {title && (
-            <h2 className="mt-1 text-3xl sm:text-4xl font-bold text-stone-900">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight mb-6">
               {title}
             </h2>
           )}
-          {intro && <p className="mt-3 text-stone-600 text-lg">{intro}</p>}
+          {intro && (
+            <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-3xl">
+              {intro}
+            </p>
+          )}
         </header>
       )}
       {children}
@@ -65,24 +69,36 @@ export const Pill = ({ children }: { children?: React.ReactNode }) => (
 type ButtonProps = {
   href?: string;
   children?: React.ReactNode;
-  variant?: "primary" | "ghost";
+  variant?: "primary" | "ghost" | "outline";
+  size?: "sm" | "md" | "lg";
   ariaLabel?: string;
 };
 export const Button = ({
   href = "#",
   children,
   variant = "primary",
+  size = "md",
   ariaLabel,
 }: ButtonProps) => {
   const base =
-    "inline-flex items-center justify-center rounded-2xl px-5 py-3 font-semibold transition outline-none " +
-    "focus-visible:ring-2 focus-visible:ring-emerald-600/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white";
-  const styles =
-    variant === "primary"
-      ? "bg-emerald-700 text-white hover:bg-emerald-800 active:bg-emerald-900"
-      : "text-emerald-800 border border-emerald-200 hover:bg-emerald-50 active:bg-emerald-100";
+    "inline-flex items-center justify-center font-semibold transition-all duration-200 outline-none " +
+    "focus-visible:ring-2 focus-visible:ring-emerald-600/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white " +
+    "transform hover:scale-105 active:scale-95";
+  
+  const sizeStyles = {
+    sm: "rounded-xl px-4 py-2 text-sm",
+    md: "rounded-2xl px-6 py-3 text-base",
+    lg: "rounded-2xl px-8 py-4 text-lg"
+  };
+  
+  const variantStyles = {
+    primary: "bg-emerald-600 text-white hover:bg-emerald-700 active:bg-emerald-800 shadow-lg hover:shadow-xl",
+    ghost: "text-emerald-700 border border-emerald-200 hover:bg-emerald-50 active:bg-emerald-100",
+    outline: "text-emerald-700 border-2 border-emerald-600 hover:bg-emerald-600 hover:text-white"
+  };
+  
   return (
-    <a href={href} aria-label={ariaLabel} className={`${base} ${styles}`}>
+    <a href={href} aria-label={ariaLabel} className={`${base} ${sizeStyles[size]} ${variantStyles[variant]}`}>
       {children}
     </a>
   );
@@ -90,20 +106,28 @@ export const Button = ({
 
 // ====== Card ======
 type CardProps = WithChildren<
-  { className?: string; hover?: boolean } & React.ComponentProps<"div">
+  { className?: string; hover?: boolean; variant?: "default" | "elevated" | "subtle" } & React.ComponentProps<"div">
 >;
-export const Card = ({ className = "", hover = true, children, ...rest }: CardProps) => (
-  <div
-    {...rest}
-    className={
-      "rounded-3xl border border-stone-200/60 bg-white shadow-sm " +
-      (hover ? "hover:shadow-md hover:-translate-y-0.5 transition " : "") +
-      className
-    }
-  >
-    {children}
-  </div>
-);
+export const Card = ({ className = "", hover = true, variant = "default", children, ...rest }: CardProps) => {
+  const variantStyles = {
+    default: "rounded-3xl border border-slate-200/60 bg-white shadow-sm",
+    elevated: "rounded-3xl border border-slate-200/40 bg-white shadow-lg",
+    subtle: "rounded-3xl border border-slate-200/30 bg-slate-50/50 shadow-sm"
+  };
+  
+  return (
+    <div
+      {...rest}
+      className={
+        variantStyles[variant] +
+        (hover ? " hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer " : " ") +
+        className
+      }
+    >
+      {children}
+    </div>
+  );
+};
 
 // ====== Img ======
 type ImgProps = {

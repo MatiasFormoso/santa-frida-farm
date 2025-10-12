@@ -14,19 +14,21 @@ export default function FraseHomenaje({ locale }: Props) {
 
   // Link permanente a /[locale]/historia: color + subrayado visibles siempre
   const name = (
-    <Link
+    <a
       href={`/${locale}/historia`}
+      target="_blank"
+      rel="noopener noreferrer"
       className="
-        text-emerald-800
-        underline decoration-emerald-700 decoration-2 underline-offset-[6px] decoration-solid
+        text-emerald-600
+        underline decoration-emerald-600 decoration-2 underline-offset-[6px] decoration-solid
         cursor-pointer
-        visited:text-emerald-800 visited:decoration-emerald-700
-        hover:decoration-emerald-900
+        visited:text-emerald-600 visited:decoration-emerald-600
+        hover:decoration-emerald-700 hover:text-emerald-700
         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white
       "
     >
       María Yennis
-    </Link>
+    </a>
   );
 
   return (

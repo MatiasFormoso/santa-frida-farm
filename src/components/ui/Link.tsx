@@ -12,6 +12,6 @@ export default function LinkUI({ subtle = false, className = "", ...props }: Pro
   const base =
     "underline-offset-4 decoration-transparent hover:decoration-current transition-colors focus:outline-none " +
     "focus-visible:ring-2 focus-visible:ring-emerald-600/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white";
-  const color = subtle ? "text-stone-700 hover:text-stone-900" : "text-emerald-800 hover:text-emerald-900";
+  const color = subtle ? "text-stone-700 hover:text-stone-900" : "text-emerald-600 hover:text-emerald-700";
   return <NextLink {...props} className={`${base} ${color} ${className}`} />;
 }

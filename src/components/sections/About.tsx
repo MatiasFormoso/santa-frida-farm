@@ -41,19 +41,27 @@ export default function About({ t, locale }: Props) {
 
   return (
     <Section id="sobre" eyebrow={t.nav.about} title={t.about.title} intro={intro}>
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-3 gap-8">
         {cards.map((c: AboutCard, i: number) => (
-          <Card key={i} className="p-6">
-            <h4 className="font-semibold text-stone-900">{c.title}</h4>
-            <p className="mt-2 text-stone-600">{c.body}</p>
+          <Card key={i} variant="elevated" className="p-8 group">
+            <div className="flex items-center mb-4">
+              <div className="w-12 h-12 rounded-2xl bg-emerald-100 flex items-center justify-center mr-4 group-hover:bg-emerald-200 transition-colors duration-200">
+                <div className="w-6 h-6 rounded-full bg-emerald-600"></div>
+              </div>
+              <h4 className="text-xl font-bold text-slate-900">{c.title}</h4>
+            </div>
+            <p className="text-slate-600 leading-relaxed text-base">{c.body}</p>
             {i === 2 && (
               <a
                 href={CONFIG.contact.instagram}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-3 inline-block text-emerald-800 hover:underline"
+                className="mt-6 inline-flex items-center text-emerald-600 hover:text-emerald-700 font-medium transition-colors duration-200"
               >
-                {locale === "en" ? "See updates on Instagram →" : "Ver actualizaciones en Instagram →"}
+                {locale === "en" ? "See updates on Instagram" : "Ver actualizaciones en Instagram"}
+                <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
               </a>
             )}
           </Card>

@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import type { Locale } from "@/i18n/config";
-import { Section, Container } from "@/components/ui/primitives";
+import { Section, Container, Card } from "@/components/ui/primitives";
 
 export const dynamic = "force-static";
 
@@ -27,7 +27,7 @@ export async function generateMetadata({
       description,
       images: [
         {
-          url: "/images/history-maria-aguacates.jpg",
+          url: "/images/history-maria-aguacates.webp",
           width: 1200,
           height: 630,
           alt: "Santa Frida Farm",
@@ -44,259 +44,338 @@ export default function HistoriaPage({ params }: { params: { locale: Locale } })
   const t = {
     crumbHome: isEN ? "Home" : "Inicio",
     pageTitle: isEN ? "History" : "Historia",
-    // quote en 2 partes para forzar salto y equilibrar líneas
-    quoteA: "“Las semillas que hoy florecen fueron plantadas con lágrimas,",
-    quoteB: "esperanza y manos que nunca se rindieron.”",
+    quoteA: isEN 
+      ? "The seeds that bloom today were planted with tears,"
+      : "Las semillas que hoy florecen fueron plantadas con lágrimas,",
+    quoteB: isEN 
+      ? "hope and hands that never gave up."
+      : "esperanza y manos que nunca se rindieron.",
     storyTitle: isEN ? "How Santa Frida Farm began" : "Cómo nació Santa Frida Farm",
     whatTitle: isEN ? "What Santa Frida represents" : "¿Qué representa Santa Frida Farm?",
     legacyTitle: isEN ? "A woman, a legacy" : "Una mujer, un legado",
-    contactCta: isEN ? "Contact us" : "Contacto y pedidos",
-    contactHref: isEN ? "/en#contact" : "/es#contacto",
   };
 
   return (
-    <main>
-      {/* Header minimal inline (solo logo + marca) */}
-      <header className="sticky top-0 z-40 border-b border-stone-200/70 bg-white/80 backdrop-blur">
-        <Container className="flex h-14 items-center justify-between">
-          <a href={`/${locale}`} aria-label="Santa Frida Farm — Home" className="flex items-center gap-2">
-            <span className="inline-flex h-8 w-8 items-center justify-center">
+    <main className="min-h-screen bg-white">
+      {/* Header minimal */}
+      <header className="sticky top-0 z-40 border-b border-slate-200/70 bg-white/95 backdrop-blur-md">
+        <Container className="flex h-16 items-center justify-between">
+          <Link href={`/${locale}`} className="flex items-center gap-3 group">
+            <div className="relative">
               <Image
                 src="/logo-santa-frida.png"
                 alt="Santa Frida Farm"
-                width={32}
-                height={32}
-                className="h-8 w-8 object-contain"
+                width={40}
+                height={40}
+                className="h-10 w-10 object-contain transition-transform duration-200 group-hover:scale-105"
                 priority
               />
-            </span>
-            <span className="whitespace-nowrap text-xl font-black tracking-tight text-stone-900">
+            </div>
+            <span className="text-xl font-bold text-slate-900 group-hover:text-emerald-600 transition-colors duration-200">
               Santa Frida Farm
             </span>
-          </a>
+          </Link>
+          
+          <nav aria-label="Breadcrumb" className="text-sm">
+            <ol className="flex items-center gap-2 text-slate-500">
+              <li>
+                <Link
+                  href={`/${locale}`}
+                  className="hover:text-emerald-600 transition-colors duration-200"
+                >
+                  {t.crumbHome}
+                </Link>
+              </li>
+              <li aria-hidden className="text-slate-300">›</li>
+              <li className="font-medium text-slate-700" aria-current="page">
+                {t.pageTitle}
+              </li>
+            </ol>
+          </nav>
         </Container>
       </header>
 
-      {/* Cabecera compacta con watermark a la derecha */}
-      <Section tone="plain" className="py-6 sm:py-8">
-        <div className="relative">
-          {/* Bloque de texto */}
-          <div className="grid items-start gap-8 md:grid-cols-12">
-            <div className="md:col-span-8 lg:col-span-7">
-              <h1 className="text-3xl font-bold text-stone-900 sm:text-4xl">{t.pageTitle}</h1>
+      {/* Hero Section */}
+      <section className="relative py-24 sm:py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-white to-slate-50"></div>
+        <Container className="relative">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm font-medium text-emerald-700 mb-8">
+              <div className="w-2 h-2 rounded-full bg-emerald-500 mr-2"></div>
+              {isEN ? "Our Story" : "Nuestra Historia"}
+            </div>
+            
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight mb-8">
+              {t.pageTitle}
+            </h1>
+            
+            <blockquote className="text-xl sm:text-2xl text-slate-600 leading-relaxed italic max-w-3xl mx-auto">
+              <span className="text-emerald-600">"{t.quoteA}</span>
+              <br />
+              <span>{t.quoteB}"</span>
+            </blockquote>
+          </div>
+        </Container>
+      </section>
 
-              <nav aria-label="Breadcrumb" className="mt-3 text-sm text-stone-500">
-                <ol className="flex items-center gap-2">
-                  <li>
-                    <Link
-                      href={`/${locale}`}
-                      className="underline-offset-4 hover:underline hover:text-stone-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-                    >
-                      {t.crumbHome}
-                    </Link>
-                  </li>
-                  <li aria-hidden>›</li>
-                  <li className="font-medium text-stone-700" aria-current="page">
-                    {t.pageTitle}
-                  </li>
-                </ol>
-              </nav>
-
-              <blockquote className="mt-4 border-l-4 border-emerald-700 pl-4 text-lg italic leading-relaxed text-stone-700">
-                <span>{t.quoteA}</span>
-                <br />
-                <span>{t.quoteB}</span>
-              </blockquote>
+      {/* Story Section */}
+      <Section tone="alt" className="py-20">
+        <Container>
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
+              <div>
+                <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6">
+                  {t.storyTitle}
+                </h2>
+                <div className="w-16 h-1 bg-emerald-600 rounded-full"></div>
+              </div>
+              
+              <div className="prose prose-lg prose-slate max-w-none">
+                {isEN ? (
+                  <>
+                    <p className="text-slate-600 leading-relaxed mb-6">
+                      Santa Frida Farm did not start at a desk. It started in the land. In those quiet dawns when the sun has
+                      not yet risen but a woman is already standing, with a steady heart and hands ready to sow.
+                    </p>
+                    <p className="text-slate-600 leading-relaxed mb-6">
+                      María Yennis Silgado, founder of Santa Frida Farm, learned since childhood that the land was her only
+                      certainty. Her parents taught her that every harvest is a promise of the future, and that dreams are
+                      cultivated like avocados, coffee or vegetables: with patience, effort and faith.
+                    </p>
+                    <p className="text-slate-600 leading-relaxed mb-6">
+                      From an early age she became a guardian of ancestral knowledge: conscious sowing, clean harvesting and
+                      respect for nature. She also faced storms. The hardest one: the loss of her daughter in 2020 — a pain that
+                      broke her soul, but not her will.
+                    </p>
+                    <p className="text-slate-600 leading-relaxed">
+                      Amid grief, it was the land that held her. Each dawn, she got up to sow — not only out of need, but as an
+                      act of love, remembrance and comfort. In those furrows watered by tears and hope, the name Santa Frida Farm
+                      grew stronger: a farm that overcame great obstacles and found light along the way.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p className="text-slate-600 leading-relaxed mb-6">
+                      Santa Frida Farm no nació en un escritorio. Nació en la tierra. En esas madrugadas silenciosas donde el sol
+                      aún no ha salido, pero una mujer ya está de pie, con el corazón firme y las manos listas para sembrar.
+                    </p>
+                    <p className="text-slate-600 leading-relaxed mb-6">
+                      María Yennis Silgado, fundadora de Santa Frida Farm, aprendió desde niña que la tierra era su única
+                      certeza. Sus padres le enseñaron que cada cosecha era una promesa de futuro, y que los sueños se cultivaban
+                      igual que los aguacates, el café o las hortalizas: con paciencia, con esfuerzo y con fe.
+                    </p>
+                    <p className="text-slate-600 leading-relaxed mb-6">
+                      Desde muy pequeña se convirtió en guardiana de saberes ancestrales: siembra consciente, cosecha limpia y
+                      respeto por la naturaleza. También enfrentó tormentas. La más dura: la pérdida de su hija en 2020. Un dolor
+                      que partió su alma, pero no su voluntad.
+                    </p>
+                    <p className="text-slate-600 leading-relaxed">
+                      En medio del luto, fue la tierra quien la sostuvo. Cada amanecer, se levantaba para sembrar —no solo por
+                      necesidad— sino como un acto de amor, memoria y consuelo. En esos surcos regados por lágrimas y esperanza
+                      se fortaleció el nombre Santa Frida Farm: una finca que superó obstáculos enormes y encontró luz en su
+                      camino.
+                    </p>
+                  </>
+                )}
+              </div>
+            </div>
+            
+            <div className="relative">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-2xl">
+                <picture>
+                  <source srcSet="/images/history-maria-aguacates.webp" type="image/webp" />
+                  <Image
+                    src="/images/history-maria-aguacates.jpg"
+                    alt={
+                      isEN
+                        ? "María Yennis selecting avocados at Santa Frida Farm"
+                        : "María Yennis seleccionando aguacates en Santa Frida Farm"
+                    }
+                    fill
+                    className="object-cover"
+                    priority
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </picture>
+              </div>
+              <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-emerald-100 rounded-full opacity-60"></div>
+              <div className="absolute -top-6 -left-6 w-16 h-16 bg-emerald-200 rounded-full opacity-40"></div>
             </div>
           </div>
-
-          {/* Marca de agua: logo grande, sin tarjeta, pegado al borde inferior derecha */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none select-none absolute right-34 bottom-0 translate-y-3 sm:translate-y-4"
-          >
-            {/* tamaños responsivos para que sea protagonista pero sin romper el layout */}
-            <Image
-              src="/logo-santa-frida.png"
-              alt=""
-              width={720}
-              height={720}
-              priority
-              sizes="(min-width:1280px) 620px, (min-width:1024px) 520px, (min-width:640px) 420px, 320px"
-              className="h-auto w-[110px] sm:w-[140px] lg:w-[160px] xl:w-[180px]"
-
-            />
-          </div>
-        </div>
+        </Container>
       </Section>
 
-      {/* Sección 1: Historia + foto (banda gris clara) */}
-      <Section id="historia" tone="alt" className="py-12 sm:py-14">
-        <div className="grid max-w-6xl grid-cols-1 gap-10 md:grid-cols-2 md:items-center">
-          <div className="order-2 md:order-1">
-            <h2 className="text-2xl font-semibold">{t.storyTitle}</h2>
-            <div className="prose mt-4 max-w-none prose-stone">
+      {/* What represents Section */}
+      <Section tone="plain" className="py-20">
+        <Container>
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="relative order-2 lg:order-1">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-2xl">
+                <picture>
+                  <source srcSet="/images/history-campo-siembra.webp" type="image/webp" />
+                  <Image
+                    src="/images/history-campo-siembra.jpg"
+                    alt={isEN ? "Field work and planting at Santa Frida Farm" : "Trabajo de campo y siembra en Santa Frida Farm"}
+                    fill
+                    className="object-cover"
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </picture>
+              </div>
+              <div className="absolute -bottom-6 -left-6 w-20 h-20 bg-slate-100 rounded-full opacity-60"></div>
+              <div className="absolute -top-6 -right-6 w-12 h-12 bg-slate-200 rounded-full opacity-40"></div>
+            </div>
+            
+            <div className="space-y-8 order-1 lg:order-2">
+              <div>
+                <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6">
+                  {t.whatTitle}
+                </h2>
+                <div className="w-16 h-1 bg-emerald-600 rounded-full"></div>
+              </div>
+              
+              <div className="space-y-6">
+                <p className="text-lg text-slate-600 leading-relaxed">
+                  {isEN ? "Santa Frida is far more than a farm:" : "Santa Frida es mucho más que una finca:"}
+                </p>
+                
+                <div className="space-y-4">
+                  <Card variant="subtle" className="p-6 border-l-4 border-emerald-500">
+                    <div className="flex items-start gap-4">
+                      <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 mt-1">
+                        <div className="w-3 h-3 rounded-full bg-emerald-600"></div>
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-slate-900 mb-2">
+                          {isEN ? "Resilience sown" : "Resiliencia sembrada"}
+                        </h3>
+                        <p className="text-slate-600 text-sm">
+                          {isEN 
+                            ? "Every seed planted represents overcoming obstacles and turning pain into purpose."
+                            : "Cada semilla sembrada representa superar obstáculos y convertir el dolor en propósito."
+                          }
+                        </p>
+                      </div>
+                    </div>
+                  </Card>
+                  
+                  <Card variant="subtle" className="p-6 border-l-4 border-emerald-500">
+                    <div className="flex items-start gap-4">
+                      <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 mt-1">
+                        <div className="w-3 h-3 rounded-full bg-emerald-600"></div>
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-slate-900 mb-2">
+                          {isEN ? "Living memory" : "Memoria viva"}
+                        </h3>
+                        <p className="text-slate-600 text-sm">
+                          {isEN 
+                            ? "A tribute to ancestral knowledge and the wisdom passed down through generations."
+                            : "Un homenaje a los saberes ancestrales y la sabiduría transmitida por generaciones."
+                          }
+                        </p>
+                      </div>
+                    </div>
+                  </Card>
+                  
+                  <Card variant="subtle" className="p-6 border-l-4 border-emerald-500">
+                    <div className="flex items-start gap-4">
+                      <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 mt-1">
+                        <div className="w-3 h-3 rounded-full bg-emerald-600"></div>
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-slate-900 mb-2">
+                          {isEN ? "Conscious abundance" : "Abundancia consciente"}
+                        </h3>
+                        <p className="text-slate-600 text-sm">
+                          {isEN 
+                            ? "The symbol of a family that turned scarcity into sustainable abundance through conscious farming."
+                            : "El símbolo de una familia que convirtió la escasez en abundancia sostenible a través del cultivo consciente."
+                          }
+                        </p>
+                      </div>
+                    </div>
+                  </Card>
+                </div>
+                
+                <p className="text-slate-600 leading-relaxed">
+                  {isEN 
+                    ? "Today, under María Yennis' leadership, we produce Hass avocado, catimor coffee and clean vegetables with sustainable methods, caring work and honesty."
+                    : "Hoy, bajo el liderazgo de María Yennis, producimos aguacate Hass, café catimor y hortalizas limpias, con métodos sostenibles, cuidado amoroso y trabajo honesto."
+                  }
+                </p>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Legacy Section */}
+      <Section tone="alt" className="py-20">
+        <Container>
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="mb-12">
+              <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6">
+                {t.legacyTitle}
+              </h2>
+              <div className="w-16 h-1 bg-emerald-600 rounded-full mx-auto"></div>
+            </div>
+            
+            <div className="prose prose-lg prose-slate max-w-none">
               {isEN ? (
                 <>
-                  <p>
-                    Santa Frida Farm did not start at a desk. It started in the land. In those quiet dawns when the sun has
-                    not yet risen but a woman is already standing, with a steady heart and hands ready to sow.
+                  <p className="text-slate-600 leading-relaxed mb-8 text-lg">
+                    Thanks to María Yennis Silgado's relentless effort, Santa Frida Farm is now a solid reality—free of pests,
+                    with healthy crops and a firm vision for growth. With her hands, empirical wisdom and love for the land, she
+                    has built a company that inspires her children, grandchildren and many other rural women.
                   </p>
-                  <p>
-                    María Yennis Silgado, founder of Santa Frida Farm, learned since childhood that the land was her only
-                    certainty. Her parents taught her that every harvest is a promise of the future, and that dreams are
-                    cultivated like avocados, coffee or vegetables: with patience, effort and faith.
-                  </p>
-                  <p>
-                    From an early age she became a guardian of ancestral knowledge: conscious sowing, clean harvesting and
-                    respect for nature. She also faced storms. The hardest one: the loss of her daughter in 2020 — a pain that
-                    broke her soul, but not her will.
-                  </p>
-                  <p>
-                    Amid grief, it was the land that held her. Each dawn, she got up to sow — not only out of need, but as an
-                    act of love, remembrance and comfort. In those furrows watered by tears and hope, the name Santa Frida Farm
-                    grew stronger: a farm that overcame great obstacles and found light along the way.
+                  <p className="text-slate-600 leading-relaxed text-lg">
+                    She is the root of this project; the soul behind the name. The example that even if pain takes something away,
+                    the land can give hope back—if you never stop sowing.
                   </p>
                 </>
               ) : (
                 <>
-                  <p>
-                    Santa Frida Farm no nació en un escritorio. Nació en la tierra. En esas madrugadas silenciosas donde el sol
-                    aún no ha salido, pero una mujer ya está de pie, con el corazón firme y las manos listas para sembrar.
+                  <p className="text-slate-600 leading-relaxed mb-8 text-lg">
+                    Gracias al esfuerzo inagotable de María Yennis Silgado, Santa Frida Farm es hoy una realidad sólida, limpia de
+                    plagas, con cultivos sanos y una visión firme de crecimiento. Ella, con sus manos, su sabiduría empírica y su
+                    amor por la tierra, ha levantado una empresa que inspira a hijos, nietos y a muchas otras mujeres rurales.
                   </p>
-                  <p>
-                    María Yennis Silgado, fundadora de Santa Frida Farm, aprendió desde niña que la tierra era su única
-                    certeza. Sus padres le enseñaron que cada cosecha era una promesa de futuro, y que los sueños se cultivaban
-                    igual que los aguacates, el café o las hortalizas: con paciencia, con esfuerzo y con fe.
-                  </p>
-                  <p>
-                    Desde muy pequeña se convirtió en guardiana de saberes ancestrales: siembra consciente, cosecha limpia y
-                    respeto por la naturaleza. También enfrentó tormentas. La más dura: la pérdida de su hija en 2020. Un dolor
-                    que partió su alma, pero no su voluntad.
-                  </p>
-                  <p>
-                    En medio del luto, fue la tierra quien la sostuvo. Cada amanecer, se levantaba para sembrar —no solo por
-                    necesidad— sino como un acto de amor, memoria y consuelo. En esos surcos regados por lágrimas y esperanza
-                    se fortaleció el nombre Santa Frida Farm: una finca que superó obstáculos enormes y encontró luz en su
-                    camino.
+                  <p className="text-slate-600 leading-relaxed text-lg">
+                    Ella es la raíz de este proyecto; el alma detrás del nombre. El ejemplo de que, aunque el dolor te arranque
+                    algo, la tierra puede devolverte esperanza si no dejás de sembrar.
                   </p>
                 </>
               )}
             </div>
-          </div>
-
-          <div className="order-1 md:order-2">
-            <div className="relative mx-auto aspect-[3/4] w-full max-w-md overflow-hidden rounded-2xl shadow-sm">
-              <Image
-                src="/images/history-maria-aguacates.jpg"
-                alt={
-                  isEN
-                    ? "María Yennis selecting avocados at Santa Frida Farm"
-                    : "María Yennis seleccionando aguacates en Santa Frida Farm"
-                }
-                fill
-                className="object-cover"
-                priority
-                sizes="(max-width: 768px) 100vw, 480px"
-              />
+            
+            <div className="mt-16">
+              <div className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-emerald-600 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <div className="w-2 h-2 rounded-full bg-white animate-pulse"></div>
+                {isEN ? "Continuing the legacy" : "Continuando el legado"}
+              </div>
             </div>
           </div>
-        </div>
+        </Container>
       </Section>
 
-      {/* Sección 2: ¿Qué representa? (banda blanca) */}
-      <Section id="que-representa" tone="plain" className="py-12 sm:py-14">
-        <div className="grid max-w-6xl grid-cols-1 gap-10 md:grid-cols-2 md:items-center">
-          <div>
-            <div className="relative mx-auto aspect-[3/4] w-full max-w-md overflow-hidden rounded-2xl shadow-sm">
-              <Image
-                src="/images/history-campo-siembra.jpg"
-                alt={isEN ? "Field work and planting at Santa Frida Farm" : "Trabajo de campo y siembra en Santa Frida Farm"}
-                fill
-                className="object-cover"
-                loading="lazy"
-                sizes="(max-width: 768px) 100vw, 480px"
-              />
-            </div>
-          </div>
-
-          <div>
-            <h2 className="text-2xl font-semibold">{t.whatTitle}</h2>
-            <div className="prose mt-4 max-w-none prose-stone">
-              {isEN ? (
-                <>
-                  <p>Santa Frida is far more than a farm:</p>
-                  <ul>
-                    <li>Resilience sown.</li>
-                    <li>Living memory.</li>
-                    <li>The symbol of a family that turned pain into purpose and scarcity into conscious abundance.</li>
-                  </ul>
-                  <p>
-                    Today, under María Yennis’ leadership, we produce Hass avocado, catimor coffee and clean vegetables with
-                    sustainable methods, caring work and honesty.
-                  </p>
-                </>
-              ) : (
-                <>
-                  <p>Santa Frida es mucho más que una finca:</p>
-                  <ul>
-                    <li>Resiliencia sembrada.</li>
-                    <li>Memoria viva.</li>
-                    <li>El símbolo de una familia que convirtió el dolor en propósito y la escasez en abundancia consciente.</li>
-                  </ul>
-                  <p>
-                    Hoy, bajo el liderazgo de María Yennis, producimos aguacate Hass, café catimor y hortalizas limpias, con
-                    métodos sostenibles, cuidado amoroso y trabajo honesto.
-                  </p>
-                </>
-              )}
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* Sección 3: Legado (banda gris clara) */}
-      <Section id="legado" tone="alt" className="py-12 sm:py-14">
-        <div className="max-w-6xl">
-          <h2 className="text-2xl font-semibold">{t.legacyTitle}</h2>
-          <div className="prose mt-4 max-w-none prose-stone">
-            {isEN ? (
-              <>
-                <p>
-                  Thanks to María Yennis Silgado’s relentless effort, Santa Frida Farm is now a solid reality—free of pests,
-                  with healthy crops and a firm vision for growth. With her hands, empirical wisdom and love for the land, she
-                  has built a company that inspires her children, grandchildren and many other rural women.
-                </p>
-                <p>
-                  She is the root of this project; the soul behind the name. The example that even if pain takes something away,
-                  the land can give hope back—if you never stop sowing.
-                </p>
-              </>
-            ) : (
-              <>
-                <p>
-                  Gracias al esfuerzo inagotable de María Yennis Silgado, Santa Frida Farm es hoy una realidad sólida, limpia de
-                  plagas, con cultivos sanos y una visión firme de crecimiento. Ella, con sus manos, su sabiduría empírica y su
-                  amor por la tierra, ha levantado una empresa que inspira a hijos, nietos y a muchas otras mujeres rurales.
-                </p>
-                <p>
-                  Ella es la raíz de este proyecto; el alma detrás del nombre. El ejemplo de que, aunque el dolor te arranque
-                  algo, la tierra puede devolverte esperanza si no dejás de sembrar.
-                </p>
-              </>
-            )}
-          </div>
-
-          <div className="mt-8">
-            <Link
-              href={t.contactHref}
-              className="inline-flex items-center rounded-xl border border-emerald-700 px-4 py-2 text-sm font-semibold text-emerald-800 hover:bg-emerald-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+      {/* Footer */}
+      <footer className="border-t border-slate-200 bg-slate-50 py-12">
+        <Container>
+          <div className="text-center">
+            <Link 
+              href={`/${locale}`}
+              className="inline-flex items-center gap-2 text-slate-600 hover:text-emerald-600 transition-colors duration-200"
             >
-              {t.contactCta}
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+              {isEN ? "Back to home" : "Volver al inicio"}
             </Link>
           </div>
-        </div>
-      </Section>
+        </Container>
+      </footer>
     </main>
   );
 }
