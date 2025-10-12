@@ -246,7 +246,7 @@ export default function Header({ t, locale }: HeaderProps) {
         className={`fixed inset-x-0 top-16 z-50 transition-all duration-300 md:hidden ${open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"}`}
         aria-hidden={!open}
       >
-        <div className="mx-3 rounded-2xl border border-slate-200/60 bg-white/95 backdrop-blur-md shadow-xl">
+        <div className="mx-3 rounded-2xl border border-slate-200/60 bg-white shadow-xl">
           <div className="flex items-center justify-between px-5 py-4 border-b border-slate-200/50">
             <span className="font-semibold text-slate-900">Menú</span>
             <button
@@ -266,35 +266,15 @@ export default function Header({ t, locale }: HeaderProps) {
                 </a>
               </li>
               
-              {/* Cultivos dropdown mobile */}
+              {/* Cultivos mobile - navega directamente a Hass */}
               <li>
-                <button
-                  type="button"
-                  onClick={() => setCropsOpen(!cropsOpen)}
-                  className="group flex items-center justify-between w-full rounded-xl px-4 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-emerald-50/30 text-left transition-all duration-200"
+                <a 
+                  href="#hass" 
+                  onClick={close}
+                  className="group flex items-center rounded-xl px-4 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-emerald-50/30 transition-all duration-200"
                 >
                   <span className="group-hover:text-emerald-600 transition-colors duration-200">{cropsLabel}</span>
-                  <ChevronDownIcon className={`h-4 w-4 transition-all duration-200 ${cropsOpen ? 'rotate-180 text-emerald-600' : 'group-hover:text-slate-500'}`} />
-                </button>
-                {cropsOpen && (
-                  <ul className="ml-4 mt-2 space-y-1">
-                    {crops.map((crop) => (
-                      <li key={crop.id}>
-                        <a 
-                          href={`#${crop.id}`} 
-                          onClick={() => {
-                            closeCrops();
-                            setTimeout(() => close(), 100);
-                          }}
-                          className="group flex items-center gap-3 rounded-lg px-4 py-2.5 hover:bg-gradient-to-r hover:from-emerald-50/50 hover:to-slate-50/50 text-sm transition-all duration-200"
-                        >
-                          <span className="text-lg transition-transform duration-200 group-hover:scale-110">{crop.icon}</span>
-                          <span className="group-hover:text-emerald-600 transition-colors duration-200">{crop.name}</span>
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                </a>
               </li>
               
               <li>
