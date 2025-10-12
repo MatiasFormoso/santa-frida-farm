@@ -99,7 +99,7 @@ export default function Header({ t, locale }: HeaderProps) {
       icon: "☕"
     },
     {
-      id: "greens",
+      id: "hortalizas",
       name: locale === "en" ? "Fresh Greens" : "Hortalizas frescas", 
       description: locale === "en" ? "Fresh seasonal vegetables" : "Hortalizas frescas de temporada",
       icon: "🥬"
