@@ -34,7 +34,7 @@ export default function Hortalizas({ t, locale }: Props) {
   const stats = locale === "en" ? statsEN : statsES;
 
   return (
-    <Section id="hortalizas" tone="alt" eyebrow={eyebrow} title={title}>
+    <Section id="hortalizas" eyebrow={eyebrow} title={title}>
       {/* Mobile: título -> tarjetas -> foto -> botón */}
       <div className="space-y-8 md:space-y-0 md:grid md:gap-16 md:grid-cols-12 md:items-center">
         {/* Contenido - izquierda en desktop */}
