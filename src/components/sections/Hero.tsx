@@ -12,12 +12,15 @@ type Props = { t: Dict; locale: Locale };
 export default function Hero({ t }: Props) {
   return (
     <section
+      id="hero"
       className="
         relative
         min-h-[78svh]
+        overflow-hidden
         [mask-image:linear-gradient(to_bottom,black_98%,transparent_100%)]
         [-webkit-mask-image:linear-gradient(to_bottom,black_98%,transparent_100%)]
       "
+      style={{ height: '78vh', minHeight: '78vh' }}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img

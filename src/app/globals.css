@@ -173,3 +173,29 @@ a:focus-visible {
     scroll-behavior: auto;
   }
 }
+
+/* Fix para navegadores integrados (Instagram, Facebook, LinkedIn) - prevenir cambios de viewport */
+@media (max-width: 768px) {
+  html {
+    height: 100%;
+    overflow-x: hidden;
+  }
+  
+  body {
+    height: 100%;
+    overflow-x: hidden;
+  }
+  
+  #hero {
+    height: 78vh !important;
+    min-height: 78vh !important;
+    max-height: 78vh !important;
+    position: relative;
+  }
+  
+  #hero img {
+    height: 78vh !important;
+    min-height: 78vh !important;
+    max-height: 78vh !important;
+  }
+}
