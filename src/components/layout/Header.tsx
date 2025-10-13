@@ -94,7 +94,7 @@ export default function Header({ t, locale }: HeaderProps) {
     },
     {
       id: "catimori", 
-      name: locale === "en" ? "Catimori Coffee" : "Café Catimori",
+      name: locale === "en" ? "Catimor Coffee (Caturra × Timor cross)" : "Café Catimor (cruce Caturra x Timor)",
       description: locale === "en" ? "Specialty coffee beans" : "Granos de café de especialidad",
       icon: "☕"
     },
@@ -185,7 +185,6 @@ export default function Header({ t, locale }: HeaderProps) {
                     onClick={closeCrops}
                     className="group flex items-center gap-4 p-4 rounded-xl hover:bg-gradient-to-r hover:from-emerald-50/50 hover:to-slate-50/50 transition-all duration-200 border border-transparent hover:border-emerald-200/50"
                   >
-                    <span className="text-2xl transition-transform duration-200 group-hover:scale-110">{crop.icon}</span>
                     <div className="flex-1 min-w-0">
                       <div className="font-semibold text-slate-900 group-hover:text-emerald-600 transition-colors duration-200">
                         {crop.name}

@@ -6,7 +6,7 @@ type Props = { t: Dict; locale: Locale };
 
 export default function Catimori({ t, locale }: Props) {
   const eyebrow = locale === "en" ? "Crops" : "Cultivos";
-  const title = locale === "en" ? "Catimori Coffee" : "Café Catimori";
+  const title = locale === "en" ? "Catimor Coffee (Caturra × Timor cross)" : "Café Catimor (cruce Caturra x Timor)";
 
   const introES =
     "Cultivo y proceso cuidados para maximizar su potencial en taza.";
@@ -14,7 +14,7 @@ export default function Catimori({ t, locale }: Props) {
     "Careful cultivation and processing to maximize cup potential.";
 
   const statsES: [string, string][] = [
-    ["Variedad", "Catimori (cruce Caturra × Timor)"],
+    ["Variedad", "Catimor (cruce Caturra × Timor)"],
     ["Árboles sembrados", "510"],
     ["Cosechas al año", "2"],
     ["Producción anual", "~612 kg pergamino seco (≈ 490–510 kg café oro)"],
@@ -26,7 +26,7 @@ export default function Catimori({ t, locale }: Props) {
   ];
 
   const statsEN: [string, string][] = [
-    ["Variety", "Catimori (Caturra × Timor cross)"],
+    ["Variety", "Catimor (Caturra × Timor cross)"],
     ["Trees planted", "510"],
     ["Harvests per year", "2"],
     ["Annual production", "~612 kg parchment (≈ 490–510 kg green coffee)"],
@@ -42,24 +42,25 @@ export default function Catimori({ t, locale }: Props) {
   return (
     <Section id="catimori" tone="alt" eyebrow={eyebrow} title={title}>
       {/* Mobile: título -> tarjetas -> foto -> botón */}
-      <div className="space-y-8 md:space-y-0 md:grid md:gap-16 md:grid-cols-12 md:items-center">
+      <div className="space-y-10 md:space-y-0 md:grid md:gap-12 lg:gap-16 md:grid-cols-12 md:items-center">
         {/* Contenido - izquierda en desktop */}
         <div className="md:col-span-7">
           {/* Introducción */}
-          <div className="mb-10">
-            <p className="text-slate-600 text-lg leading-relaxed">
+          <div className="mb-8 sm:mb-10">
+            <p className="text-slate-600 text-lg sm:text-xl leading-relaxed">
               {locale === "en" ? introEN : introES}
             </p>
           </div>
 
           {/* Tarjetas de estadísticas */}
-          <dl className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
-            {stats.map(([label, value]) => (
-              <Card key={label} variant="elevated" className="p-6 group hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                <dt className="text-xs font-semibold uppercase tracking-wider text-emerald-700 mb-3">
+          <dl className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-10">
+            {stats.map(([label, value], idx) => (
+              <Card key={label} variant="elevated" className="p-5 sm:p-6 group" style={{ animationDelay: `${idx * 50}ms` }}>
+                <dt className="text-[0.6875rem] sm:text-xs font-bold uppercase tracking-widest text-emerald-600 mb-3 flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 group-hover:scale-125 transition-transform duration-300"></span>
                   {label}
                 </dt>
-                <dd className="text-slate-900 font-bold text-lg leading-tight">{value}</dd>
+                <dd className="text-slate-900 font-bold text-base sm:text-lg leading-tight">{value}</dd>
               </Card>
             ))}
           </dl>
@@ -68,7 +69,7 @@ export default function Catimori({ t, locale }: Props) {
         {/* Imagen - derecha en desktop */}
         <div className="md:col-span-5">
           <figure className="group">
-            <div className="relative overflow-hidden rounded-3xl border border-slate-200/60 ring-1 ring-slate-200/40 shadow-lg hover:shadow-xl transition-all duration-500">
+            <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-slate-200/60 ring-1 ring-slate-200/40 shadow-xl hover:shadow-2xl transition-all duration-500 hover:border-emerald-200/60">
               <picture>
                 <source
                   type="image/webp"
@@ -85,18 +86,18 @@ export default function Catimori({ t, locale }: Props) {
                   src="/images/sections/catimori-collage-1600x1200.jpg"
                   alt={
                     locale === "en"
-                      ? "Catimori coffee collage: branch, cherries and harvest at the farm"
-                      : "Collage de café Catimori: rama, cerezas y cosecha en la finca"
+                      ? "Catimor coffee collage: branch, cherries and harvest at the farm"
+                      : "Collage de café Catimor: rama, cerezas y cosecha en la finca"
                   }
-                  className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                  className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
                   loading="lazy"
                   decoding="async"
                 />
               </picture>
               {/* Overlay sutil en hover */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
-            <figcaption className="mt-4 text-sm text-slate-500 text-center">
+            <figcaption className="mt-4 text-xs sm:text-sm text-slate-500 text-center font-medium">
               {locale === "en"
                 ? "Collage: branch, cherries and harvest at Santa Frida Farm."
                 : "Collage: rama, cerezas y cosecha en Santa Frida Farm."}
@@ -106,13 +107,13 @@ export default function Catimori({ t, locale }: Props) {
       </div>
 
       {/* Botón de disponibilidad - al final en mobile */}
-      <div className="flex justify-center md:justify-start mt-8">
+      <div className="flex justify-center md:justify-start mt-10 sm:mt-12">
         <a
           href="#contacto"
-          className="inline-flex items-center justify-center rounded-xl border-2 px-8 py-4 text-green-800 border-green-800 hover:bg-green-50 hover:border-green-900 transition-all duration-200 font-semibold hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] group"
+          className="group inline-flex items-center justify-center rounded-xl border-2 px-6 sm:px-8 py-3.5 sm:py-4 text-emerald-700 border-emerald-600/80 hover:bg-emerald-600 hover:text-white hover:border-emerald-700 transition-all duration-300 font-semibold shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]"
         >
           <span className="mr-2">{locale === "en" ? "Check availability" : "Consultar disponibilidad"}</span>
-          <svg className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </a>

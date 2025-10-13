@@ -15,8 +15,8 @@ export const CONFIG = {
 
   contact: {
     // ✅ Número corregido (formato internacional y sin espacios)
-    whatsappNumber: "+971509081460",
-    whatsappIntl: "+971 50 908 1460",
+    whatsappNumber: "+573019553003",
+    whatsappIntl: "+57 301 955 3003",
     email: "santafrida.colombia@gmail.com",
     instagram: "https://www.instagram.com/santafridafarm/",
     locationLabel: "Marinilla, Antioquia, Colombia",

@@ -41,25 +41,25 @@ export default function About({ t, locale }: Props) {
 
   return (
     <Section id="sobre" eyebrow={t.nav.about} title={t.about.title} intro={intro}>
-      <div className="grid md:grid-cols-3 gap-8">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         {cards.map((c: AboutCard, i: number) => (
-          <Card key={i} variant="elevated" className="p-8 group">
-            <div className="flex items-center mb-4">
-              <div className="w-12 h-12 rounded-2xl bg-emerald-100 flex items-center justify-center mr-4 group-hover:bg-emerald-200 transition-colors duration-200">
-                <div className="w-6 h-6 rounded-full bg-emerald-600"></div>
+          <Card key={i} variant="elevated" className="p-6 sm:p-8 group" hover={false}>
+            <div className="flex items-start sm:items-center mb-5 sm:mb-6">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-emerald-100 to-emerald-50 flex items-center justify-center mr-4 group-hover:from-emerald-200 group-hover:to-emerald-100 transition-all duration-300 shadow-sm group-hover:shadow-md">
+                <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-gradient-to-br from-emerald-600 to-emerald-700 group-hover:scale-110 transition-transform duration-300"></div>
               </div>
-              <h4 className="text-xl font-bold text-slate-900">{c.title}</h4>
+              <h4 className="text-lg sm:text-xl font-bold text-slate-900 group-hover:text-emerald-700 transition-colors duration-300">{c.title}</h4>
             </div>
-            <p className="text-slate-600 leading-relaxed text-base">{c.body}</p>
+            <p className="text-slate-600 leading-relaxed text-sm sm:text-base">{c.body}</p>
             {i === 2 && (
               <a
                 href={CONFIG.contact.instagram}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-6 inline-flex items-center text-emerald-600 hover:text-emerald-700 font-medium transition-colors duration-200"
+                className="mt-6 inline-flex items-center text-emerald-600 hover:text-emerald-700 font-semibold transition-all duration-300 group/link"
               >
-                {locale === "en" ? "See updates on Instagram" : "Ver actualizaciones en Instagram"}
-                <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <span>{locale === "en" ? "See updates on Instagram" : "Ver actualizaciones en Instagram"}</span>
+                <svg className="ml-2 w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
               </a>
