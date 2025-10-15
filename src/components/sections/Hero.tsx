@@ -49,6 +49,12 @@ export default function Hero({ t }: Props) {
         className="absolute inset-0 pointer-events-none bg-black/30"
       />
 
+      {/* Viñeta para enfocar el centro y suavizar esquinas */}
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0)_45%,rgba(0,0,0,0.42)_100%)]"
+      />
+
 
 
 

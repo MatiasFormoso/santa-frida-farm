@@ -162,7 +162,7 @@ export default function Header({ t, locale }: HeaderProps) {
               type="button"
               onClick={() => setCropsOpen(!cropsOpen)}
               onMouseEnter={() => setCropsOpen(true)}
-              className={`group flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-200 ${linkCls} ${cropsOpen ? 'text-emerald-700 bg-emerald-50/80 shadow-sm' : 'hover:bg-slate-50/50'}`}
+              className={`group flex items-center gap-2 px-3 py-2 rounded-md transition-all duration-200 ${linkCls} ${cropsOpen ? 'text-emerald-700 bg-emerald-50/70 shadow-sm' : 'hover:bg-slate-50/50'}`}
               aria-expanded={cropsOpen}
               aria-haspopup="true"
             >
@@ -172,28 +172,28 @@ export default function Header({ t, locale }: HeaderProps) {
             
             {/* Dropdown Menu */}
             <div
-              className={`absolute top-full left-0 mt-3 w-80 bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl border border-slate-200/60 overflow-hidden transition-all duration-300 ${
+              className={`absolute top-full left-0 mt-2 w-[22rem] bg-white shadow-lg border border-slate-200/80 rounded-lg overflow-hidden transition-all duration-200 ${
                 cropsOpen ? 'opacity-100 visible translate-y-0 scale-100' : 'opacity-0 invisible translate-y-2 scale-95'
               }`}
               onMouseLeave={() => setCropsOpen(false)}
             >
-              <div className="p-3">
+              <div className="py-2">
                 {crops.map((crop) => (
                   <a
                     key={crop.id}
                     href={`#${crop.id}`}
                     onClick={closeCrops}
-                    className="group flex items-center gap-4 p-4 rounded-xl hover:bg-gradient-to-r hover:from-emerald-50/50 hover:to-slate-50/50 transition-all duration-200 border border-transparent hover:border-emerald-200/50"
+                    className="group flex items-center gap-4 px-4 py-3 hover:bg-slate-50/80 transition-colors duration-150 border-b border-slate-100 last:border-0"
                   >
                     <div className="flex-1 min-w-0">
-                      <div className="font-semibold text-slate-900 group-hover:text-emerald-700 transition-colors duration-200">
+                      <div className="font-medium text-slate-900 group-hover:text-emerald-700 transition-colors duration-150">
                         {crop.name}
                       </div>
-                      <div className="text-sm text-slate-500 truncate group-hover:text-slate-600 transition-colors duration-200">
+                      <div className="text-sm text-slate-500 truncate group-hover:text-slate-600 transition-colors duration-150">
                         {crop.description}
                       </div>
                     </div>
-                    <ArrowRightIcon className="w-4 h-4 text-slate-400 group-hover:text-emerald-600 transition-all duration-200 group-hover:translate-x-0.5" />
+                    <ArrowRightIcon className="w-4 h-4 text-slate-400 group-hover:text-emerald-600 transition-transform duration-150 group-hover:translate-x-0.5" />
                   </a>
                 ))}
               </div>
