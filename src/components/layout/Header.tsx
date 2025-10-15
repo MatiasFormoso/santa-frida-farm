@@ -122,7 +122,7 @@ export default function Header({ t, locale }: HeaderProps) {
           priority
         />
       </div>
-      <span className="text-xl font-bold text-slate-900 group-hover:text-emerald-600 transition-colors duration-200">
+      <span className="text-xl font-bold text-slate-900 group-hover:text-teal-600 transition-colors duration-200">
         {CONFIG.brand.logoText}
       </span>
     </a>
@@ -134,7 +134,7 @@ export default function Header({ t, locale }: HeaderProps) {
   // ===== Variante mínima para /historia =====
   if (isHistory) {
     return (
-      <header className={`sticky top-0 z-40 border-b border-slate-200/60 bg-white/90 backdrop-blur-md transition-all duration-300 ${scrolled ? "shadow-lg shadow-slate-900/5" : ""}`}>
+      <header className={`sticky top-0 z-40 border-b transition-all duration-300 ${scrolled ? "border-slate-200/80 bg-white/95 backdrop-blur-xl shadow-xl shadow-slate-900/[0.03]" : "border-slate-200/40 bg-white/90 backdrop-blur-md"}`}>
         <Container className="flex h-16 items-center justify-between">
           {Brand}
           <LocaleSwitcher size="sm" />
@@ -145,7 +145,7 @@ export default function Header({ t, locale }: HeaderProps) {
 
   // ===== Header completo (resto del sitio) =====
   return (
-    <header className={`sticky top-0 z-40 border-b border-slate-200/60 bg-white/90 backdrop-blur-md transition-all duration-300 ${scrolled ? "shadow-lg shadow-slate-900/5" : ""}`}>
+    <header className={`sticky top-0 z-40 border-b transition-all duration-300 ${scrolled ? "border-slate-200/80 bg-white/95 backdrop-blur-xl shadow-xl shadow-slate-900/[0.03]" : "border-slate-200/40 bg-white/90 backdrop-blur-md"}`}>
       <Container className="flex h-16 items-center justify-between">
         {Brand}
 
@@ -153,7 +153,7 @@ export default function Header({ t, locale }: HeaderProps) {
         <nav className="hidden items-center gap-8 text-slate-600 md:flex">
           <a href="#sobre" className={`${linkCls} group relative px-3 py-2 rounded-lg hover:bg-slate-50/50`}>
             {t.nav.about}
-            <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-emerald-500 transition-all duration-200 group-hover:w-3/4 group-hover:left-1/8"></span>
+            <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-teal-500 transition-all duration-200 group-hover:w-3/4 group-hover:left-1/8"></span>
           </a>
           
           {/* Dropdown Cultivos */}
@@ -162,12 +162,12 @@ export default function Header({ t, locale }: HeaderProps) {
               type="button"
               onClick={() => setCropsOpen(!cropsOpen)}
               onMouseEnter={() => setCropsOpen(true)}
-              className={`group flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-200 ${linkCls} ${cropsOpen ? 'text-emerald-600 bg-emerald-50/80 shadow-sm' : 'hover:bg-slate-50/50'}`}
+              className={`group flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-200 ${linkCls} ${cropsOpen ? 'text-emerald-700 bg-emerald-50/80 shadow-sm' : 'hover:bg-slate-50/50'}`}
               aria-expanded={cropsOpen}
               aria-haspopup="true"
             >
               {cropsLabel}
-              <ChevronDownIcon className={`h-4 w-4 transition-all duration-200 ${cropsOpen ? 'rotate-180 text-emerald-600' : 'group-hover:text-slate-500'}`} />
+              <ChevronDownIcon className={`h-4 w-4 transition-all duration-200 ${cropsOpen ? 'rotate-180 text-emerald-700' : 'group-hover:text-slate-500'}`} />
             </button>
             
             {/* Dropdown Menu */}
@@ -186,14 +186,14 @@ export default function Header({ t, locale }: HeaderProps) {
                     className="group flex items-center gap-4 p-4 rounded-xl hover:bg-gradient-to-r hover:from-emerald-50/50 hover:to-slate-50/50 transition-all duration-200 border border-transparent hover:border-emerald-200/50"
                   >
                     <div className="flex-1 min-w-0">
-                      <div className="font-semibold text-slate-900 group-hover:text-emerald-600 transition-colors duration-200">
+                      <div className="font-semibold text-slate-900 group-hover:text-emerald-700 transition-colors duration-200">
                         {crop.name}
                       </div>
                       <div className="text-sm text-slate-500 truncate group-hover:text-slate-600 transition-colors duration-200">
                         {crop.description}
                       </div>
                     </div>
-                    <ArrowRightIcon className="w-4 h-4 text-slate-400 group-hover:text-emerald-500 transition-all duration-200 group-hover:translate-x-0.5" />
+                    <ArrowRightIcon className="w-4 h-4 text-slate-400 group-hover:text-emerald-600 transition-all duration-200 group-hover:translate-x-0.5" />
                   </a>
                 ))}
               </div>
@@ -202,11 +202,11 @@ export default function Header({ t, locale }: HeaderProps) {
           
           <a href="#instagram" className={`${linkCls} group relative px-3 py-2 rounded-lg hover:bg-slate-50/50`}>
             {t.mediaKit?.title ?? "Galería"}
-            <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-emerald-500 transition-all duration-200 group-hover:w-3/4 group-hover:left-1/8"></span>
+            <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-teal-500 transition-all duration-200 group-hover:w-3/4 group-hover:left-1/8"></span>
           </a>
           <a href="#contacto" className={`${linkCls} group relative px-3 py-2 rounded-lg hover:bg-slate-50/50`}>
             {t.nav.contact}
-            <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-emerald-500 transition-all duration-200 group-hover:w-3/4 group-hover:left-1/8"></span>
+            <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-teal-500 transition-all duration-200 group-hover:w-3/4 group-hover:left-1/8"></span>
           </a>
         </nav>
 
@@ -218,7 +218,7 @@ export default function Header({ t, locale }: HeaderProps) {
             rel="noreferrer"
             aria-label="Instagram"
             title="Instagram"
-            className="group inline-flex items-center justify-center rounded-xl border border-emerald-200/60 bg-emerald-50/30 p-2.5 text-emerald-600 hover:bg-emerald-50 hover:border-emerald-300/60 hover:shadow-sm transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+            className="group inline-flex items-center justify-center rounded-xl border border-emerald-300/60 bg-emerald-50/40 p-2.5 text-emerald-700 hover:bg-emerald-100 hover:border-emerald-400/60 hover:shadow-sm transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
           >
             <InstagramIcon className="h-5 w-5 transition-transform duration-200 group-hover:scale-110" />
             <span className="sr-only">Instagram</span>
@@ -230,7 +230,7 @@ export default function Header({ t, locale }: HeaderProps) {
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="group inline-flex items-center justify-center rounded-xl border border-slate-300/60 bg-slate-50/30 p-2.5 text-slate-700 hover:bg-slate-100 hover:border-slate-400/60 hover:shadow-sm transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white md:hidden"
+          className="group inline-flex items-center justify-center rounded-xl border border-slate-300/60 bg-slate-50/30 p-2.5 text-slate-700 hover:bg-slate-100 hover:border-slate-400/60 hover:shadow-sm transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-teal-600/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white md:hidden"
           aria-label="Abrir menú"
           aria-controls="mobile-menu"
           aria-expanded={open}
@@ -251,7 +251,7 @@ export default function Header({ t, locale }: HeaderProps) {
             <button
               type="button"
               onClick={close}
-              className="group inline-flex items-center justify-center rounded-lg border border-slate-300/60 bg-slate-50/30 p-2 text-slate-700 hover:bg-slate-100 hover:border-slate-400/60 transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              className="group inline-flex items-center justify-center rounded-lg border border-slate-300/60 bg-slate-50/30 p-2 text-slate-700 hover:bg-slate-100 hover:border-slate-400/60 transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-teal-600/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               aria-label="Cerrar menú"
             >
               <CloseIcon className="h-5 w-5 transition-transform duration-200 group-hover:scale-105" />
@@ -260,8 +260,8 @@ export default function Header({ t, locale }: HeaderProps) {
           <nav className="px-5 pb-5 text-slate-800">
             <ul className="space-y-1">
               <li>
-                <a onClick={close} href="#sobre" className="group flex items-center rounded-xl px-4 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-emerald-50/30 transition-all duration-200">
-                  <span className="group-hover:text-emerald-600 transition-colors duration-200">{t.nav.about}</span>
+                <a onClick={close} href="#sobre" className="group flex items-center rounded-xl px-4 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-teal-50/30 transition-all duration-200">
+                  <span className="group-hover:text-teal-600 transition-colors duration-200">{t.nav.about}</span>
                 </a>
               </li>
               
@@ -270,20 +270,20 @@ export default function Header({ t, locale }: HeaderProps) {
                 <a 
                   href="#hass" 
                   onClick={close}
-                  className="group flex items-center rounded-xl px-4 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-emerald-50/30 transition-all duration-200"
+                  className="group flex items-center rounded-xl px-4 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-teal-50/30 transition-all duration-200"
                 >
-                  <span className="group-hover:text-emerald-600 transition-colors duration-200">{cropsLabel}</span>
+                  <span className="group-hover:text-teal-600 transition-colors duration-200">{cropsLabel}</span>
                 </a>
               </li>
               
               <li>
-                <a onClick={close} href="#instagram" className="group flex items-center rounded-xl px-4 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-emerald-50/30 transition-all duration-200">
-                  <span className="group-hover:text-emerald-600 transition-colors duration-200">{t.mediaKit?.title ?? "Galería"}</span>
+                <a onClick={close} href="#instagram" className="group flex items-center rounded-xl px-4 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-teal-50/30 transition-all duration-200">
+                  <span className="group-hover:text-teal-600 transition-colors duration-200">{t.mediaKit?.title ?? "Galería"}</span>
                 </a>
               </li>
               <li>
-                <a onClick={close} href="#contacto" className="group flex items-center rounded-xl px-4 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-emerald-50/30 transition-all duration-200">
-                  <span className="group-hover:text-emerald-600 transition-colors duration-200">{t.nav.contact}</span>
+                <a onClick={close} href="#contacto" className="group flex items-center rounded-xl px-4 py-3 hover:bg-gradient-to-r hover:from-slate-50 hover:to-teal-50/30 transition-all duration-200">
+                  <span className="group-hover:text-teal-600 transition-colors duration-200">{t.nav.contact}</span>
                 </a>
               </li>
               <li className="flex items-center gap-3 pt-3 border-t border-slate-200/50">
@@ -292,7 +292,7 @@ export default function Header({ t, locale }: HeaderProps) {
                   href={CONFIG.contact.instagram}
                   target="_blank"
                   rel="noreferrer"
-                  className="group flex-1 inline-flex items-center justify-center gap-2 rounded-xl border border-emerald-200/60 bg-emerald-50/30 px-4 py-2.5 text-emerald-600 hover:bg-emerald-50 hover:border-emerald-300/60 transition-all duration-200"
+                  className="group flex-1 inline-flex items-center justify-center gap-2 rounded-xl border border-teal-200/60 bg-teal-50/30 px-4 py-2.5 text-teal-600 hover:bg-teal-50 hover:border-teal-300/60 transition-all duration-200"
                 >
                   <InstagramIcon className="h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
                   Instagram

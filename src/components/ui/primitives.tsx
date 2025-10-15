@@ -1,5 +1,9 @@
 // src/components/ui/primitives.tsx
+"use client";
+
 import React from "react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 type WithChildren<T = {}> = T & { children?: React.ReactNode };
 
@@ -31,39 +35,63 @@ export const Section = ({
   className = "",
   tone = "plain",
   children,
-}: SectionProps) => (
-  <section
-    id={id}
-    className={`py-16 sm:py-24 lg:py-32 scroll-mt-20 transition-colors duration-300 ${tone === "alt" ? "bg-slate-50/80" : "bg-white"} ${className}`}
-  >
-    <Container>
-      {(eyebrow || title || intro) && (
-        <header className="mb-12 sm:mb-16 lg:mb-20 max-w-4xl">
-          {eyebrow && (
-            <p className="inline-flex items-center uppercase tracking-widest text-[0.6875rem] sm:text-xs text-emerald-600 font-bold mb-4 px-3 py-1.5 rounded-full bg-emerald-50/80 border border-emerald-200/50">
-              {eyebrow}
-            </p>
-          )}
-          {title && (
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-slate-900 leading-[1.1] tracking-tight mb-6 bg-gradient-to-br from-slate-900 to-slate-700 bg-clip-text">
-              {title}
-            </h2>
-          )}
-          {intro && (
-            <p className="text-slate-600 text-base sm:text-lg lg:text-xl leading-relaxed max-w-3xl">
-              {intro}
-            </p>
-          )}
-        </header>
-      )}
-      {children}
-    </Container>
-  </section>
-);
+}: SectionProps) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-80px", amount: 0.1 });
+
+  return (
+    <section
+      id={id}
+      ref={ref}
+      className={`py-16 sm:py-24 lg:py-32 scroll-mt-20 transition-colors duration-300 ${tone === "alt" ? "bg-slate-50" : "bg-white"} ${className}`}
+    >
+      <Container>
+        {(eyebrow || title || intro) && (
+          <header className="mb-12 sm:mb-16 lg:mb-20 max-w-4xl">
+            {eyebrow && (
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                style={{ willChange: 'opacity, transform' }}
+                className="uppercase tracking-[0.25em] text-[0.6875rem] text-slate-500 font-semibold mb-4"
+              >
+                {eyebrow}
+              </motion.p>
+            )}
+            {title && (
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+                style={{ willChange: 'opacity, transform' }}
+                className="text-3xl sm:text-4xl lg:text-5xl font-medium text-slate-900 leading-[1.2] tracking-tight mb-6"
+              >
+                {title}
+              </motion.h2>
+            )}
+            {intro && (
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+                style={{ willChange: 'opacity, transform' }}
+                className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl"
+              >
+                {intro}
+              </motion.p>
+            )}
+          </header>
+        )}
+        {children}
+      </Container>
+    </section>
+  );
+};
 
 // ====== Pill ======
 export const Pill = ({ children }: { children?: React.ReactNode }) => (
-  <span className="inline-flex items-center rounded-full border border-emerald-700/20 bg-emerald-700/5 px-3 py-1 text-sm text-emerald-900">
+  <span className="inline-flex items-center rounded-full border border-teal-700/20 bg-teal-700/5 px-3 py-1 text-sm text-teal-900">
     {children}
   </span>
 );
@@ -85,19 +113,19 @@ export const Button = ({
 }: ButtonProps) => {
   const base =
     "group inline-flex items-center justify-center gap-2 font-semibold transition-all duration-300 outline-none " +
-    "focus-visible:ring-2 focus-visible:ring-emerald-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white " +
+    "focus-visible:ring-2 focus-visible:ring-emerald-600/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white " +
     "transform hover:scale-[1.02] active:scale-[0.98] will-change-transform";
   
   const sizeStyles = {
-    sm: "rounded-xl px-5 py-2.5 text-sm",
-    md: "rounded-xl px-6 py-3.5 text-base",
-    lg: "rounded-xl px-8 py-4 text-lg"
+    sm: "rounded-lg px-5 py-2.5 text-sm",
+    md: "rounded-lg px-7 py-3.5 text-base",
+    lg: "rounded-lg px-9 py-4 text-lg"
   };
   
   const variantStyles = {
-    primary: "bg-gradient-to-br from-emerald-600 to-emerald-700 text-white hover:from-emerald-700 hover:to-emerald-800 shadow-lg shadow-emerald-600/25 hover:shadow-xl hover:shadow-emerald-600/30",
-    ghost: "text-emerald-700 border-2 border-emerald-200/80 hover:bg-emerald-50 hover:border-emerald-300 active:bg-emerald-100",
-    outline: "text-emerald-700 border-2 border-emerald-600/80 hover:bg-emerald-600 hover:text-white hover:border-emerald-700 shadow-sm hover:shadow-md"
+    primary: "bg-slate-900 text-white hover:bg-slate-800 shadow-md hover:shadow-lg",
+    ghost: "text-slate-700 border border-slate-300/80 hover:bg-slate-50 hover:border-slate-400/90 hover:shadow-sm",
+    outline: "text-slate-900 border-2 border-slate-900 hover:bg-slate-900 hover:text-white shadow-sm hover:shadow-md"
   };
   
   return (
@@ -109,18 +137,18 @@ export const Button = ({
 
 // ====== Card ======
 type CardProps = WithChildren<
-  { className?: string; hover?: boolean; variant?: "default" | "elevated" | "subtle" | "glass" } & React.ComponentProps<"div">
+  { className?: string; hover?: boolean; variant?: "default" | "elevated" | "subtle" | "minimal" } & React.ComponentProps<"div">
 >;
 export const Card = ({ className = "", hover = true, variant = "default", children, ...rest }: CardProps) => {
   const variantStyles = {
-    default: "rounded-2xl sm:rounded-3xl border border-slate-200/60 bg-white shadow-sm",
-    elevated: "rounded-2xl sm:rounded-3xl border border-slate-200/50 bg-white shadow-md ring-1 ring-slate-200/30",
-    subtle: "rounded-2xl sm:rounded-3xl border border-slate-200/40 bg-slate-50/50 shadow-sm",
-    glass: "rounded-2xl sm:rounded-3xl border border-white/40 bg-white/60 backdrop-blur-lg shadow-lg"
+    default: "rounded-xl border border-slate-200/80 bg-white",
+    elevated: "rounded-xl border border-slate-200/60 bg-white shadow-sm",
+    subtle: "rounded-xl border border-slate-200/40 bg-slate-50/40",
+    minimal: "border-l-2 border-slate-200 pl-6 bg-transparent"
   };
   
   const hoverClass = hover 
-    ? "hover:shadow-xl hover:-translate-y-1 hover:scale-[1.01] transition-all duration-300 ease-out cursor-pointer" 
+    ? "hover:border-slate-300/90 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-400 ease-out" 
     : "transition-all duration-300";
   
   return (

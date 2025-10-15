@@ -1,6 +1,9 @@
 // src/components/sections/About.tsx
+"use client";
+
 import { CONFIG } from "@/lib/config";
 import { Section, Card } from "@/components/ui/primitives";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import type { Dict, Locale } from "@/i18n/config";
 
 type Props = {
@@ -41,30 +44,29 @@ export default function About({ t, locale }: Props) {
 
   return (
     <Section id="sobre" eyebrow={t.nav.about} title={t.about.title} intro={intro}>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-12">
         {cards.map((c: AboutCard, i: number) => (
-          <Card key={i} variant="elevated" className="p-6 sm:p-8 group" hover={false}>
-            <div className="flex items-start sm:items-center mb-5 sm:mb-6">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-emerald-100 to-emerald-50 flex items-center justify-center mr-4 group-hover:from-emerald-200 group-hover:to-emerald-100 transition-all duration-300 shadow-sm group-hover:shadow-md">
-                <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-gradient-to-br from-emerald-600 to-emerald-700 group-hover:scale-110 transition-transform duration-300"></div>
+          <ScrollReveal key={i} delay={i * 0.1}>
+            <div className="group h-full">
+              <div className="border-l-2 border-slate-200/80 pl-6 sm:pl-8 py-2 group-hover:border-teal-600 transition-all duration-300">
+                <h4 className="text-xl sm:text-2xl font-semibold text-slate-900 mb-4 tracking-tight">{c.title}</h4>
+                <p className="text-slate-600 leading-relaxed text-base">{c.body}</p>
+                {i === 2 && (
+                  <a
+                    href={CONFIG.contact.instagram}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-6 inline-flex items-center text-slate-900 hover:text-teal-600 font-medium transition-all duration-300 group/link"
+                  >
+                    <span className="underline underline-offset-4 decoration-1">{locale === "en" ? "See updates on Instagram" : "Ver actualizaciones en Instagram"}</span>
+                    <svg className="ml-2 w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </a>
+                )}
               </div>
-              <h4 className="text-lg sm:text-xl font-bold text-slate-900 group-hover:text-emerald-700 transition-colors duration-300">{c.title}</h4>
             </div>
-            <p className="text-slate-600 leading-relaxed text-sm sm:text-base">{c.body}</p>
-            {i === 2 && (
-              <a
-                href={CONFIG.contact.instagram}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-6 inline-flex items-center text-emerald-600 hover:text-emerald-700 font-semibold transition-all duration-300 group/link"
-              >
-                <span>{locale === "en" ? "See updates on Instagram" : "Ver actualizaciones en Instagram"}</span>
-                <svg className="ml-2 w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-              </a>
-            )}
-          </Card>
+          </ScrollReveal>
         ))}
       </div>
     </Section>

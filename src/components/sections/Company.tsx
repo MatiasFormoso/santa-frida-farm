@@ -1,6 +1,9 @@
 // src/components/sections/Company.tsx
+"use client";
+
 import Link from "next/link";
 import { Section, Card } from "@/components/ui/primitives";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import type { Dict, Locale } from "@/i18n/config";
 
 type Props = { t: Dict; locale: Locale };
@@ -44,47 +47,57 @@ export default function Company({ t, locale }: Props) {
       title={t.company.historyTitle}
     >
       {/* Intro + link inline al final */}
-      <p className="text-stone-700">
-        {locale === "en" ? teaserEN : teaserES}{" "}
-        <Link
-          href={href}
-          aria-label={ctaLabel}
-          className="text-emerald-600 hover:text-emerald-700 hover:underline font-medium"
-        >
-          {ctaLabel} →
-        </Link>
-      </p>
+      <ScrollReveal>
+        <p className="text-slate-700 text-base sm:text-lg leading-relaxed">
+          {locale === "en" ? teaserEN : teaserES}{" "}
+          <Link
+            href={href}
+            aria-label={ctaLabel}
+            className="text-teal-600 hover:text-teal-700 hover:underline font-medium transition-colors duration-300"
+          >
+            {ctaLabel} →
+          </Link>
+        </p>
+      </ScrollReveal>
 
       {/* Misión / Visión */}
-      <div className="mt-8 mb-8 grid gap-6 md:grid-cols-2">
-        <Card className="p-6">
-          <h4 className="font-semibold text-stone-900">{t.company.visionTitle}</h4>
-          <p className="mt-2 text-stone-600">{locale === "en" ? visionEN : visionES}</p>
-        </Card>
-        <Card className="p-6">
-          <h4 className="font-semibold text-stone-900">{t.company.missionTitle}</h4>
-          <p className="mt-2 text-stone-600">{locale === "en" ? missionEN : missionES}</p>
-        </Card>
+      <div className="mt-10 mb-10 grid gap-6 md:grid-cols-2">
+        <ScrollReveal delay={0.1}>
+          <Card className="p-8 hover:shadow-lg transition-all duration-500">
+            <h4 className="font-semibold text-slate-900 text-lg mb-3">{t.company.visionTitle}</h4>
+            <p className="text-slate-600 leading-relaxed">{locale === "en" ? visionEN : visionES}</p>
+          </Card>
+        </ScrollReveal>
+        <ScrollReveal delay={0.2}>
+          <Card className="p-8 hover:shadow-lg transition-all duration-500">
+            <h4 className="font-semibold text-slate-900 text-lg mb-3">{t.company.missionTitle}</h4>
+            <p className="text-slate-600 leading-relaxed">{locale === "en" ? missionEN : missionES}</p>
+          </Card>
+        </ScrollReveal>
       </div>
 
       {/* Especialidad + Capacitaciones/Alianzas */}
       <div className="grid gap-6 md:grid-cols-2">
-        <Card className="p-6">
-          <h4 className="font-semibold text-stone-900">
-            {locale === "en" ? "Our Specialty" : "Nuestra especialidad"}
-          </h4>
-          <p className="mt-2 text-stone-600">
-            {locale === "en" ? specialtyEN : specialtyES}
-          </p>
-        </Card>
-        <Card className="p-6">
-          <h4 className="font-semibold text-stone-900">
-            {locale === "en" ? "Training & Partnerships" : "Capacitaciones y alianzas"}
-          </h4>
-          <p className="mt-2 text-stone-600">
-            {locale === "en" ? programsEN : programsES}
-          </p>
-        </Card>
+        <ScrollReveal delay={0.3}>
+          <Card className="p-8 hover:shadow-lg transition-all duration-500">
+            <h4 className="font-semibold text-slate-900 text-lg mb-3">
+              {locale === "en" ? "Our Specialty" : "Nuestra especialidad"}
+            </h4>
+            <p className="text-slate-600 leading-relaxed">
+              {locale === "en" ? specialtyEN : specialtyES}
+            </p>
+          </Card>
+        </ScrollReveal>
+        <ScrollReveal delay={0.4}>
+          <Card className="p-8 hover:shadow-lg transition-all duration-500">
+            <h4 className="font-semibold text-slate-900 text-lg mb-3">
+              {locale === "en" ? "Training & Partnerships" : "Capacitaciones y alianzas"}
+            </h4>
+            <p className="text-slate-600 leading-relaxed">
+              {locale === "en" ? programsEN : programsES}
+            </p>
+          </Card>
+        </ScrollReveal>
       </div>
     </Section>
   );

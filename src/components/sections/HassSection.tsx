@@ -1,43 +1,42 @@
-// src/components/sections/Hortalizas.tsx
 "use client";
 
-import { Section, Card } from "@/components/ui/primitives";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import type { Dict, Locale } from "@/i18n/config";
+import { Section } from "@/components/ui/primitives";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 type Props = { t: Dict; locale: Locale };
 
-export default function Hortalizas({ t, locale }: Props) {
+export default function HassSection({ t, locale }: Props) {
   const eyebrow = locale === "en" ? "Crops" : "Cultivos";
-  const title = locale === "en" ? "Fresh Greens" : "Hortalizas frescas";
+  const title = locale === "en" ? "Hass Avocado" : "Aguacate Hass";
 
   const introES =
-    "Huerto de temporada con cosecha manual y manejo responsable del cultivo.";
+    "Producción sostenible con control de calidad desde el árbol hasta el empaque y trazabilidad por lote.";
   const introEN =
-    "Seasonal garden with hand-picked harvest and responsible crop management.";
+    "Sustainable production with quality control from tree to packing and full lot traceability.";
 
   const statsES: [string, string][] = [
-    ["Variedades clave", "Lechuga (verde y morada), repollo/col, ají picante, calabacín, uchuva"],
-    ["Prácticas", "Siembra/trasplante, riego y cosecha manual según madurez"],
-    ["Disponibilidad", "Sujeta a temporada y volumen de cosecha"],
-    ["Presentación", "Producto fresco (a granel o por unidad)"],
-    ["Trazabilidad", "Del cultivo al empaque"],
-    ["Ubicación", "Marinilla · Antioquia"],
+    ["Árboles cultivados", "100"],
+    ["Producción estimada", "~7.000 kg/año (≈ 7 t)"],
+    ["Cosechas", "2 por año (según clima y manejo)"],
+    ["Calidad", "Selección manual bajo estándares premium"],
+    ["Disponibilidad", "Mercado nacional e internacional"],
+    ["Trazabilidad", "Del árbol al empaque"],
   ];
 
   const statsEN: [string, string][] = [
-    ["Key varieties", "Lettuce (green & red), cabbage/cole, hot chili, zucchini, cape gooseberry"],
-    ["Practices", "Planting/transplanting, irrigation and hand harvest by ripeness"],
-    ["Availability", "Seasonal and volume-dependent"],
-    ["Presentation", "Fresh produce (bulk or unit)"],
-    ["Traceability", "From field to packing"],
-    ["Location", "Marinilla · Antioquia"],
+    ["Trees planted", "100"],
+    ["Estimated production", "~7,000 kg/year (≈ 7 t)"],
+    ["Harvests", "2 per year (weather and management dependent)"],
+    ["Quality", "Hand selection to premium standards"],
+    ["Availability", "Domestic and international markets"],
+    ["Traceability", "From tree to packing"],
   ];
 
   const stats = locale === "en" ? statsEN : statsES;
 
   return (
-    <Section id="hortalizas" eyebrow={eyebrow} title={title}>
+    <Section id="hass" eyebrow={eyebrow} title={title}>
       <div className="space-y-8 md:space-y-0 md:grid md:gap-12 lg:gap-16 md:grid-cols-12 md:items-center">
         {/* Contenido - izquierda en desktop */}
         <div className="md:col-span-7">
@@ -75,21 +74,21 @@ export default function Hortalizas({ t, locale }: Props) {
                 <picture>
                   <source
                     type="image/webp"
-                    srcSet="/images/sections/greens-collage-2400x1800.webp 2400w, /images/sections/greens-collage-1600x1200.webp 1600w"
+                    srcSet="/images/sections/hass-collage-2400x1800.webp 2400w, /images/sections/hass-collage-1600x1200.webp 1600w"
                     sizes="(min-width:1024px) 40vw, 100vw"
                   />
                   <source
                     type="image/jpeg"
-                    srcSet="/images/sections/greens-collage-2400x1800.jpg 2400w, /images/sections/greens-collage-1600x1200.jpg 1600w"
+                    srcSet="/images/sections/hass-collage-2400x1800.jpg 2400w, /images/sections/hass-collage-1600x1200.jpg 1600w"
                     sizes="(min-width:1024px) 40vw, 100vw"
                   />
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="/images/sections/greens-collage-1600x1200.jpg"
+                    src="/images/sections/hass-collage-1600x1200.jpg"
                     alt={
                       locale === "en"
-                        ? "Fresh greens collage: lettuces, cabbage, chilies and garden at the farm"
-                        : "Collage de hortalizas: lechugas, repollo, ajíes y huerto en la finca"
+                        ? "Hass avocado harvest collage at the farm"
+                        : "Collage de cosecha de aguacate Hass en la finca"
                     }
                     className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                     loading="lazy"
@@ -119,3 +118,5 @@ export default function Hortalizas({ t, locale }: Props) {
     </Section>
   );
 }
+
+
