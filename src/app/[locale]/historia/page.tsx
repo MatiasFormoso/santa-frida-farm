@@ -1,9 +1,13 @@
 // src/app/[locale]/historia/page.tsx
 import Image from "next/image";
 import Link from "next/link";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import { getDictionary, type Dict } from "@/i18n/config";
 import type { Metadata } from "next";
 import type { Locale } from "@/i18n/config";
 import { Section, Container, Card } from "@/components/ui/primitives";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 export const dynamic = "force-static";
 
@@ -37,11 +41,12 @@ export async function generateMetadata({
   };
 }
 
-export default function HistoriaPage({ params }: { params: { locale: Locale } }) {
+export default async function HistoriaPage({ params }: { params: { locale: Locale } }) {
   const { locale } = params;
   const isEN = locale === "en";
+  const t: Dict = await getDictionary(locale);
 
-  const t = {
+  const th = {
     crumbHome: isEN ? "Home" : "Inicio",
     pageTitle: isEN ? "History" : "Historia",
     quoteA: isEN 
@@ -57,63 +62,31 @@ export default function HistoriaPage({ params }: { params: { locale: Locale } })
 
   return (
     <main className="min-h-screen bg-white">
-      {/* Header minimal */}
-      <header className="sticky top-0 z-40 border-b border-slate-200/70 bg-white/95 backdrop-blur-md">
-        <Container className="flex h-16 items-center justify-between">
-          <Link href={`/${locale}`} className="flex items-center gap-3 group">
-            <div className="relative">
-              <Image
-                src="/logo-santa-frida.png"
-                alt="Santa Frida Farm"
-                width={40}
-                height={40}
-                className="h-10 w-10 object-contain transition-transform duration-200 group-hover:scale-105"
-                priority
-              />
-            </div>
-            <span className="text-xl font-bold text-slate-900 group-hover:text-emerald-600 transition-colors duration-200">
-              Santa Frida Farm
-            </span>
-          </Link>
-          
-          <nav aria-label="Breadcrumb" className="text-sm">
-            <ol className="flex items-center gap-2 text-slate-500">
-              <li>
-                <Link
-                  href={`/${locale}`}
-                  className="hover:text-emerald-600 transition-colors duration-200"
-                >
-                  {t.crumbHome}
-                </Link>
-              </li>
-              <li aria-hidden className="text-slate-300">›</li>
-              <li className="font-medium text-slate-700" aria-current="page">
-                {t.pageTitle}
-              </li>
-            </ol>
-          </nav>
-        </Container>
-      </header>
+      <Header t={t} locale={locale} />
 
       {/* Hero Section */}
-      <section className="relative py-24 sm:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-white to-slate-50"></div>
+      <section className="relative py-20 sm:py-28 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-slate-50 to-white" />
         <Container className="relative">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm font-medium text-emerald-700 mb-8">
-              <div className="w-2 h-2 rounded-full bg-emerald-500 mr-2"></div>
-              {isEN ? "Our Story" : "Nuestra Historia"}
-            </div>
-            
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight mb-8">
-              {t.pageTitle}
-            </h1>
-            
-            <blockquote className="text-xl sm:text-2xl text-slate-600 leading-relaxed italic max-w-3xl mx-auto">
-              <span className="text-emerald-600">"{t.quoteA}</span>
-              <br />
-              <span>{t.quoteB}"</span>
-            </blockquote>
+            <ScrollReveal>
+              <div className="inline-flex items-center rounded-full border border-emerald-200/70 bg-emerald-50/60 px-4 py-2 text-sm font-semibold text-emerald-700 mb-6">
+                <div className="w-1.5 h-1.5 rounded-full bg-emerald-600 mr-2" />
+                {isEN ? "Our Story" : "Nuestra Historia"}
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={0.06}>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-slate-900 tracking-tight leading-tight mb-6">
+                {th.pageTitle}
+              </h1>
+            </ScrollReveal>
+            <ScrollReveal delay={0.12}>
+              <blockquote className="text-xl sm:text-2xl text-slate-600 leading-relaxed italic max-w-3xl mx-auto">
+                <span className="text-emerald-700">"{th.quoteA}</span>
+                <br />
+                <span>{th.quoteB}"</span>
+              </blockquote>
+            </ScrollReveal>
           </div>
         </Container>
       </section>
@@ -124,25 +97,25 @@ export default function HistoriaPage({ params }: { params: { locale: Locale } })
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
               <div>
-                <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6">
-                  {t.storyTitle}
+                <h2 className="text-3xl sm:text-4xl font-medium text-slate-900 tracking-tight mb-4">
+                  {th.storyTitle}
                 </h2>
-                <div className="w-16 h-1 bg-emerald-600 rounded-full"></div>
+                <div className="w-14 h-0.5 bg-emerald-600/80 rounded"></div>
               </div>
               
               <div className="prose prose-lg prose-slate max-w-none">
                 {isEN ? (
                   <>
-                    <p className="text-slate-600 leading-relaxed mb-6">
+                    <p className="text-slate-700 leading-relaxed mb-6">
                       Santa Frida Farm did not start at a desk. It started in the land. In those quiet dawns when the sun has
                       not yet risen but a woman is already standing, with a steady heart and hands ready to sow.
                     </p>
-                    <p className="text-slate-600 leading-relaxed mb-6">
+                    <p className="text-slate-700 leading-relaxed mb-6">
                       María Yennis Silgado, founder of Santa Frida Farm, learned since childhood that the land was her only
                       certainty. Her parents taught her that every harvest is a promise of the future, and that dreams are
                       cultivated like avocados, coffee or vegetables: with patience, effort and faith.
                     </p>
-                    <p className="text-slate-600 leading-relaxed mb-6">
+                    <p className="text-slate-700 leading-relaxed mb-6">
                       From an early age she became a guardian of ancestral knowledge: conscious sowing, clean harvesting and
                       respect for nature. She also faced storms. The hardest one: the loss of her daughter in 2020 — a pain that
                       broke her soul, but not her will.
@@ -155,16 +128,16 @@ export default function HistoriaPage({ params }: { params: { locale: Locale } })
                   </>
                 ) : (
                   <>
-                    <p className="text-slate-600 leading-relaxed mb-6">
+                    <p className="text-slate-700 leading-relaxed mb-6">
                       Santa Frida Farm no nació en un escritorio. Nació en la tierra. En esas madrugadas silenciosas donde el sol
                       aún no ha salido, pero una mujer ya está de pie, con el corazón firme y las manos listas para sembrar.
                     </p>
-                    <p className="text-slate-600 leading-relaxed mb-6">
+                    <p className="text-slate-700 leading-relaxed mb-6">
                       María Yennis Silgado, fundadora de Santa Frida Farm, aprendió desde niña que la tierra era su única
                       certeza. Sus padres le enseñaron que cada cosecha era una promesa de futuro, y que los sueños se cultivaban
                       igual que los aguacates, el café o las hortalizas: con paciencia, con esfuerzo y con fe.
                     </p>
-                    <p className="text-slate-600 leading-relaxed mb-6">
+                    <p className="text-slate-700 leading-relaxed mb-6">
                       Desde muy pequeña se convirtió en guardiana de saberes ancestrales: siembra consciente, cosecha limpia y
                       respeto por la naturaleza. También enfrentó tormentas. La más dura: la pérdida de su hija en 2020. Un dolor
                       que partió su alma, pero no su voluntad.
@@ -181,7 +154,7 @@ export default function HistoriaPage({ params }: { params: { locale: Locale } })
             </div>
             
             <div className="relative">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-2xl">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-xl shadow-lg border border-slate-200/60">
                 <picture>
                   <source srcSet="/images/history-maria-aguacates.webp" type="image/webp" />
                   <Image
@@ -198,8 +171,7 @@ export default function HistoriaPage({ params }: { params: { locale: Locale } })
                   />
                 </picture>
               </div>
-              <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-emerald-100 rounded-full opacity-60"></div>
-              <div className="absolute -top-6 -left-6 w-16 h-16 bg-emerald-200 rounded-full opacity-40"></div>
+              
             </div>
           </div>
         </Container>
@@ -210,7 +182,7 @@ export default function HistoriaPage({ params }: { params: { locale: Locale } })
         <Container>
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="relative order-2 lg:order-1">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-2xl">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-xl shadow-lg border border-slate-200/60">
                 <picture>
                   <source srcSet="/images/history-campo-siembra.webp" type="image/webp" />
                   <Image
@@ -223,16 +195,15 @@ export default function HistoriaPage({ params }: { params: { locale: Locale } })
                   />
                 </picture>
               </div>
-              <div className="absolute -bottom-6 -left-6 w-20 h-20 bg-slate-100 rounded-full opacity-60"></div>
-              <div className="absolute -top-6 -right-6 w-12 h-12 bg-slate-200 rounded-full opacity-40"></div>
+              
             </div>
             
             <div className="space-y-8 order-1 lg:order-2">
               <div>
-                <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6">
-                  {t.whatTitle}
+                <h2 className="text-3xl sm:text-4xl font-medium text-slate-900 tracking-tight mb-6">
+                  {th.whatTitle}
                 </h2>
-                <div className="w-16 h-1 bg-emerald-600 rounded-full"></div>
+                <div className="w-14 h-0.5 bg-emerald-600/80 rounded"></div>
               </div>
               
               <div className="space-y-6">
@@ -241,11 +212,9 @@ export default function HistoriaPage({ params }: { params: { locale: Locale } })
                 </p>
                 
                 <div className="space-y-4">
-                  <Card variant="subtle" className="p-6 border-l-4 border-emerald-500">
+                  <Card variant="subtle" className="p-6 border-l-2 border-emerald-500/70">
                     <div className="flex items-start gap-4">
-                      <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 mt-1">
-                        <div className="w-3 h-3 rounded-full bg-emerald-600"></div>
-                      </div>
+                      
                       <div>
                         <h3 className="font-semibold text-slate-900 mb-2">
                           {isEN ? "Resilience sown" : "Resiliencia sembrada"}
@@ -260,11 +229,9 @@ export default function HistoriaPage({ params }: { params: { locale: Locale } })
                     </div>
                   </Card>
                   
-                  <Card variant="subtle" className="p-6 border-l-4 border-emerald-500">
+                  <Card variant="subtle" className="p-6 border-l-2 border-emerald-500/70">
                     <div className="flex items-start gap-4">
-                      <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 mt-1">
-                        <div className="w-3 h-3 rounded-full bg-emerald-600"></div>
-                      </div>
+                      
                       <div>
                         <h3 className="font-semibold text-slate-900 mb-2">
                           {isEN ? "Living memory" : "Memoria viva"}
@@ -279,11 +246,9 @@ export default function HistoriaPage({ params }: { params: { locale: Locale } })
                     </div>
                   </Card>
                   
-                  <Card variant="subtle" className="p-6 border-l-4 border-emerald-500">
+                  <Card variant="subtle" className="p-6 border-l-2 border-emerald-500/70">
                     <div className="flex items-start gap-4">
-                      <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 mt-1">
-                        <div className="w-3 h-3 rounded-full bg-emerald-600"></div>
-                      </div>
+                      
                       <div>
                         <h3 className="font-semibold text-slate-900 mb-2">
                           {isEN ? "Conscious abundance" : "Abundancia consciente"}
@@ -316,10 +281,10 @@ export default function HistoriaPage({ params }: { params: { locale: Locale } })
         <Container>
           <div className="max-w-4xl mx-auto text-center">
             <div className="mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6">
-                {t.legacyTitle}
+                <h2 className="text-3xl sm:text-4xl font-medium text-slate-900 tracking-tight mb-6">
+                {th.legacyTitle}
               </h2>
-              <div className="w-16 h-1 bg-emerald-600 rounded-full mx-auto"></div>
+              <div className="w-14 h-0.5 bg-emerald-600/80 rounded mx-auto"></div>
             </div>
             
             <div className="prose prose-lg prose-slate max-w-none">
@@ -350,9 +315,8 @@ export default function HistoriaPage({ params }: { params: { locale: Locale } })
               )}
             </div>
             
-            <div className="mt-16">
-              <div className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-emerald-600 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                <div className="w-2 h-2 rounded-full bg-white animate-pulse"></div>
+            <div className="mt-14">
+              <div className="inline-flex items-center gap-3 px-7 py-3.5 rounded-lg bg-slate-900 text-white font-semibold shadow-md hover:shadow-lg transition-all duration-300">
                 {isEN ? "Continuing the legacy" : "Continuando el legado"}
               </div>
             </div>
@@ -360,22 +324,7 @@ export default function HistoriaPage({ params }: { params: { locale: Locale } })
         </Container>
       </Section>
 
-      {/* Footer */}
-      <footer className="border-t border-slate-200 bg-slate-50 py-12">
-        <Container>
-          <div className="text-center">
-            <Link 
-              href={`/${locale}`}
-              className="inline-flex items-center gap-2 text-slate-600 hover:text-emerald-600 transition-colors duration-200"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-              </svg>
-              {isEN ? "Back to home" : "Volver al inicio"}
-            </Link>
-          </div>
-        </Container>
-      </footer>
+      <Footer t={t} locale={locale} />
     </main>
   );
 }

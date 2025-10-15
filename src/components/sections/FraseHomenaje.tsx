@@ -1,4 +1,7 @@
 // src/components/sections/FraseHomenaje.tsx
+"use client";
+
+import { motion } from "framer-motion";
 import Link from "next/link";
 import type { Locale, Dict } from "@/i18n/config";
 
@@ -19,12 +22,13 @@ export default function FraseHomenaje({ locale }: Props) {
       target="_blank"
       rel="noopener noreferrer"
       className="
-        text-emerald-600
-        underline decoration-emerald-600 decoration-2 underline-offset-[6px] decoration-solid
+        text-teal-600
+        underline decoration-teal-600 decoration-2 underline-offset-[6px] decoration-solid
         cursor-pointer
-        visited:text-emerald-600 visited:decoration-emerald-600
-        hover:decoration-emerald-700 hover:text-emerald-700
-        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white
+        visited:text-teal-600 visited:decoration-teal-600
+        hover:decoration-teal-700 hover:text-teal-700
+        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white
+        transition-colors duration-300
       "
     >
       María Yennis
@@ -33,34 +37,48 @@ export default function FraseHomenaje({ locale }: Props) {
 
   return (
     <section
+      id="frase-homenaje"
       aria-label={isEN ? "Tribute phrase" : "Frase homenaje"}
-      className="bg-white"
+      className="relative bg-slate-50 py-10 sm:py-14 lg:py-16"
     >
-      <div
-        className="
-          mx-auto
-          max-w-4xl
-          min-h-[22svh]
-          px-6
-          flex
-          items-start
-          justify-center
-          pt-4 md:pt-6
-          pb-2
-          -mb-4 md:-mb-20   /* aprieta el espacio con la sección siguiente */
-        "
-      >
-        <p className="text-center text-base sm:text-lg md:text-xl leading-relaxed italic text-stone-900">
-          {isEN ? (
-            <>
-              “Opportunities come to those who don’t give up. Thank you, {name}, for teaching us that sowing with love is harvesting the future.”
-            </>
-          ) : (
-            <>
-              “Las oportunidades llegan para quienes no se rinden. Gracias, {name}, por enseñarnos que sembrar con amor es cosechar futuro.”
-            </>
-          )}
-        </p>
+      <div className="mx-auto max-w-5xl px-6 sm:px-8">
+        <div className="text-center space-y-8">
+          <motion.div
+            initial={{ opacity: 0, scaleX: 0 }}
+            whileInView={{ opacity: 1, scaleX: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5, delay: 0, ease: [0.16, 1, 0.3, 1] }}
+            className="w-16 h-px bg-slate-300 mx-auto"
+          />
+          
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="text-lg sm:text-xl md:text-2xl font-light leading-relaxed text-slate-700 tracking-tight"
+          >
+            {isEN ? (
+              <>
+                "Opportunities come to those who don't give up. Thank you, {name}, for teaching us that{" "}
+                sowing with love is harvesting the future."
+              </>
+            ) : (
+              <>
+                "Las oportunidades llegan para quienes no se rinden. Gracias, {name}, por enseñarnos que{" "}
+                sembrar con amor es cosechar futuro."
+              </>
+            )}
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, scaleX: 0 }}
+            whileInView={{ opacity: 1, scaleX: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="w-16 h-px bg-slate-300 mx-auto"
+          />
+        </div>
       </div>
     </section>
   );

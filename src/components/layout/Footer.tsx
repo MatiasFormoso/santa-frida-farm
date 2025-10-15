@@ -1,4 +1,6 @@
 // src/components/layout/Footer.tsx
+"use client";
+
 import { CONFIG } from "@/lib/config";
 import { Container } from "@/components/ui/primitives";
 import type { Dict, Locale } from "@/i18n/config";
@@ -30,11 +32,11 @@ export default function Footer({ t, locale }: Props) {
     : null;
 
   return (
-    <footer className="border-t border-slate-200/60 bg-gradient-to-b from-white to-slate-50/50">
-      <Container className="py-12 sm:py-16 grid gap-8 sm:gap-10 sm:grid-cols-2 lg:grid-cols-4">
+    <footer className="border-t border-slate-200/60 bg-gradient-to-b from-white via-slate-50/30 to-slate-50/60">
+      <Container className="py-14 sm:py-18 lg:py-20 grid gap-10 sm:gap-12 lg:gap-14 sm:grid-cols-2 lg:grid-cols-4">
         {/* Col 1: marca + tagline corto */}
         <div>
-          <h4 className="font-bold text-slate-900 text-lg mb-3">{CONFIG.site.name}</h4>
+          <h4 className="font-bold text-slate-900 text-lg mb-4 tracking-tight">{CONFIG.site.name}</h4>
           <p className="text-slate-600 text-sm leading-relaxed max-w-xs">{tagline}</p>
         </div>
 
@@ -45,12 +47,12 @@ export default function Footer({ t, locale }: Props) {
             {waLink && (
               <li>
                 <a
-                  className="hover:text-emerald-600 transition-colors duration-300 inline-flex items-center gap-2 group"
+                  className="hover:text-teal-600 transition-colors duration-300 inline-flex items-center gap-2 group"
                   href={waLink}
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <span className="w-1 h-1 rounded-full bg-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                  <span className="w-1 h-1 rounded-full bg-teal-500 opacity-0 group-hover:opacity-100 transition-all duration-300"></span>
                   WhatsApp {CONFIG.contact.whatsappIntl || ""}
                 </a>
               </li>
@@ -58,22 +60,22 @@ export default function Footer({ t, locale }: Props) {
             {CONFIG.contact.email && (
               <li>
                 <a
-                  className="hover:text-emerald-600 transition-colors duration-300 inline-flex items-center gap-2 group"
+                  className="hover:text-teal-600 transition-colors duration-300 inline-flex items-center gap-2 group"
                   href={`mailto:${CONFIG.contact.email}`}
                 >
-                  <span className="w-1 h-1 rounded-full bg-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                  <span className="w-1 h-1 rounded-full bg-teal-500 opacity-0 group-hover:opacity-100 transition-all duration-300"></span>
                   {CONFIG.contact.email}
                 </a>
               </li>
             )}
             <li>
               <a
-                className="hover:text-emerald-600 transition-colors duration-300 inline-flex items-center gap-2 group"
+                className="hover:text-teal-600 transition-colors duration-300 inline-flex items-center gap-2 group"
                 target="_blank"
                 rel="noreferrer"
                 href={CONFIG.contact.instagram}
               >
-                <span className="w-1 h-1 rounded-full bg-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                <span className="w-1 h-1 rounded-full bg-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                 Instagram
               </a>
             </li>
@@ -87,20 +89,20 @@ export default function Footer({ t, locale }: Props) {
           </h5>
           <ul className="text-slate-600 space-y-2.5 text-sm">
             <li>
-              <a className="hover:text-emerald-600 transition-colors duration-300 inline-flex items-center gap-2 group" href="#sobre">
-                <span className="w-1 h-1 rounded-full bg-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              <a className="hover:text-teal-600 transition-colors duration-300 inline-flex items-center gap-2 group" href="#sobre">
+                <span className="w-1 h-1 rounded-full bg-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                 {t.nav.about}
               </a>
             </li>
             <li>
-              <a className="hover:text-emerald-600 transition-colors duration-300 inline-flex items-center gap-2 group" href="#hass">
-                <span className="w-1 h-1 rounded-full bg-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              <a className="hover:text-teal-600 transition-colors duration-300 inline-flex items-center gap-2 group" href="#hass">
+                <span className="w-1 h-1 rounded-full bg-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                 {t.nav.products}
               </a>
             </li>
             <li>
-              <a className="hover:text-emerald-600 transition-colors duration-300 inline-flex items-center gap-2 group" href="#contacto">
-                <span className="w-1 h-1 rounded-full bg-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              <a className="hover:text-teal-600 transition-colors duration-300 inline-flex items-center gap-2 group" href="#contacto">
+                <span className="w-1 h-1 rounded-full bg-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                 {t.nav.contact}
               </a>
             </li>
@@ -112,8 +114,19 @@ export default function Footer({ t, locale }: Props) {
           <h5 className="font-bold text-slate-900 mb-3 text-sm uppercase tracking-wide">
             {locale === "en" ? "Legal" : "Legal"}
           </h5>
-          <p className="text-xs text-slate-500 leading-relaxed">
+          <p className="text-xs text-slate-500 leading-relaxed mb-3">
             © {year} {CONFIG.site.name}. {rights}
+          </p>
+          <p className="text-xs text-slate-500 leading-relaxed">
+            {locale === "en" ? "Designed by" : "Diseñado por"}{" "}
+            <a
+              href="https://landing-fawn-tau.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-teal-600 hover:text-teal-700 font-semibold underline underline-offset-2 transition-colors duration-300"
+            >
+              Modular Soluciones
+            </a>
           </p>
         </div>
       </Container>

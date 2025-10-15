@@ -1,22 +1,23 @@
 @import "tailwindcss";
 
-/* ==== Tokens base mejorados ==== */
+/* ==== Paleta corporativa premium ==== */
 :root {
   --sf-bg: #ffffff;
-  --sf-bg-alt: #f8fafc; /* slate-50 - más frío y moderno */
+  --sf-bg-alt: #f8fafc; /* slate-50 - neutro y profesional */
   --sf-bg-subtle: #f1f5f9; /* slate-100 */
-  --sf-text: #0f172a;   /* slate-900 - más moderno */
+  --sf-text: #0f172a;   /* slate-900 - neutro corporativo */
   --sf-text-muted: #475569;  /* slate-600 */
   --sf-text-subtle: #64748b; /* slate-500 */
   --sf-border: rgba(15, 23, 42, 0.08);
-  --sf-border-subtle: rgba(15, 23, 42, 0.05);
-  --sf-accent: #059669; /* emerald-600 - más vibrante */
+  --sf-border-subtle: rgba(15, 23, 42, 0.04);
+  /* Verdes Santa Frida (inspirados en el hero) */
+  --sf-accent: #047857; /* emerald-700 */
   --sf-accent-light: #10b981; /* emerald-500 */
-  --sf-accent-dark: #047857; /* emerald-700 */
-  --sf-accent-warm: #d97706; /* amber-600 - para acentos cálidos */
-  --sf-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --sf-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --sf-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --sf-accent-dark: #065f46; /* emerald-800 */
+  --sf-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  --sf-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
+  --sf-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.06), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+  --sf-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
 }
 
 html, body { 
@@ -33,21 +34,32 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Tipografía mejorada */
+/* Tipografía profesional refinada */
 h1, h2, h3, h4 { 
-  letter-spacing: -0.025em; 
+  letter-spacing: -0.02em; 
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 
 h1 { 
   line-height: 1.1; 
   font-weight: 700;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.035em;
 }
 
 h2 {
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+}
+
+h3 {
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+h4 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 .prose { color: var(--sf-text); }
@@ -161,16 +173,26 @@ a:focus-visible {
   animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Mejoras de accesibilidad */
+/* Mejoras de accesibilidad y performance */
 @media (prefers-reduced-motion: reduce) {
-  * {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
   }
   
   html {
     scroll-behavior: auto;
+  }
+}
+
+/* Performance: evitar animaciones en elementos invisibles */
+@media (prefers-reduced-motion: no-preference) {
+  [style*="will-change"] {
+    will-change: opacity, transform;
   }
 }
 
@@ -187,15 +209,48 @@ a:focus-visible {
   }
   
   #hero {
-    height: 78vh !important;
-    min-height: 78vh !important;
-    max-height: 78vh !important;
+    height: calc(100dvh - 4rem) !important;
+    min-height: calc(100dvh - 4rem) !important;
+    max-height: calc(100dvh - 4rem) !important;
     position: relative;
+    overflow: hidden;
   }
   
   #hero img {
-    height: 78vh !important;
-    min-height: 78vh !important;
-    max-height: 78vh !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    max-height: 100% !important;
   }
+}
+
+/* Para todos los tamaños - asegurar que hero sea exacto */
+#hero {
+  position: relative;
+  overflow: hidden;
+  height: calc(100dvh - 4rem);
+  min-height: calc(100dvh - 4rem);
+  max-height: calc(100dvh - 4rem);
+}
+
+#hero img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Fallback para navegadores que no soportan dvh */
+@supports not (height: 100dvh) {
+  #hero {
+    height: calc(100vh - 4rem);
+    min-height: calc(100vh - 4rem);
+    max-height: calc(100vh - 4rem);
+  }
+}
+
+/* Mejoras de espaciado y tipografía minimalista */
+.section-spacing {
+  padding-top: clamp(4rem, 8vw, 8rem);
+  padding-bottom: clamp(4rem, 8vw, 8rem);
 }
