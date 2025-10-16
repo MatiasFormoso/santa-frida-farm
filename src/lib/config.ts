@@ -5,8 +5,9 @@ export const CONFIG = {
     lang: "es",
     url: "https://santa-frida-farm.vercel.app", // ← ajusta tu dominio si cambia
     description:
-      "Cultivamos con amor en Marinilla, Antioquia. Aguacate Hass, café de especialidad y hortalizas frescas — cultivo consciente en el oriente antioqueño.",
-    tagline: "Conscious farming in Antioquia",
+      "Productor premium de aguacate Hass, café de especialidad y hortalizas orgánicas en Marinilla, Antioquia. Agricultura sostenible y trazabilidad completa para exportación internacional.",
+    tagline: "Premium agricultural products from Antioquia, Colombia",
+    keywords: "aguacate hass colombia, café especialidad antioquia, hortalizas orgánicas, exportación agrícola colombia, agricultura sostenible, trazabilidad alimentaria",
   },
 
   brand: {

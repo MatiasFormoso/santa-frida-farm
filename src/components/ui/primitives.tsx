@@ -3,7 +3,7 @@
 
 import React from "react";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
 type WithChildren<T = {}> = T & { children?: React.ReactNode };
 
@@ -37,7 +37,17 @@ export const Section = ({
   children,
 }: SectionProps) => {
   const ref = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
   const isInView = useInView(ref, { once: true, margin: "-80px", amount: 0.1 });
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   return (
     <section
@@ -49,37 +59,55 @@ export const Section = ({
         {(eyebrow || title || intro) && (
           <header className="mb-12 sm:mb-16 lg:mb-20 max-w-4xl">
             {eyebrow && (
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                style={{ willChange: 'opacity, transform' }}
-                className="uppercase tracking-[0.25em] text-[0.6875rem] text-slate-500 font-semibold mb-4"
-              >
-                {eyebrow}
-              </motion.p>
+              isMobile ? (
+                <p className="uppercase tracking-[0.25em] text-[0.6875rem] text-slate-500 font-semibold mb-4">
+                  {eyebrow}
+                </p>
+              ) : (
+                <motion.p
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  style={{ willChange: 'opacity, transform' }}
+                  className="uppercase tracking-[0.25em] text-[0.6875rem] text-slate-500 font-semibold mb-4"
+                >
+                  {eyebrow}
+                </motion.p>
+              )
             )}
             {title && (
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-                style={{ willChange: 'opacity, transform' }}
-                className="text-3xl sm:text-4xl lg:text-5xl font-medium text-slate-900 leading-[1.2] tracking-tight mb-6"
-              >
-                {title}
-              </motion.h2>
+              isMobile ? (
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-slate-900 leading-[1.2] tracking-tight mb-6">
+                  {title}
+                </h2>
+              ) : (
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+                  style={{ willChange: 'opacity, transform' }}
+                  className="text-3xl sm:text-4xl lg:text-5xl font-medium text-slate-900 leading-[1.2] tracking-tight mb-6"
+                >
+                  {title}
+                </motion.h2>
+              )
             )}
             {intro && (
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-                style={{ willChange: 'opacity, transform' }}
-                className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl"
-              >
-                {intro}
-              </motion.p>
+              isMobile ? (
+                <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl">
+                  {intro}
+                </p>
+              ) : (
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+                  style={{ willChange: 'opacity, transform' }}
+                  className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl"
+                >
+                  {intro}
+                </motion.p>
+              )
             )}
           </header>
         )}
@@ -177,6 +205,8 @@ export const Img = ({ src, alt, className = "", ratio = "aspect-[4/3]" }: ImgPro
       loading="lazy"
       decoding="async"
       className={`h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05] ${className}`}
+      width="800"
+      height="600"
     />
   </div>
 );

@@ -20,7 +20,7 @@ const PRODUCTS: Product[] = [
     summary: "Huertos en crecimiento y manejo responsable. Calidad consistente para aliados locales.",
     bullets: ["Trazabilidad por lote", "Manejo integrado de plagas", "Cosecha oportuna"],
     img: "/images/products/avocado-1200.webp",
-    alt: "Aguacates Hass en árbol",
+    alt: "Aguacates Hass maduros en árbol - Cultivo premium en Santa Frida Farm, Marinilla Antioquia",
   },
   {
     key: "coffee",
@@ -28,7 +28,7 @@ const PRODUCTS: Product[] = [
     summary: "Perfiles equilibrados en lotes pequeños y formación continua en tueste y cata.",
     bullets: ["Tueste reciente", "Perfiles consistentes", "Control de calidad"],
     img: "/images/products/coffee-1200.webp",
-    alt: "Cerezas de café maduras en la planta",
+    alt: "Cerezas de café Catimor maduras en la planta - Café de especialidad de Santa Frida Farm",
   },
   {
     key: "greens",
@@ -36,7 +36,7 @@ const PRODUCTS: Product[] = [
     summary: "Hortalizas y hojas de temporada. Cosecha cercana al consumo para cocinas y familias.",
     bullets: ["Selección semanal", "Cadena en frío", "Entrega local"],
     img: "/images/products/greens-1200.webp",
-    alt: "Filas de lechuga en invernadero",
+    alt: "Hortalizas orgánicas frescas en invernadero - Cultivo sostenible en Santa Frida Farm",
   },
 ];
 
@@ -45,19 +45,19 @@ const EN_OVERRIDES: Record<ProductKey, Partial<Product>> = {
     name: "Hass Avocados",
     summary: "Orchards in steady growth with responsible management. Consistent quality for local partners.",
     bullets: ["Batch-level traceability", "Integrated pest management", "Timely harvests"],
-    alt: "Hass avocados on the tree",
+    alt: "Premium Hass avocados on tree - Sustainable farming at Santa Frida Farm, Marinilla Antioquia",
   },
   coffee: {
     name: "Specialty Coffee",
     summary: "Balanced profiles in small lots and ongoing training in roasting and cupping.",
     bullets: ["Freshly roasted", "Consistent profiles", "Quality control"],
-    alt: "Ripe coffee cherries on the plant",
+    alt: "Ripe Catimor coffee cherries on plant - Specialty coffee from Santa Frida Farm",
   },
   greens: {
     name: "Fresh Greens",
     summary: "Seasonal vegetables and leafy greens. Harvested close to consumption for kitchens and families.",
     bullets: ["Weekly selection", "Cold chain", "Local delivery"],
-    alt: "Rows of lettuce in a greenhouse",
+    alt: "Organic fresh vegetables in greenhouse - Sustainable farming at Santa Frida Farm",
   },
 };
 

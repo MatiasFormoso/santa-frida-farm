@@ -40,7 +40,49 @@ export const defaultMetadata: Metadata = {
     template: `%s — ${(CONFIG as any)?.site?.name || "Santa Frida Farm"}`,
   },
   description: fallbackDescription,
+  keywords: (CONFIG as any)?.site?.keywords || "aguacate hass, café especialidad, hortalizas orgánicas, agricultura colombia",
+  authors: [{ name: "Santa Frida Farm" }],
+  creator: "Santa Frida Farm",
+  publisher: "Santa Frida Farm",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   alternates: {
     canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "es_CO",
+    url: getSiteUrl(),
+    siteName: (CONFIG as any)?.site?.name || "Santa Frida Farm",
+    title: (CONFIG as any)?.site?.name || "Santa Frida Farm",
+    description: fallbackDescription,
+    images: [
+      {
+        url: "/images/hero-1920-optimized.webp",
+        width: 1920,
+        height: 1080,
+        alt: "Vista panorámica de Santa Frida Farm en Marinilla, Antioquia - Cultivos de aguacate Hass, café y hortalizas",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: (CONFIG as any)?.site?.name || "Santa Frida Farm",
+    description: fallbackDescription,
+    images: ["/images/hero-1920-optimized.webp"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };

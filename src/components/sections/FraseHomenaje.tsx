@@ -47,7 +47,7 @@ export default function FraseHomenaje({ locale }: Props) {
             initial={{ opacity: 0, scaleX: 0 }}
             whileInView={{ opacity: 1, scaleX: 1 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5, delay: 0, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.7, delay: 0, ease: [0.16, 1, 0.3, 1] }}
             className="w-16 h-px bg-slate-300 mx-auto"
           />
           
@@ -55,7 +55,7 @@ export default function FraseHomenaje({ locale }: Props) {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="text-lg sm:text-xl md:text-2xl font-light leading-relaxed text-slate-700 tracking-tight"
           >
             {isEN ? (
@@ -75,7 +75,7 @@ export default function FraseHomenaje({ locale }: Props) {
             initial={{ opacity: 0, scaleX: 0 }}
             whileInView={{ opacity: 1, scaleX: 1 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="w-16 h-px bg-slate-300 mx-auto"
           />
         </div>

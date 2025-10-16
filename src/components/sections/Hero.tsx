@@ -31,7 +31,7 @@ export default function Hero({ t }: Props) {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/images/hero-1920.jpg"
-          alt="Paisaje de la finca"
+          alt="Vista panorámica de Santa Frida Farm en Marinilla, Antioquia - Cultivos de aguacate Hass, café de especialidad y hortalizas orgánicas en el oriente antioqueño"
           className="absolute inset-0 h-full w-full object-cover object-top sm:object-center origin-top scale-[1.17] sm:scale-100 transition-transform duration-500"
           style={{
             filter: 'blur(1.31px)',

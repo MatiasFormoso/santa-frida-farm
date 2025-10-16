@@ -26,10 +26,54 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   // JSON-LD estático (se evalúa en el server, sin depender de window)
   const orgJson = {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": "AgriculturalBusiness",
     name: CONFIG.site.name,
     url: getSiteUrl(),
+    description: CONFIG.site.description,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Marinilla",
+      addressRegion: "Antioquia",
+      addressCountry: "CO"
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 6.1733333,
+      longitude: -75.3369444
+    },
+    telephone: CONFIG.contact.whatsappNumber,
+    email: CONFIG.contact.email,
     sameAs: [CONFIG.contact.instagram],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Agricultural Products",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Product",
+            name: "Hass Avocados",
+            description: "Premium quality Hass avocados from Antioquia, Colombia"
+          }
+        },
+        {
+          "@type": "Offer", 
+          itemOffered: {
+            "@type": "Product",
+            name: "Specialty Coffee",
+            description: "Catimor specialty coffee beans from Antioquia, Colombia"
+          }
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Product", 
+            name: "Fresh Greens",
+            description: "Organic seasonal vegetables and leafy greens"
+          }
+        }
+      ]
+    }
   };
 
   const websiteJson = {

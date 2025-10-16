@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef, ReactNode } from "react";
+import { useRef, ReactNode, useState, useEffect } from "react";
 
 type ScrollRevealProps = {
   children: ReactNode;
@@ -17,8 +17,28 @@ export function ScrollReveal({
   className = "" 
 }: ScrollRevealProps) {
   const ref = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
   const isInView = useInView(ref, { once: true, margin: "-60px", amount: 0.2 });
 
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // En mobile, no animaciones - solo contenedor simple
+  if (isMobile) {
+    return (
+      <div className={className}>
+        {children}
+      </div>
+    );
+  }
+
+  // En desktop, animaciones completas
   return (
     <motion.div
       ref={ref}
@@ -44,7 +64,25 @@ export function ScrollFade({
   className = "" 
 }: ScrollRevealProps) {
   const ref = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  if (isMobile) {
+    return (
+      <div className={className}>
+        {children}
+      </div>
+    );
+  }
 
   return (
     <motion.div
@@ -70,7 +108,25 @@ export function ScrollScale({
   className = "" 
 }: ScrollRevealProps) {
   const ref = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  if (isMobile) {
+    return (
+      <div className={className}>
+        {children}
+      </div>
+    );
+  }
 
   return (
     <motion.div
