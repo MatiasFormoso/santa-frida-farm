@@ -37,7 +37,7 @@ export default function Contact({ t, locale }: Props) {
   };
 
   return (
-    <Section id="contacto" eyebrow={strings.contact} title={t.contact.title} intro={t.contact.subtitle}>
+    <Section id="contacto" tone="alt" eyebrow={strings.contact} title={t.contact.title} intro={t.contact.subtitle}>
       <div className="space-y-10">
         {/* Grid de contactos */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -91,7 +91,7 @@ export default function Contact({ t, locale }: Props) {
         <ScrollReveal delay={0.4}>
           <div className="rounded-lg overflow-hidden border border-slate-200 shadow-md hover:shadow-lg transition-shadow duration-300">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.1234567890!2d-75.3369444!3d6.1733333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e4428c4c6b6b6b6%3A0x1234567890abcdef!2sMarinilla%2C%20Antioquia%2C%20Colombia!5e0!3m2!1ses!2sco!4v1234567890123!5m2!1ses!2sco"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.1234567890!2d-75.284000!3d6.216000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e4428c4c6b6b6b6%3A0x1234567890abcdef!2sSanta%20Frida%20Farm%2C%20Marinilla%2C%20Antioquia%2C%20Colombia!5e0!3m2!1ses!2sco!4v1234567890123!5m2!1ses!2sco"
               width="100%"
               style={{ border: 0 }}
               allowFullScreen

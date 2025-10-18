@@ -134,7 +134,7 @@ export default function Header({ t, locale }: HeaderProps) {
   // ===== Variante mínima para /historia =====
   if (isHistory) {
     return (
-      <header className={`sticky top-0 z-40 border-b transition-all duration-300 ${scrolled ? "border-slate-200/80 bg-white/95 backdrop-blur-xl shadow-xl shadow-slate-900/[0.03]" : "border-slate-200/40 bg-white/90 backdrop-blur-md"}`}>
+      <header className={`sticky top-0 z-40 border-b transition-all duration-300 ${scrolled ? "border-slate-200/80 bg-white/95 shadow-xl shadow-slate-900/[0.03]" : "border-slate-200/40 bg-white/90"}`}>
         <Container className="flex h-16 items-center justify-between">
           {Brand}
           <LocaleSwitcher size="sm" />
@@ -145,7 +145,7 @@ export default function Header({ t, locale }: HeaderProps) {
 
   // ===== Header completo (resto del sitio) =====
   return (
-    <header className={`sticky top-0 z-40 border-b transition-all duration-300 ${scrolled ? "border-slate-200/80 bg-white/95 backdrop-blur-xl shadow-xl shadow-slate-900/[0.03]" : "border-slate-200/40 bg-white/90 backdrop-blur-md"}`}>
+    <header className={`sticky top-0 z-40 border-b transition-all duration-300 ${scrolled ? "border-slate-200/80 bg-white/95 shadow-xl shadow-slate-900/[0.03]" : "border-slate-200/40 bg-white/90"}`}>
       <Container className="flex h-16 items-center justify-between">
         {Brand}
 
@@ -304,7 +304,7 @@ export default function Header({ t, locale }: HeaderProps) {
         </div>
         <button
           type="button"
-          className="fixed inset-0 -z-10 h-[calc(100vh-4rem)] bg-black/20 backdrop-blur-sm"
+          className="fixed inset-0 -z-10 h-[calc(100vh-4rem)] bg-black/20"
           onClick={close}
           aria-hidden
           tabIndex={-1}

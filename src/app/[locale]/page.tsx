@@ -9,6 +9,7 @@ import HassSection from "@/components/sections/HassSection";
 import Catimori from "@/components/sections/Catimori";
 import Hortalizas from "@/components/sections/Hortalizas";
 import InstagramStrip from "@/components/sections/InstagramStrip";
+import FarmGallery from "@/components/sections/FarmGallery";
 import Contact from "@/components/sections/Contact";
 
 import { getDictionary, type Locale, type Dict } from "@/i18n/config";
@@ -31,6 +32,7 @@ export default async function HomeByLocale({ params }: Props) {
       <Catimori t={t} locale={params.locale} />
       <Hortalizas t={t} locale={params.locale} />
       <InstagramStrip t={t} locale={params.locale} />
+      <FarmGallery t={t} locale={params.locale} />
       <Contact t={t} locale={params.locale} />
       <Footer t={t} locale={params.locale} />
     </main>

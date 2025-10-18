@@ -21,7 +21,9 @@ export const CONFIG = {
     email: "santafrida.colombia@gmail.com",
     instagram: "https://www.instagram.com/santafridafarm/",
     locationLabel: "Marinilla, Antioquia, Colombia",
-    mapsUrl: "https://maps.google.com/?q=Marinilla,%20Antioquia,%20Colombia",
+    latitude: "6.216000",
+    longitude: "-75.284000",
+    mapsUrl: "https://www.google.com/maps?q=6.216000,-75.284000",
     whatsappPreset:
       "Hola Santa Frida Farm, me gustaría coordinar una visita / hacer una consulta. ¡Gracias!",
   },

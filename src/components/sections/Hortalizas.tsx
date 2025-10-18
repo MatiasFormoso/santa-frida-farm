@@ -38,9 +38,9 @@ export default function Hortalizas({ t, locale }: Props) {
 
   return (
     <Section id="hortalizas" eyebrow={eyebrow} title={title}>
-      <div className="space-y-8 md:space-y-0 md:grid md:gap-12 lg:gap-16 md:grid-cols-12 md:items-center">
-        {/* Contenido - izquierda en desktop */}
-        <div className="md:col-span-7">
+      <div>
+        {/* Contenido */}
+        <div>
           {/* Introducción */}
           <ScrollReveal>
             <div className="mb-8">
@@ -67,39 +67,6 @@ export default function Hortalizas({ t, locale }: Props) {
           </dl>
         </div>
 
-        {/* Imagen - derecha en desktop */}
-        <div className="md:col-span-5">
-          <ScrollReveal delay={0.3}>
-            <figure className="group">
-              <div className="relative overflow-hidden rounded-xl border border-slate-200/60 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-                <picture>
-                  <source
-                    type="image/webp"
-                    srcSet="/images/sections/greens-collage-2400x1800.webp 2400w, /images/sections/greens-collage-1600x1200.webp 1600w"
-                    sizes="(min-width:1024px) 40vw, 100vw"
-                  />
-                  <source
-                    type="image/jpeg"
-                    srcSet="/images/sections/greens-collage-2400x1800.jpg 2400w, /images/sections/greens-collage-1600x1200.jpg 1600w"
-                    sizes="(min-width:1024px) 40vw, 100vw"
-                  />
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/images/sections/greens-collage-1600x1200.jpg"
-                    alt={
-                      locale === "en"
-                        ? "Fresh greens collage: lettuces, cabbage, chilies and garden at the farm"
-                        : "Collage de hortalizas: lechugas, repollo, ajíes y huerto en la finca"
-                    }
-                    className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </picture>
-              </div>
-            </figure>
-          </ScrollReveal>
-        </div>
       </div>
 
       {/* Botón de disponibilidad */}
