@@ -42,6 +42,17 @@ const nextConfig = {
     return config;
   },
   
+  // Redirects configuration
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/es",
+        permanent: true, // 301 redirect
+      },
+    ];
+  },
+
   // Security headers
   async headers() {
     return [
