@@ -1,10 +1,10 @@
 // src/components/sections/Hero.tsx
 "use client";
 
-import { motion } from "framer-motion";
-import { CONFIG } from "@/lib/config";
 import { Container } from "@/components/ui/primitives";
 import type { Dict, Locale } from "@/i18n/config";
+import { CONFIG } from "@/lib/config";
+import { motion } from "framer-motion";
 
 type Props = { t: Dict; locale: Locale };
 

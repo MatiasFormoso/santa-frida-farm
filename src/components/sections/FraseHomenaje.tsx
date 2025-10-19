@@ -1,9 +1,8 @@
 // src/components/sections/FraseHomenaje.tsx
 "use client";
 
+import type { Dict, Locale } from "@/i18n/config";
 import { motion } from "framer-motion";
-import Link from "next/link";
-import type { Locale, Dict } from "@/i18n/config";
 
 type Props = { t: Dict; locale: Locale };
 
@@ -46,16 +45,16 @@ export default function FraseHomenaje({ locale }: Props) {
           <motion.div
             initial={{ opacity: 0, scaleX: 0 }}
             whileInView={{ opacity: 1, scaleX: 1 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.7, delay: 0, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 1.0, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
             className="w-16 h-px bg-slate-300 mx-auto"
           />
           
           <motion.p
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 1.0, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
             className="text-lg sm:text-xl md:text-2xl font-light leading-relaxed text-slate-700 tracking-tight"
           >
             {isEN ? (

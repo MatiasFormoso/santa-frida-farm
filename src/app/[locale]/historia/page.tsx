@@ -1,13 +1,12 @@
 // src/app/[locale]/historia/page.tsx
-import Image from "next/image";
-import Link from "next/link";
-import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
+import { Card, Container, Section } from "@/components/ui/primitives";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import type { Locale } from "@/i18n/config";
 import { getDictionary, type Dict } from "@/i18n/config";
 import type { Metadata } from "next";
-import type { Locale } from "@/i18n/config";
-import { Section, Container, Card } from "@/components/ui/primitives";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import Image from "next/image";
 
 export const dynamic = "force-static";
 
@@ -17,26 +16,55 @@ export async function generateMetadata({
   params: { locale: Locale };
 }): Promise<Metadata> {
   const isEN = params.locale === "en";
-  const title = isEN ? "History — Santa Frida Farm" : "Historia — Santa Frida Farm";
+  const title = isEN 
+    ? "History — María Yennis Silgado & Santa Frida Farm | Premium Agricultural Export to UAE & Canada"
+    : "Historia — María Yennis Silgado & Santa Frida Farm | Exportador Premium a Emiratos Árabes y Canadá";
   const description = isEN
-    ? "The origin, values and legacy behind Santa Frida Farm — a story of resilience, family and land."
-    : "Origen, valores y legado de Santa Frida Farm — una historia de resiliencia, familia y tierra.";
+    ? "The inspiring story of María Yennis Silgado and Santa Frida Farm — from resilience to international export success. Premium agricultural products to UAE and Canada from Marinilla, Antioquia."
+    : "La inspiradora historia de María Yennis Silgado y Santa Frida Farm — de la resiliencia al éxito exportador internacional. Productos agrícolas premium a Emiratos Árabes y Canadá desde Marinilla, Antioquia.";
 
   return {
     title,
     description,
-    alternates: { languages: { es: "/es/historia", en: "/en/historia" } },
+    keywords: [
+      "maría yennis silgado",
+      "historia santa frida farm",
+      "resiliencia agricultura colombia",
+      "exportador agrícola antioquia",
+      "finca familiar marinilla",
+      "agricultura sostenible colombia",
+      "exportación emiratos arabes",
+      "exportación canada",
+      "aguacate hass colombia",
+      "café catimor antioquia"
+    ],
+    alternates: { 
+      canonical: `/${params.locale}/historia`,
+      languages: { es: "/es/historia", en: "/en/historia" } 
+    },
     openGraph: {
+      type: "article",
       title,
       description,
+      locale: isEN ? "en_US" : "es_CO",
+      alternateLocale: isEN ? "es_CO" : "en_US",
       images: [
         {
           url: "/images/history-maria-aguacates.webp",
           width: 1200,
           height: 630,
-          alt: "Santa Frida Farm",
+          alt: isEN 
+            ? "María Yennis Silgado selecting avocados at Santa Frida Farm - Premium agricultural export to UAE and Canada"
+            : "María Yennis Silgado seleccionando aguacates en Santa Frida Farm - Exportación agrícola premium a Emiratos Árabes y Canadá",
+          type: "image/webp",
         },
       ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["/images/history-maria-aguacates.webp"],
     },
   };
 }

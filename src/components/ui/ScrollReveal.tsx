@@ -1,24 +1,26 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef, ReactNode, useState, useEffect } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 
 type ScrollRevealProps = {
   children: ReactNode;
   delay?: number;
   duration?: number;
   className?: string;
+  subtle?: boolean; // Nueva prop para animaciones más sutiles
 };
 
 export function ScrollReveal({ 
   children, 
   delay = 0, 
-  duration = 0.7,
-  className = "" 
+  duration = 0.8,
+  className = "",
+  subtle = true // Por defecto más sutil
 }: ScrollRevealProps) {
   const ref = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
-  const isInView = useInView(ref, { once: true, margin: "-60px", amount: 0.2 });
+  const isInView = useInView(ref, { once: true, margin: "-80px", amount: 0.1 });
 
   useEffect(() => {
     const checkMobile = () => {
@@ -38,17 +40,29 @@ export function ScrollReveal({
     );
   }
 
-  // En desktop, animaciones completas
+  // Animaciones más sutiles y profesionales
+  const animationProps = subtle ? {
+    initial: { opacity: 0, y: 15 },
+    animate: isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 },
+    transition: {
+      duration,
+      delay,
+      ease: [0.25, 0.1, 0.25, 1] // Cubic bezier más suave y profesional
+    }
+  } : {
+    initial: { opacity: 0, y: 25 },
+    animate: isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 25 },
+    transition: {
+      duration,
+      delay,
+      ease: [0.16, 1, 0.3, 1]
+    }
+  };
+
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-      transition={{
-        duration,
-        delay,
-        ease: [0.16, 1, 0.3, 1]
-      }}
+      {...animationProps}
       style={{ willChange: 'opacity, transform' }}
       className={className}
     >
@@ -60,12 +74,12 @@ export function ScrollReveal({
 export function ScrollFade({ 
   children, 
   delay = 0, 
-  duration = 0.8,
+  duration = 1.0,
   className = "" 
 }: ScrollRevealProps) {
   const ref = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const isInView = useInView(ref, { once: true, margin: "-60px", amount: 0.1 });
 
   useEffect(() => {
     const checkMobile = () => {
@@ -92,7 +106,7 @@ export function ScrollFade({
       transition={{
         duration,
         delay,
-        ease: "easeOut"
+        ease: [0.25, 0.1, 0.25, 1] // Ease más profesional
       }}
       className={className}
     >
@@ -104,12 +118,12 @@ export function ScrollFade({
 export function ScrollScale({ 
   children, 
   delay = 0, 
-  duration = 0.6,
+  duration = 0.8,
   className = "" 
 }: ScrollRevealProps) {
   const ref = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-80px", amount: 0.1 });
 
   useEffect(() => {
     const checkMobile = () => {
@@ -131,12 +145,12 @@ export function ScrollScale({
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+      initial={{ opacity: 0, scale: 0.95 }} // Scale más sutil
+      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
       transition={{
         duration,
         delay,
-        ease: [0.25, 0.4, 0.25, 1]
+        ease: [0.25, 0.1, 0.25, 1] // Ease más profesional
       }}
       className={className}
     >

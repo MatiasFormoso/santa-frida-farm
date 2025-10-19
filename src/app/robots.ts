@@ -1,6 +1,6 @@
 // src/app/robots.ts
-import type { MetadataRoute } from "next";
 import { getSiteUrl } from "@/lib/seo";
+import type { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
   const base = getSiteUrl();
@@ -9,12 +9,30 @@ export default function robots(): MetadataRoute.Robots {
       { 
         userAgent: "*", 
         allow: "/",
-        disallow: ["/api/", "/_next/", "/admin/"]
+        disallow: [
+          "/api/", 
+          "/_next/", 
+          "/admin/", 
+          "/private/",
+          "/temp/",
+          "/*.json$",
+          "/*.xml$"
+        ]
       },
       {
         userAgent: "Googlebot",
         allow: "/",
         crawlDelay: 1
+      },
+      {
+        userAgent: "Bingbot",
+        allow: "/",
+        crawlDelay: 1
+      },
+      {
+        userAgent: "Slurp",
+        allow: "/",
+        crawlDelay: 2
       }
     ],
     sitemap: `${base}/sitemap.xml`,

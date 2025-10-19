@@ -1,10 +1,10 @@
 // src/components/sections/Contact.tsx
 "use client";
 
-import { CONFIG } from "@/lib/config";
-import { Section, Button } from "@/components/ui/primitives";
+import { Button, Section } from "@/components/ui/primitives";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import type { Dict, Locale } from "@/i18n/config";
+import { CONFIG } from "@/lib/config";
 
 type Props = { t: Dict; locale: Locale };
 
@@ -37,13 +37,13 @@ export default function Contact({ t, locale }: Props) {
   };
 
   return (
-    <Section id="contacto" tone="alt" eyebrow={strings.contact} title={t.contact.title} intro={t.contact.subtitle}>
+    <Section id="contacto" tone="alt" eyebrow={strings.contact} title={t.contact.title} intro={t.contact.subtitle || ""}>
       <div className="space-y-10">
         {/* Grid de contactos */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* WhatsApp */}
-          <ScrollReveal delay={0.1}>
-            <div className="border-l-2 border-teal-600 pl-6 py-2 group hover:border-teal-700 transition-colors duration-300">
+          <ScrollReveal delay={0.2}>
+            <div className="border-l-2 border-emerald-600 pl-6 py-2 group hover:border-emerald-700 transition-colors duration-250">
               <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">{strings.whatsapp}</h3>
               <p className="text-slate-900 mb-5 text-base font-medium">
                 {CONFIG.contact.whatsappIntl || CONFIG.contact.whatsappNumber}
@@ -56,7 +56,7 @@ export default function Contact({ t, locale }: Props) {
 
           {/* Correo */}
           {hasEmail && (
-            <ScrollReveal delay={0.2}>
+            <ScrollReveal delay={0.3}>
               <div className="border-l-2 border-slate-300 pl-6 py-2 group hover:border-slate-400 transition-colors duration-300">
                 <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">{strings.email}</h3>
                 <p className="text-slate-900 mb-5 text-base font-medium break-all">{email}</p>
@@ -68,12 +68,12 @@ export default function Contact({ t, locale }: Props) {
           )}
 
           {/* Ubicación */}
-          <ScrollReveal delay={0.3}>
+          <ScrollReveal delay={0.4}>
             <div className="border-l-2 border-slate-300 pl-6 py-2 group hover:border-slate-400 transition-colors duration-300">
               <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">{strings.where}</h3>
               <p className="text-slate-900 mb-5 text-base font-medium">{CONFIG.contact.locationLabel}</p>
               <a
-                className="inline-flex items-center gap-1 text-slate-900 hover:text-teal-700 font-medium transition-colors duration-300 underline underline-offset-4 decoration-1"
+                className="inline-flex items-center gap-1 text-slate-900 hover:text-emerald-700 font-medium transition-colors duration-250 underline underline-offset-4 decoration-1"
                 href={CONFIG.contact.mapsUrl}
                 target="_blank"
                 rel="noreferrer"

@@ -1,12 +1,12 @@
 "use client";
 
-import type { Dict, Locale } from "@/i18n/config";
 import { Section } from "@/components/ui/primitives";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import type { Dict, Locale } from "@/i18n/config";
 
 type Props = { t: Dict; locale: Locale };
 
-export default function HassSection({ t, locale }: Props) {
+export default function HassSection({ locale }: Props) {
   const eyebrow = locale === "en" ? "Crops" : "Cultivos";
   const title = locale === "en" ? "Hass Avocado" : "Aguacate Hass";
 
@@ -36,7 +36,7 @@ export default function HassSection({ t, locale }: Props) {
   const stats = locale === "en" ? statsEN : statsES;
 
   return (
-    <Section id="hass" eyebrow={eyebrow} title={title}>
+    <Section id="hass" eyebrow={eyebrow} title={title} tone="alt">
       <div>
         {/* Contenido */}
         <div>

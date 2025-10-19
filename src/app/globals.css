@@ -34,32 +34,55 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Tipografía profesional refinada */
+/* Tipografía profesional refinada para exportación */
 h1, h2, h3, h4 { 
-  letter-spacing: -0.02em; 
+  letter-spacing: -0.025em; 
   font-weight: 600;
-  line-height: 1.25;
+  line-height: 1.2;
 }
 
 h1 { 
-  line-height: 1.1; 
+  line-height: 1.05; 
   font-weight: 700;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.04em;
+  font-size: clamp(2rem, 4vw, 3.5rem);
 }
 
 h2 {
-  letter-spacing: -0.025em;
+  letter-spacing: -0.03em;
   font-weight: 600;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
 }
 
 h3 {
   font-weight: 600;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
 }
 
 h4 {
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+}
+
+/* Tipografía de cuerpo mejorada */
+p:not(#hero p), li, div:not(#hero div) {
+  line-height: 1.65;
+  color: var(--sf-text-muted);
+}
+
+/* Texto destacado */
+.text-accent {
+  color: var(--sf-accent);
+}
+
+.text-muted {
+  color: var(--sf-text-muted);
+}
+
+.text-subtle {
+  color: var(--sf-text-subtle);
 }
 
 .prose { color: var(--sf-text); }
@@ -97,19 +120,54 @@ a:focus-visible {
 .section-plain { background: var(--sf-bg); }
 .section-alt { background: var(--sf-bg-alt); }
 
-/* Cards mejoradas */
+/* Cards profesionales para exportación */
 .sf-card {
   border: 1px solid var(--sf-border-subtle);
-  border-radius: 1.5rem;
+  border-radius: 1.25rem;
   background: #fff;
-  box-shadow: var(--sf-shadow-sm);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--sf-shadow-xs);
+  transition: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
+  overflow: hidden;
 }
 
 .sf-card:hover {
-  box-shadow: var(--sf-shadow-md);
+  box-shadow: var(--sf-shadow-lg);
   border-color: var(--sf-border);
+  transform: translateY(-1px);
+}
+
+/* Card premium para elementos destacados */
+.sf-card-premium {
+  border: 1px solid var(--sf-border);
+  border-radius: 1.5rem;
+  background: linear-gradient(135deg, #fff 0%, #fafbfc 100%);
+  box-shadow: var(--sf-shadow-md);
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.sf-card-premium:hover {
+  box-shadow: var(--sf-shadow-xl);
+  border-color: var(--sf-accent-subtle);
   transform: translateY(-2px);
+}
+
+/* Elementos de interfaz refinados */
+.sf-button {
+  border-radius: 0.75rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+  box-shadow: var(--sf-shadow-xs);
+}
+
+.sf-button:hover {
+  box-shadow: var(--sf-shadow-sm);
+  transform: translateY(-1px);
+}
+
+.sf-button:active {
+  transform: translateY(0);
+  box-shadow: var(--sf-shadow-xs);
 }
 
 /* Utilidades mejoradas */

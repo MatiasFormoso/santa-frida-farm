@@ -1,9 +1,9 @@
 // src/components/sections/Training.tsx
-import { Section, Card } from "@/components/ui/primitives";
+import { Card, Section } from "@/components/ui/primitives";
 import type { Dict, Locale } from "@/i18n/config";
 import { CONFIG } from "@/lib/config";
 
-export default function Training({ t, locale }: { t: Dict; locale: Locale }) {
+export default function Training({ t }: { t: Dict; locale: Locale }) {
   return (
     <Section
       id="capacitaciones"

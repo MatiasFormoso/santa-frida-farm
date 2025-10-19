@@ -1,13 +1,13 @@
 // src/components/layout/Header.tsx
 "use client";
 
-import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
-import Image from "next/image";
-import { CONFIG } from "@/lib/config";
-import { Container } from "@/components/ui/primitives";
 import LocaleSwitcher from "@/components/LocaleSwitcher";
+import { Container } from "@/components/ui/primitives";
 import type { Dict, Locale } from "@/i18n/config";
+import { CONFIG } from "@/lib/config";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 function InstagramIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -80,7 +80,7 @@ export default function Header({ t, locale }: HeaderProps) {
   }, [cropsOpen]);
 
   const linkCls =
-    "relative text-slate-600 hover:text-slate-900 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:rounded-md";
+    "relative text-slate-600 hover:text-slate-900 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600/30 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:rounded-lg font-medium";
   const close = () => setOpen(false);
   const closeCrops = () => setCropsOpen(false);
 
@@ -134,7 +134,7 @@ export default function Header({ t, locale }: HeaderProps) {
   // ===== Variante mínima para /historia =====
   if (isHistory) {
     return (
-      <header className={`sticky top-0 z-40 border-b transition-all duration-300 ${scrolled ? "border-slate-200/80 bg-white/95 shadow-xl shadow-slate-900/[0.03]" : "border-slate-200/40 bg-white/90"}`}>
+      <header className={`sticky top-0 z-40 border-b transition-all duration-300 ${scrolled ? "border-slate-200/60 bg-white/98 shadow-lg shadow-slate-900/[0.02]" : "border-slate-200/30 bg-white/95"}`}>
         <Container className="flex h-16 items-center justify-between">
           {Brand}
           <LocaleSwitcher size="sm" />
@@ -145,7 +145,7 @@ export default function Header({ t, locale }: HeaderProps) {
 
   // ===== Header completo (resto del sitio) =====
   return (
-    <header className={`sticky top-0 z-40 border-b transition-all duration-300 ${scrolled ? "border-slate-200/80 bg-white/95 shadow-xl shadow-slate-900/[0.03]" : "border-slate-200/40 bg-white/90"}`}>
+    <header className={`sticky top-0 z-40 border-b transition-all duration-300 ${scrolled ? "border-slate-200/60 bg-white/98 shadow-lg shadow-slate-900/[0.02]" : "border-slate-200/30 bg-white/95"}`}>
       <Container className="flex h-16 items-center justify-between">
         {Brand}
 

@@ -1,10 +1,10 @@
 // src/components/sections/About.tsx
 "use client";
 
-import { CONFIG } from "@/lib/config";
-import { Section, Card } from "@/components/ui/primitives";
+import { Section } from "@/components/ui/primitives";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import type { Dict, Locale } from "@/i18n/config";
+import { CONFIG } from "@/lib/config";
 
 type Props = {
   t: Dict;
@@ -43,12 +43,12 @@ export default function About({ t, locale }: Props) {
   const cards: AboutCard[] = t.about.cards ?? fallbackCards;
 
   return (
-    <Section id="sobre" eyebrow={t.nav.about} title={t.about.title} intro={intro}>
+    <Section id="sobre" eyebrow={t.nav.about} title={t.about.title} intro={intro || ""}>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-12">
         {cards.map((c: AboutCard, i: number) => (
-          <ScrollReveal key={i} delay={i * 0.1}>
+          <ScrollReveal key={i} delay={i * 0.15}>
             <div className="group h-full">
-              <div className="border-l-2 border-slate-200/80 pl-6 sm:pl-8 py-2 group-hover:border-teal-600 transition-all duration-300">
+              <div className="border-l-2 border-slate-200/60 pl-6 sm:pl-8 py-2 group-hover:border-emerald-600 transition-all duration-250">
                 <h4 className="text-xl sm:text-2xl font-semibold text-slate-900 mb-4 tracking-tight">{c.title}</h4>
                 <p className="text-slate-600 leading-relaxed text-base">{c.body}</p>
                 {i === 2 && (
@@ -56,7 +56,7 @@ export default function About({ t, locale }: Props) {
                     href={CONFIG.contact.instagram}
                     target="_blank"
                     rel="noreferrer"
-                    className="mt-6 inline-flex items-center text-slate-900 hover:text-teal-600 font-medium transition-all duration-300 group/link"
+                    className="mt-6 inline-flex items-center text-slate-900 hover:text-emerald-600 font-medium transition-all duration-250 group/link"
                   >
                     <span className="underline underline-offset-4 decoration-1">{locale === "en" ? "See updates on Instagram" : "Ver actualizaciones en Instagram"}</span>
                     <svg className="ml-2 w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

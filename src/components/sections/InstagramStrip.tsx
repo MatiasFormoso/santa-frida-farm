@@ -1,11 +1,11 @@
 // src/components/sections/InstagramStrip.tsx
 "use client";
 
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import { Section } from "@/components/ui/primitives";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import { CONFIG } from "@/lib/config";
 import type { Dict, Locale } from "@/i18n/config";
+import { CONFIG } from "@/lib/config";
 
 const POSTS = [
   { url: "https://www.instagram.com/p/DPWtK6kk6ZI/", thumb: "/images/instagram/ig-1.webp", fallback: "/images/instagram/ig-1.jpg", alt: "Post 1 de Instagram" },
@@ -29,7 +29,7 @@ export default function InstagramStrip({ t, locale }: { t: Dict; locale: Locale 
   const cta = locale === "en" ? "Follow on Instagram" : "Seguir en Instagram";
 
   return (
-    <Section id="instagram" tone="alt" eyebrow={eyebrow} title={title} intro={intro}>
+    <Section id="instagram" eyebrow={eyebrow} title={title} intro={intro}>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
         {POSTS.map((p, i) => (
           <ScrollReveal key={i} delay={i * 0.06} duration={0.6}>

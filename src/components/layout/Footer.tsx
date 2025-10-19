@@ -1,9 +1,9 @@
 // src/components/layout/Footer.tsx
 "use client";
 
-import { CONFIG } from "@/lib/config";
 import { Container } from "@/components/ui/primitives";
 import type { Dict, Locale } from "@/i18n/config";
+import { CONFIG } from "@/lib/config";
 
 type Props = {
   t: Dict;
@@ -32,7 +32,7 @@ export default function Footer({ t, locale }: Props) {
     : null;
 
   return (
-    <footer className="border-t border-slate-200/60 bg-gradient-to-b from-white via-slate-50/30 to-slate-50/60">
+    <footer className="border-t border-slate-200/40 bg-gradient-to-b from-white via-slate-50/20 to-slate-50/40">
       <Container className="py-14 sm:py-18 lg:py-20 grid gap-10 sm:gap-12 lg:gap-14 sm:grid-cols-2 lg:grid-cols-4">
         {/* Col 1: marca + tagline corto */}
         <div>

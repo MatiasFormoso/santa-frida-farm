@@ -1,9 +1,8 @@
 // src/components/ui/primitives.tsx
 "use client";
 
-import React from "react";
 import { motion, useInView } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 type WithChildren<T = {}> = T & { children?: React.ReactNode };
 
@@ -82,9 +81,9 @@ export const Section = ({
                 </h2>
               ) : (
                 <motion.h2
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
+                  transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
                   style={{ willChange: 'opacity, transform' }}
                   className="text-3xl sm:text-4xl lg:text-5xl font-medium text-slate-900 leading-[1.2] tracking-tight mb-6"
                 >
@@ -99,9 +98,9 @@ export const Section = ({
                 </p>
               ) : (
                 <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
+                  transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
                   style={{ willChange: 'opacity, transform' }}
                   className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl"
                 >
@@ -119,7 +118,7 @@ export const Section = ({
 
 // ====== Pill ======
 export const Pill = ({ children }: { children?: React.ReactNode }) => (
-  <span className="inline-flex items-center rounded-full border border-teal-700/20 bg-teal-700/5 px-3 py-1 text-sm text-teal-900">
+  <span className="inline-flex items-center rounded-full border border-emerald-700/15 bg-emerald-50/50 px-3 py-1 text-sm font-medium text-emerald-800 shadow-sm">
     {children}
   </span>
 );
@@ -140,20 +139,20 @@ export const Button = ({
   ariaLabel,
 }: ButtonProps) => {
   const base =
-    "group inline-flex items-center justify-center gap-2 font-semibold transition-all duration-300 outline-none " +
-    "focus-visible:ring-2 focus-visible:ring-emerald-600/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white " +
-    "transform hover:scale-[1.02] active:scale-[0.98] will-change-transform";
+    "group inline-flex items-center justify-center gap-2 font-medium transition-all duration-200 outline-none " +
+    "focus-visible:ring-2 focus-visible:ring-emerald-600/30 focus-visible:ring-offset-2 focus-visible:ring-offset-white " +
+    "transform hover:scale-[1.01] active:scale-[0.99] will-change-transform";
   
   const sizeStyles = {
-    sm: "rounded-lg px-5 py-2.5 text-sm",
-    md: "rounded-lg px-7 py-3.5 text-base",
-    lg: "rounded-lg px-9 py-4 text-lg"
+    sm: "rounded-xl px-4 py-2 text-sm",
+    md: "rounded-xl px-6 py-3 text-base",
+    lg: "rounded-xl px-8 py-4 text-lg"
   };
   
   const variantStyles = {
-    primary: "bg-slate-900 text-white hover:bg-slate-800 shadow-md hover:shadow-lg",
-    ghost: "text-slate-700 border border-slate-300/80 hover:bg-slate-50 hover:border-slate-400/90 hover:shadow-sm",
-    outline: "text-slate-900 border-2 border-slate-900 hover:bg-slate-900 hover:text-white shadow-sm hover:shadow-md"
+    primary: "bg-slate-900 text-white hover:bg-slate-800 shadow-sm hover:shadow-md border border-slate-900",
+    ghost: "text-slate-700 border border-slate-200 hover:bg-slate-50 hover:border-slate-300 hover:shadow-sm",
+    outline: "text-slate-900 border border-slate-900 hover:bg-slate-900 hover:text-white shadow-sm hover:shadow-md"
   };
   
   return (
@@ -169,15 +168,15 @@ type CardProps = WithChildren<
 >;
 export const Card = ({ className = "", hover = true, variant = "default", children, ...rest }: CardProps) => {
   const variantStyles = {
-    default: "rounded-xl border border-slate-200/80 bg-white",
-    elevated: "rounded-xl border border-slate-200/60 bg-white shadow-sm",
-    subtle: "rounded-xl border border-slate-200/40 bg-slate-50/40",
-    minimal: "border-l-2 border-slate-200 pl-6 bg-transparent"
+    default: "rounded-2xl border border-slate-200/60 bg-white shadow-xs",
+    elevated: "rounded-2xl border border-slate-200/80 bg-white shadow-sm",
+    subtle: "rounded-2xl border border-slate-200/40 bg-slate-50/30",
+    minimal: "border-l-2 border-slate-300/60 pl-6 bg-transparent"
   };
   
   const hoverClass = hover 
-    ? "hover:border-slate-300/90 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-400 ease-out" 
-    : "transition-all duration-300";
+    ? "hover:border-slate-300/80 hover:shadow-md hover:-translate-y-1 transition-all duration-250 ease-out" 
+    : "transition-all duration-200";
   
   return (
     <div

@@ -1,10 +1,10 @@
 // src/components/sections/Company.tsx
 "use client";
 
-import Link from "next/link";
-import { Section, Card } from "@/components/ui/primitives";
+import { Card, Section } from "@/components/ui/primitives";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import type { Dict, Locale } from "@/i18n/config";
+import Link from "next/link";
 
 type Props = { t: Dict; locale: Locale };
 
@@ -47,7 +47,7 @@ export default function Company({ t, locale }: Props) {
       title={t.company.historyTitle}
     >
       {/* Intro + link inline al final */}
-      <ScrollReveal>
+      <ScrollReveal delay={0.1}>
         <p className="text-slate-700 text-base sm:text-lg leading-relaxed">
           {locale === "en" ? teaserEN : teaserES}{" "}
           <Link
@@ -62,14 +62,14 @@ export default function Company({ t, locale }: Props) {
 
       {/* Misión / Visión */}
       <div className="mt-10 mb-10 grid gap-6 md:grid-cols-2">
-        <ScrollReveal delay={0.1}>
-          <Card className="p-8 hover:shadow-lg transition-all duration-500">
+        <ScrollReveal delay={0.2}>
+          <Card className="p-8 hover:shadow-lg transition-all duration-300">
             <h4 className="font-semibold text-slate-900 text-lg mb-3">{t.company.visionTitle}</h4>
             <p className="text-slate-600 leading-relaxed">{locale === "en" ? visionEN : visionES}</p>
           </Card>
         </ScrollReveal>
-        <ScrollReveal delay={0.2}>
-          <Card className="p-8 hover:shadow-lg transition-all duration-500">
+        <ScrollReveal delay={0.3}>
+          <Card className="p-8 hover:shadow-lg transition-all duration-300">
             <h4 className="font-semibold text-slate-900 text-lg mb-3">{t.company.missionTitle}</h4>
             <p className="text-slate-600 leading-relaxed">{locale === "en" ? missionEN : missionES}</p>
           </Card>

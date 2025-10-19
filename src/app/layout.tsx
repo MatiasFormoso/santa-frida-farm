@@ -1,10 +1,11 @@
 // src/app/layout.tsx
-import type { Metadata } from "next";
-import "./globals.css";
-import { defaultMetadata, getSiteUrl } from "@/lib/seo";
 import { CONFIG } from "@/lib/config";
+import { defaultMetadata, getSiteUrl } from "@/lib/seo";
+import { generateOrganizationStructuredData } from "@/lib/structured-data";
+import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Script from "next/script";
+import "./globals.css";
 
 export const metadata: Metadata = {
   ...defaultMetadata,
@@ -23,64 +24,15 @@ export const metadata: Metadata = {
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  // JSON-LD estático (se evalúa en el server, sin depender de window)
-  const orgJson = {
-    "@context": "https://schema.org",
-    "@type": "AgriculturalBusiness",
-    name: CONFIG.site.name,
-    url: getSiteUrl(),
-    description: CONFIG.site.description,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Marinilla",
-      addressRegion: "Antioquia",
-      addressCountry: "CO"
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: 6.1733333,
-      longitude: -75.3369444
-    },
-    telephone: CONFIG.contact.whatsappNumber,
-    email: CONFIG.contact.email,
-    sameAs: [CONFIG.contact.instagram],
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Agricultural Products",
-      itemListElement: [
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Product",
-            name: "Hass Avocados",
-            description: "Premium quality Hass avocados from Antioquia, Colombia"
-          }
-        },
-        {
-          "@type": "Offer", 
-          itemOffered: {
-            "@type": "Product",
-            name: "Specialty Coffee",
-            description: "Catimor specialty coffee beans from Antioquia, Colombia"
-          }
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Product", 
-            name: "Fresh Greens",
-            description: "Organic seasonal vegetables and leafy greens"
-          }
-        }
-      ]
-    }
-  };
+  // JSON-LD estructurado optimizado para SEO
+  const orgJson = generateOrganizationStructuredData("es");
 
   const websiteJson = {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: CONFIG.site.name,
     url: getSiteUrl(),
+    description: "Premium agricultural exporter from Antioquia, Colombia to UAE and Canada",
     potentialAction: {
       "@type": "SearchAction",
       target: `${getSiteUrl()}/?q={search_term_string}`,

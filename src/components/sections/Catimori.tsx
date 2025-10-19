@@ -1,13 +1,13 @@
 // src/components/sections/Catimori.tsx
 "use client";
 
-import { Section, Card } from "@/components/ui/primitives";
+import { Section } from "@/components/ui/primitives";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import type { Dict, Locale } from "@/i18n/config";
 
 type Props = { t: Dict; locale: Locale };
 
-export default function Catimori({ t, locale }: Props) {
+export default function Catimori({ locale }: Props) {
   const eyebrow = locale === "en" ? "Crops" : "Cultivos";
   const title = locale === "en" ? "Catimor Coffee (Caturra × Timor cross)" : "Café Catimor (cruce Caturra x Timor)";
 
@@ -43,7 +43,7 @@ export default function Catimori({ t, locale }: Props) {
   const stats = locale === "en" ? statsEN : statsES;
 
   return (
-    <Section id="catimori" tone="alt" eyebrow={eyebrow} title={title}>
+    <Section id="catimori" eyebrow={eyebrow} title={title}>
       <div className="space-y-8 md:space-y-0 md:grid md:gap-12 lg:gap-16 md:grid-cols-12 md:items-center">
         {/* Contenido - izquierda en desktop */}
         <div className="md:col-span-7">

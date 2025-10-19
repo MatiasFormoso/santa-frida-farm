@@ -1,13 +1,13 @@
 // src/components/sections/Hortalizas.tsx
 "use client";
 
-import { Section, Card } from "@/components/ui/primitives";
+import { Section } from "@/components/ui/primitives";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import type { Dict, Locale } from "@/i18n/config";
 
 type Props = { t: Dict; locale: Locale };
 
-export default function Hortalizas({ t, locale }: Props) {
+export default function Hortalizas({ locale }: Props) {
   const eyebrow = locale === "en" ? "Crops" : "Cultivos";
   const title = locale === "en" ? "Fresh Greens" : "Hortalizas frescas";
 
@@ -37,7 +37,7 @@ export default function Hortalizas({ t, locale }: Props) {
   const stats = locale === "en" ? statsEN : statsES;
 
   return (
-    <Section id="hortalizas" eyebrow={eyebrow} title={title}>
+    <Section id="hortalizas" eyebrow={eyebrow} title={title} tone="alt">
       <div>
         {/* Contenido */}
         <div>

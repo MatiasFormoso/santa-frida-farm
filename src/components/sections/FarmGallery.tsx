@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Section } from "@/components/ui/primitives";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import type { Dict, Locale } from "@/i18n/config";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 type Props = { t: Dict; locale: Locale };
 
@@ -78,7 +78,7 @@ const ALL_CLIENT_PHOTOS = [
   }
 ];
 
-export default function FarmGallery({ t, locale }: Props) {
+export default function FarmGallery({ locale }: Props) {
   const [currentPhotos, setCurrentPhotos] = useState<number[]>([0, 1, 2]);
   const [usedPhotos, setUsedPhotos] = useState<number[]>([0, 1, 2]);
   const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null);
@@ -146,16 +146,16 @@ export default function FarmGallery({ t, locale }: Props) {
               {/* Marco principal */}
               <motion.div
                 key={`main-${currentPhotos[0]}`}
-                initial={{ opacity: 0, x: -50 }}
+                initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, ease: "easeInOut" }}
+                transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
                 className="relative overflow-hidden rounded-2xl border border-slate-300/30 shadow-lg bg-white group"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={ALL_CLIENT_PHOTOS[currentPhotos[0]].src}
-                  alt={ALL_CLIENT_PHOTOS[currentPhotos[0]].alt}
-                  className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  src={ALL_CLIENT_PHOTOS[currentPhotos[0]!]!.src}
+                  alt={ALL_CLIENT_PHOTOS[currentPhotos[0]!]!.alt}
+                  className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-102"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
@@ -179,16 +179,16 @@ export default function FarmGallery({ t, locale }: Props) {
               {/* Marco central */}
               <motion.div
                 key={`center-${currentPhotos[1]}`}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeInOut", delay: 0.1 }}
+                transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: 0.2 }}
                 className="relative overflow-hidden rounded-2xl border border-slate-300/30 shadow-lg bg-white group"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={ALL_CLIENT_PHOTOS[currentPhotos[1]].src}
-                  alt={ALL_CLIENT_PHOTOS[currentPhotos[1]].alt}
-                  className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  src={ALL_CLIENT_PHOTOS[currentPhotos[1]!]!.src}
+                  alt={ALL_CLIENT_PHOTOS[currentPhotos[1]!]!.alt}
+                  className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-102"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
@@ -212,16 +212,16 @@ export default function FarmGallery({ t, locale }: Props) {
               {/* Marco derecho - solo visible en desktop */}
               <motion.div
                 key={`right-${currentPhotos[2]}`}
-                initial={{ opacity: 0, x: 50 }}
+                initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, ease: "easeInOut", delay: 0.2 }}
+                transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: 0.3 }}
                 className="relative overflow-hidden rounded-2xl border border-slate-300/30 shadow-lg bg-white group hidden sm:block"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={ALL_CLIENT_PHOTOS[currentPhotos[2]].src}
-                  alt={ALL_CLIENT_PHOTOS[currentPhotos[2]].alt}
-                  className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  src={ALL_CLIENT_PHOTOS[currentPhotos[2]!]!.src}
+                  alt={ALL_CLIENT_PHOTOS[currentPhotos[2]!]!.alt}
+                  className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-102"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
