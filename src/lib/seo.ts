@@ -36,10 +36,10 @@ export function getSiteUrl(): string {
 export const defaultMetadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: {
-    default: "Santa Frida Farm — Exportador Premium a Emiratos Árabes y Canadá | Aguacate Hass y Café Catimor",
-    template: "%s | Santa Frida Farm — Exportaciones Agrícolas Premium a UAE y Canadá",
+    default: "Santa Frida Farm — Cultivo consciente en Marinilla, Antioquia | Aguacate Hass y Café Catimor",
+    template: "%s | Santa Frida Farm — Agricultura familiar en Antioquia",
   },
-  description: "Finca familiar premium en Marinilla, Antioquia. Exportador líder de aguacate Hass, café Catimor de especialidad y hortalizas orgánicas a Emiratos Árabes Unidos y Canadá. Cultivo consciente, trazabilidad completa y certificaciones internacionales.",
+  description: "Finca familiar en Marinilla, Antioquia. Cultivamos aguacate Hass, café Catimor de especialidad y hortalizas orgánicas con amor y cuidado del entorno. Agricultura consciente en el oriente antioqueño.",
   keywords: [
     "aguacate hass colombia",
     "café catimor antioquia", 
@@ -105,8 +105,8 @@ export const defaultMetadata: Metadata = {
     alternateLocale: "en_US",
     url: getSiteUrl(),
     siteName: "Santa Frida Farm",
-    title: "Santa Frida Farm — Exportador Premium a Emiratos Árabes y Canadá",
-    description: "Exportador líder de aguacate Hass, café Catimor de especialidad y hortalizas orgánicas a Emiratos Árabes Unidos y Canadá. Finca familiar premium en Marinilla, Antioquia con certificaciones internacionales.",
+    title: "Santa Frida Farm — Agricultura consciente en Marinilla, Antioquia",
+    description: "Finca familiar en Marinilla, Antioquia. Cultivamos aguacate Hass, café Catimor de especialidad y hortalizas orgánicas con amor y cuidado del entorno.",
     images: [
       {
         url: "/images/hero-1920-optimized.webp",
@@ -119,8 +119,8 @@ export const defaultMetadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Santa Frida Farm — Exportador a Emiratos Árabes y Canadá",
-    description: "Exportador líder de aguacate Hass, café Catimor de especialidad y hortalizas orgánicas a Emiratos Árabes Unidos y Canadá. Finca premium en Marinilla, Antioquia.",
+    title: "Santa Frida Farm — Agricultura familiar en Antioquia",
+    description: "Finca familiar en Marinilla, Antioquia. Cultivamos aguacate Hass, café Catimor de especialidad y hortalizas orgánicas con amor y cuidado del entorno.",
     images: ["/images/hero-1920-optimized.webp"],
     creator: "@santafridafarm",
   },

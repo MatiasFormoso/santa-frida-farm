@@ -11,12 +11,15 @@ export const metadata: Metadata = {
   ...defaultMetadata,
   icons: {
     icon: [
-      { url: "/favicon.ico" },
+      { url: "/favicon.ico", sizes: "any" },
       { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
       { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
     ],
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
-    other: [{ rel: "maskable", url: "/icon-maskable-512.png" }],
+    other: [
+      { rel: "maskable", url: "/icon-maskable-512.png" },
+      { rel: "icon", url: "/logo-santa-frida.png", sizes: "192x192", type: "image/png" }
+    ],
   },
 };
 
@@ -32,7 +35,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     "@type": "WebSite",
     name: CONFIG.site.name,
     url: getSiteUrl(),
-    description: "Premium agricultural exporter from Antioquia, Colombia to UAE and Canada",
+    description: "Agricultura familiar consciente en Marinilla, Antioquia",
     potentialAction: {
       "@type": "SearchAction",
       target: `${getSiteUrl()}/?q={search_term_string}`,

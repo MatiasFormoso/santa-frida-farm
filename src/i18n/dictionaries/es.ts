@@ -2,7 +2,7 @@ import type { Dict } from "@/i18n/config";
 
 const es: Dict = {
   meta: {
-    title: "Santa Frida Farm — Conscious farming in Antioquia",
+    title: "Santa Frida Farm — Cultivo consciente en Antioquia",
     description:
       "Cultivamos con amor en Marinilla, Antioquia. Aguacate Hass, café de especialidad y hortalizas frescas — cultivo consciente en el oriente antioqueño.",
   },
