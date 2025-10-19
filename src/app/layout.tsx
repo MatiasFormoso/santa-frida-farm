@@ -12,13 +12,17 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
-      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
       { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.png", sizes: "any", type: "image/png" },
     ],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }
+    ],
     other: [
-      { rel: "maskable", url: "/icon-maskable-512.png" },
-      { rel: "icon", url: "/logo-santa-frida.png", sizes: "192x192", type: "image/png" }
+      { rel: "maskable", url: "/icon-maskable-512.png", sizes: "512x512" },
+      { rel: "icon", url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { rel: "icon", url: "/icon-512.png", sizes: "512x512", type: "image/png" }
     ],
   },
 };
@@ -46,6 +50,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang={CONFIG.site.lang} className="scroll-smooth">
       <head>
+        {/* Favicon específico para Google */}
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        
         {/* Render en SSR y antes de hidratar: evita mismatches */}
         <Script
           id="org-jsonld"
