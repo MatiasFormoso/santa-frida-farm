@@ -13,10 +13,31 @@ import Hortalizas from "@/components/sections/Hortalizas";
 import InstagramStrip from "@/components/sections/InstagramStrip";
 
 import { getDictionary, type Dict, type Locale } from "@/i18n/config";
+import type { Metadata } from "next";
 
 export const dynamic = "force-static";
 
 type Props = { params: { locale: Locale } };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const t = await getDictionary(params.locale);
+  const isEN = params.locale === "en";
+  
+  return {
+    title: isEN 
+      ? "Santa Frida Farm — Premium Agricultural Exporter to UAE and Canada"
+      : "Santa Frida Farm — Exportador Premium a Emiratos Árabes y Canadá",
+    description: t.meta.description,
+    alternates: {
+      canonical: `/${params.locale}`,
+      languages: { es: "/es", en: "/en" }
+    },
+    robots: {
+      index: true,
+      follow: true,
+    }
+  };
+}
 
 export default async function HomeByLocale({ params }: Props) {
   const t: Dict = await getDictionary(params.locale);
