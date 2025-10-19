@@ -21,13 +21,13 @@ export default function Company({ t, locale }: Props) {
 
   // Misión / Visión oficiales
   const visionES =
-    "Ser una empresa agrícola reconocida internacionalmente por la calidad excepcional de nuestros productos y nuestro compromiso con la sostenibilidad, llevando el alma del campo a cada rincón del mundo, sin perder la raíz de quienes somos: una familia unida por la tierra y el respeto a la naturaleza.";
+    "Ser una finca familiar reconocida por cultivar con amor y respeto por la tierra. Queremos compartir nuestros productos con el mundo, manteniendo siempre nuestra esencia: una familia unida por la tierra y el cuidado de la naturaleza.";
   const missionES =
-    "En Santa Frida Farm cultivamos con propósito y conciencia, respetando la tierra que nos ha visto crecer como familia y como productores. Nuestra misión es ofrecer al mundo productos agrícolas de la más alta calidad, sembrados en condiciones óptimas y con prácticas sostenibles que conservan la esencia de nuestra tierra, nuestra gente y nuestra historia.";
+    "En Santa Frida Farm cultivamos con propósito y conciencia, respetando la tierra que nos ha visto crecer como familia. Nuestra misión es ofrecer productos agrícolas de buena calidad, cultivados con prácticas sostenibles que conservan la esencia de nuestra tierra y nuestra historia.";
   const visionEN =
-    "To be an agricultural company recognized internationally for the exceptional quality of our products and our commitment to sustainability, taking the soul of the countryside to every corner of the world, without losing the root of who we are: a family united by the land and respect for nature.";
+    "To be a family farm recognized for growing with love and respect for the land. We want to share our products with the world, always maintaining our essence: a family united by the land and care for nature.";
   const missionEN =
-    "At Santa Frida Farm we grow with purpose and awareness, respecting the land that watched us grow as a family and as producers. Our mission is to offer the world agricultural products of the highest quality, grown under optimal conditions and with sustainable practices that preserve the essence of our land, our people and our history.";
+    "At Santa Frida Farm we grow with purpose and awareness, respecting the land that watched us grow as a family. Our mission is to offer good quality agricultural products, grown with sustainable practices that preserve the essence of our land and our history.";
 
   // Especialidad + Capacitaciones/Alianzas
   const specialtyES =

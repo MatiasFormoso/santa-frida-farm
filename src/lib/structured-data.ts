@@ -15,8 +15,8 @@ export function generateStructuredData({ locale }: StructuredDataProps) {
     "name": "Santa Frida Farm",
     "alternateName": "Santa Frida Farm",
     "description": isEN 
-      ? "Premium agricultural exporter specializing in Hass avocados, Catimor specialty coffee, and organic vegetables from Marinilla, Antioquia, Colombia. Exports to UAE and Canada with complete traceability and sustainable farming practices."
-      : "Exportador agrícola premium especializado en aguacate Hass, café Catimor de especialidad y hortalizas orgánicas desde Marinilla, Antioquia, Colombia. Exporta a Emiratos Árabes Unidos y Canadá con trazabilidad completa y prácticas agrícolas sostenibles.",
+      ? "Family farm specializing in Hass avocados, Catimor specialty coffee, and organic vegetables from Marinilla, Antioquia, Colombia. Conscious farming with sustainable practices and complete traceability."
+      : "Finca familiar especializada en aguacate Hass, café Catimor de especialidad y hortalizas orgánicas desde Marinilla, Antioquia, Colombia. Cultivo consciente con prácticas sostenibles y trazabilidad completa.",
     "url": CONFIG.site.url,
     "logo": `${CONFIG.site.url}/logo-santa-frida.png`,
     "image": `${CONFIG.site.url}/images/hero-1920-optimized.webp`,
@@ -26,8 +26,8 @@ export function generateStructuredData({ locale }: StructuredDataProps) {
       "name": "María Yennis Silgado",
       "jobTitle": "Founder & Agricultural Producer",
       "description": isEN 
-        ? "Agricultural entrepreneur and founder of Santa Frida Farm, specializing in premium crop production and international exports."
-        : "Emprendedora agrícola y fundadora de Santa Frida Farm, especializada en producción de cultivos premium y exportaciones internacionales."
+        ? "Agricultural entrepreneur and founder of Santa Frida Farm, specializing in conscious crop production and sustainable farming."
+        : "Emprendedora agrícola y fundadora de Santa Frida Farm, especializada en producción consciente de cultivos y agricultura sostenible."
     },
     "address": {
       "@type": "PostalAddress",
@@ -79,8 +79,8 @@ export function generateStructuredData({ locale }: StructuredDataProps) {
             "@type": "Product",
             "name": isEN ? "Hass Avocados" : "Aguacate Hass",
             "description": isEN 
-              ? "Premium Hass avocados grown with sustainable practices and complete traceability. Exported to UAE and Canada."
-              : "Aguacates Hass premium cultivados con prácticas sostenibles y trazabilidad completa. Exportados a Emiratos Árabes Unidos y Canadá.",
+              ? "Hass avocados grown with sustainable practices and complete traceability. Available for export."
+              : "Aguacates Hass cultivados con prácticas sostenibles y trazabilidad completa. Disponibles para exportación.",
             "category": "Agricultural Product",
             "brand": {
               "@type": "Brand",
@@ -109,8 +109,8 @@ export function generateStructuredData({ locale }: StructuredDataProps) {
             "@type": "Product",
             "name": isEN ? "Catimor Specialty Coffee" : "Café Catimor de Especialidad",
             "description": isEN 
-              ? "Premium Catimor coffee (Caturra × Timor cross) with balanced cup profiles and complete traceability from tree to export."
-              : "Café Catimor premium (cruce Caturra × Timor) con perfiles de taza equilibrados y trazabilidad completa del árbol a la exportación.",
+              ? "Catimor coffee (Caturra × Timor cross) with balanced cup profiles and complete traceability from tree to harvest."
+              : "Café Catimor (cruce Caturra × Timor) con perfiles de taza equilibrados y trazabilidad completa del árbol a la cosecha.",
             "category": "Agricultural Product",
             "brand": {
               "@type": "Brand",
@@ -228,15 +228,15 @@ export function generateProductStructuredData(locale: "es" | "en", productType: 
     avocado: {
       name: isEN ? "Hass Avocados" : "Aguacate Hass",
       description: isEN 
-        ? "Premium Hass avocados with complete traceability, exported to UAE and Canada"
-        : "Aguacates Hass premium con trazabilidad completa, exportados a Emiratos Árabes y Canadá",
+        ? "Hass avocados with complete traceability, available for export"
+        : "Aguacates Hass con trazabilidad completa, disponibles para exportación",
       image: "/images/products/avocado-1200.webp"
     },
     coffee: {
       name: isEN ? "Catimor Specialty Coffee" : "Café Catimor de Especialidad", 
       description: isEN
-        ? "Premium Catimor coffee (Caturra × Timor cross) with balanced profiles"
-        : "Café Catimor premium (cruce Caturra × Timor) con perfiles equilibrados",
+        ? "Catimor coffee (Caturra × Timor cross) with balanced profiles"
+        : "Café Catimor (cruce Caturra × Timor) con perfiles equilibrados",
       image: "/images/products/coffee-1200.webp"
     },
     vegetables: {

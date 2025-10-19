@@ -17,11 +17,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const isEN = params.locale === "en";
   const title = isEN 
-    ? "History — María Yennis Silgado & Santa Frida Farm | Premium Agricultural Export to UAE & Canada"
-    : "Historia — María Yennis Silgado & Santa Frida Farm | Exportador Premium a Emiratos Árabes y Canadá";
+    ? "History — María Yennis Silgado & Santa Frida Farm | Conscious Farming in Antioquia"
+    : "Historia — María Yennis Silgado & Santa Frida Farm | Cultivo Consciente en Antioquia";
   const description = isEN
-    ? "The inspiring story of María Yennis Silgado and Santa Frida Farm — from resilience to international export success. Premium agricultural products to UAE and Canada from Marinilla, Antioquia."
-    : "La inspiradora historia de María Yennis Silgado y Santa Frida Farm — de la resiliencia al éxito exportador internacional. Productos agrícolas premium a Emiratos Árabes y Canadá desde Marinilla, Antioquia.";
+    ? "The inspiring story of María Yennis Silgado and Santa Frida Farm — from resilience to agricultural success. Conscious farming in Marinilla, Antioquia."
+    : "La inspiradora historia de María Yennis Silgado y Santa Frida Farm — de la resiliencia al éxito agrícola. Cultivo consciente en Marinilla, Antioquia.";
 
   return {
     title,
@@ -54,8 +54,8 @@ export async function generateMetadata({
           width: 1200,
           height: 630,
           alt: isEN 
-            ? "María Yennis Silgado selecting avocados at Santa Frida Farm - Premium agricultural export to UAE and Canada"
-            : "María Yennis Silgado seleccionando aguacates en Santa Frida Farm - Exportación agrícola premium a Emiratos Árabes y Canadá",
+            ? "María Yennis Silgado selecting avocados at Santa Frida Farm - Conscious farming in Antioquia"
+            : "María Yennis Silgado seleccionando aguacates en Santa Frida Farm - Cultivo consciente en Antioquia",
           type: "image/webp",
         },
       ],

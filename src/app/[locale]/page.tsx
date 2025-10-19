@@ -25,8 +25,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   
   return {
     title: isEN 
-      ? "Santa Frida Farm — Premium Agricultural Exporter to UAE and Canada"
-      : "Santa Frida Farm — Exportador Premium a Emiratos Árabes y Canadá",
+      ? "Santa Frida Farm — Conscious farming in Antioquia"
+      : "Santa Frida Farm — Cultivo consciente en Antioquia",
     description: t.meta.description,
     alternates: {
       canonical: `/${params.locale}`,
