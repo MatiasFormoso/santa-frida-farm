@@ -6,6 +6,82 @@ export interface StructuredDataProps {
   type?: "Organization" | "AgriculturalBusiness" | "LocalBusiness" | "Product";
 }
 
+// Función para generar productos individuales con offers
+export function generateProductStructuredData({ locale, productType }: StructuredDataProps & { productType: "avocado" | "coffee" | "vegetables" }) {
+  const isEN = locale === "en";
+  
+  const products = {
+    avocado: {
+      name: isEN ? "Hass Avocados" : "Aguacate Hass",
+      description: isEN 
+        ? "Hass avocados grown with sustainable practices and complete traceability. Available for export."
+        : "Aguacates Hass cultivados con prácticas sostenibles y trazabilidad completa. Disponibles para exportación.",
+      image: "/images/products/avocado-1200.webp",
+      price: "Contact for pricing",
+      availability: "https://schema.org/InStock"
+    },
+    coffee: {
+      name: isEN ? "Catimor Specialty Coffee" : "Café Catimor de Especialidad", 
+      description: isEN
+        ? "Catimor coffee (Caturra × Timor cross) with balanced cup profiles and complete traceability from tree to harvest."
+        : "Café Catimor (cruce Caturra × Timor) con perfiles de taza equilibrados y trazabilidad completa del árbol a la cosecha.",
+      image: "/images/products/coffee-1200.webp",
+      price: "Contact for pricing",
+      availability: "https://schema.org/InStock"
+    },
+    vegetables: {
+      name: isEN ? "Fresh Organic Vegetables" : "Hortalizas Orgánicas Frescas",
+      description: isEN
+        ? "Seasonal organic vegetables including lettuce, cabbage, chili peppers, zucchini, and goldenberries. Hand-harvested and cold-chain managed."
+        : "Hortalizas orgánicas de temporada incluyendo lechuga, repollo, ají, calabacín y uchuvas. Cosechadas manualmente y manejadas en cadena de frío.",
+      image: "/images/products/greens-1200.webp", 
+      price: "Contact for pricing",
+      availability: "https://schema.org/Seasonal"
+    }
+  };
+
+  const product = products[productType];
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": product.name,
+    "description": product.description,
+    "category": "Agricultural Product",
+    "brand": {
+      "@type": "Brand",
+      "name": "Santa Frida Farm"
+    },
+    "image": `${CONFIG.site.url}${product.image}`,
+    "productionDate": "2024",
+    "countryOfOrigin": {
+      "@type": "Country",
+      "name": "Colombia"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": product.price,
+      "priceCurrency": "USD",
+      "availability": product.availability,
+      "seller": {
+        "@type": "Organization",
+        "name": "Santa Frida Farm",
+        "url": CONFIG.site.url
+      },
+      "eligibleRegion": [
+        {
+          "@type": "Country",
+          "name": "United Arab Emirates"
+        },
+        {
+          "@type": "Country", 
+          "name": "Canada"
+        }
+      ]
+    }
+  };
+}
+
 export function generateStructuredData({ locale }: StructuredDataProps) {
   const isEN = locale === "en";
   

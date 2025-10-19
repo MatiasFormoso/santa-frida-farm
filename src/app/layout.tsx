@@ -1,7 +1,7 @@
 // src/app/layout.tsx
 import { CONFIG } from "@/lib/config";
 import { defaultMetadata, getSiteUrl } from "@/lib/seo";
-import { generateOrganizationStructuredData } from "@/lib/structured-data";
+import { generateOrganizationStructuredData, generateProductStructuredData } from "@/lib/structured-data";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Script from "next/script";
@@ -69,6 +69,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJson) }}
+        />
+        
+        {/* Datos estructurados de productos */}
+        <Script
+          id="avocado-product-jsonld"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(generateProductStructuredData({ locale: "es", productType: "avocado" })) }}
+        />
+        <Script
+          id="coffee-product-jsonld"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(generateProductStructuredData({ locale: "es", productType: "coffee" })) }}
+        />
+        <Script
+          id="vegetables-product-jsonld"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(generateProductStructuredData({ locale: "es", productType: "vegetables" })) }}
         />
       </head>
       <body className={`${inter.className} min-h-screen bg-white text-stone-800`}>
