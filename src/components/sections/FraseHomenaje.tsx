@@ -3,15 +3,26 @@
 
 import type { Dict, Locale } from "@/i18n/config";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 type Props = { t: Dict; locale: Locale };
 
 /**
  * 22% de pantalla. Texto levemente más alto (no centrado exacto),
  * y con margen inferior negativo suave para reducir el blanco antes de la próxima sección.
- * ÚNICO cambio: el estilo del link “María Yennis” para que se note clickeable sin hover.
+ * ÚNICO cambio: el estilo del link "María Yennis" para que se note clickeable sin hover.
  */
 export default function FraseHomenaje({ locale }: Props) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
   const isEN = locale === "en";
 
   // Link permanente a /[locale]/historia: color + subrayado visibles siempre
@@ -42,41 +53,68 @@ export default function FraseHomenaje({ locale }: Props) {
     >
       <div className="mx-auto max-w-5xl px-6 sm:px-8">
         <div className="text-center space-y-8">
-          <motion.div
-            initial={{ opacity: 0, scaleX: 0 }}
-            whileInView={{ opacity: 1, scaleX: 1 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 1.0, delay: 0.1, ease: "easeOut" }}
-            className="w-16 h-px bg-slate-300 mx-auto"
-          />
+          {/* Línea superior */}
+          {isMobile ? (
+            <div className="w-16 h-px bg-slate-300 mx-auto" />
+          ) : (
+            <motion.div
+              initial={{ opacity: 0, scaleX: 0 }}
+              whileInView={{ opacity: 1, scaleX: 1 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 1.0, delay: 0.1, ease: "easeOut" }}
+              className="w-16 h-px bg-slate-300 mx-auto"
+            />
+          )}
           
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 1.0, delay: 0.3, ease: "easeOut" }}
-            className="text-lg sm:text-xl md:text-2xl font-light leading-relaxed text-slate-700 tracking-tight"
-          >
-            {isEN ? (
-              <>
-                "Opportunities come to those who don't give up. Thank you, {name}, for teaching us that{" "}
-                sowing with love is harvesting the future."
-              </>
-            ) : (
-              <>
-                "Las oportunidades llegan para quienes no se rinden. Gracias, {name}, por enseñarnos que{" "}
-                sembrar con amor es cosechar futuro."
-              </>
-            )}
-          </motion.p>
+          {/* Texto principal */}
+          {isMobile ? (
+            <p className="text-lg sm:text-xl md:text-2xl font-light leading-relaxed text-slate-700 tracking-tight">
+              {isEN ? (
+                <>
+                  "Opportunities come to those who don't give up. Thank you, {name}, for teaching us that{" "}
+                  sowing with love is harvesting the future."
+                </>
+              ) : (
+                <>
+                  "Las oportunidades llegan para quienes no se rinden. Gracias, {name}, por enseñarnos que{" "}
+                  sembrar con amor es cosechar futuro."
+                </>
+              )}
+            </p>
+          ) : (
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 1.0, delay: 0.3, ease: "easeOut" }}
+              className="text-lg sm:text-xl md:text-2xl font-light leading-relaxed text-slate-700 tracking-tight"
+            >
+              {isEN ? (
+                <>
+                  "Opportunities come to those who don't give up. Thank you, {name}, for teaching us that{" "}
+                  sowing with love is harvesting the future."
+                </>
+              ) : (
+                <>
+                  "Las oportunidades llegan para quienes no se rinden. Gracias, {name}, por enseñarnos que{" "}
+                  sembrar con amor es cosechar futuro."
+                </>
+              )}
+            </motion.p>
+          )}
 
-          <motion.div
-            initial={{ opacity: 0, scaleX: 0 }}
-            whileInView={{ opacity: 1, scaleX: 1 }}
-            viewport={{ once: true, margin: "-50px" }}
+          {/* Línea inferior */}
+          {isMobile ? (
+            <div className="w-16 h-px bg-slate-300 mx-auto" />
+          ) : (
+            <motion.div
+              initial={{ opacity: 0, scaleX: 0 }}
+              whileInView={{ opacity: 1, scaleX: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-            className="w-16 h-px bg-slate-300 mx-auto"
-          />
+              className="w-16 h-px bg-slate-300 mx-auto"
+            />
+          )}
         </div>
       </div>
     </section>
