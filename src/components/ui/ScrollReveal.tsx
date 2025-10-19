@@ -47,7 +47,7 @@ export function ScrollReveal({
     transition: {
       duration,
       delay,
-      ease: [0.25, 0.1, 0.25, 1] // Cubic bezier más suave y profesional
+      ease: "easeOut" // Easing más suave y profesional
     }
   } : {
     initial: { opacity: 0, y: 25 },
@@ -55,7 +55,7 @@ export function ScrollReveal({
     transition: {
       duration,
       delay,
-      ease: [0.16, 1, 0.3, 1]
+      ease: "easeInOut"
     }
   };
 
@@ -106,7 +106,7 @@ export function ScrollFade({
       transition={{
         duration,
         delay,
-        ease: [0.25, 0.1, 0.25, 1] // Ease más profesional
+        ease: "easeOut" // Ease más profesional
       }}
       className={className}
     >
@@ -150,7 +150,7 @@ export function ScrollScale({
       transition={{
         duration,
         delay,
-        ease: [0.25, 0.1, 0.25, 1] // Ease más profesional
+        ease: "easeOut" // Ease más profesional
       }}
       className={className}
     >

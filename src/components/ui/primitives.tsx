@@ -66,7 +66,7 @@ export const Section = ({
                 <motion.p
                   initial={{ opacity: 0, y: 10 }}
                   animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
                   style={{ willChange: 'opacity, transform' }}
                   className="uppercase tracking-[0.25em] text-[0.6875rem] text-slate-500 font-semibold mb-4"
                 >
@@ -83,7 +83,7 @@ export const Section = ({
                 <motion.h2
                   initial={{ opacity: 0, y: 15 }}
                   animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
-                  transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+                  transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
                   style={{ willChange: 'opacity, transform' }}
                   className="text-3xl sm:text-4xl lg:text-5xl font-medium text-slate-900 leading-[1.2] tracking-tight mb-6"
                 >
@@ -100,7 +100,7 @@ export const Section = ({
                 <motion.p
                   initial={{ opacity: 0, y: 15 }}
                   animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
-                  transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+                  transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
                   style={{ willChange: 'opacity, transform' }}
                   className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl"
                 >

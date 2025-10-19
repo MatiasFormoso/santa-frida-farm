@@ -148,7 +148,7 @@ export default function FarmGallery({ locale }: Props) {
                 key={`main-${currentPhotos[0]}`}
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
                 className="relative overflow-hidden rounded-2xl border border-slate-300/30 shadow-lg bg-white group"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -181,7 +181,7 @@ export default function FarmGallery({ locale }: Props) {
                 key={`center-${currentPhotos[1]}`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: 0.2 }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
                 className="relative overflow-hidden rounded-2xl border border-slate-300/30 shadow-lg bg-white group"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -214,7 +214,7 @@ export default function FarmGallery({ locale }: Props) {
                 key={`right-${currentPhotos[2]}`}
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: 0.3 }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
                 className="relative overflow-hidden rounded-2xl border border-slate-300/30 shadow-lg bg-white group hidden sm:block"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
