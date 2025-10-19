@@ -16,5 +16,5 @@ export const metadata: Metadata = {
 };
 
 export default function Root() {
-  redirect("/es", "replace"); // Redirección permanente
+  redirect("/es"); // Redirección permanente
 }
