@@ -51,7 +51,7 @@ const en: Dict = {
   contact: {
     title: "Orders and inquiries",
     subtitle:
-      "Official contact channels. WhatsApp and email will be activated once confirmed.\n\n" +
+      "Official contact channels. WhatsApp and email available for inquiries and orders.\n\n" +
       "Where we are — Marinilla, Antioquia, Colombia. Eastern Antioquia — ideal microclimates for Hass avocados and coffee.",
     whatsappCta: "Open WhatsApp",
   },
@@ -75,8 +75,7 @@ const en: Dict = {
     specialtyBody:
       "PLACEHOLDER TEXT: quality focus, differentiators and processes. This content will be replaced by official material.",
     participationTitle: "Participation / Partnerships",
-    participationBody:
-      "PLACEHOLDER TEXT: events, trainings and institutional ties.",
+    participationBody: "PLACEHOLDER TEXT: events, trainings and institutional ties.",
   },
 
   participation: {

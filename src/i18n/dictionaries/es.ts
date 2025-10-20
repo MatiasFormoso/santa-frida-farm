@@ -51,7 +51,7 @@ const es: Dict = {
   contact: {
     title: "Pedidos y consultas",
     subtitle:
-      "Canales oficiales para escribirnos. WhatsApp y correo se activarán en cuanto estén confirmados.\n\n" +
+      "Canales oficiales para escribirnos. WhatsApp y correo electrónico disponibles para consultas y pedidos.\n\n" +
       "Dónde estamos — Marinilla, Antioquia, Colombia. Oriente antioqueño — microclimas ideales para aguacate Hass y café.",
     whatsappCta: "Abrir WhatsApp",
   },
@@ -75,8 +75,7 @@ const es: Dict = {
     specialtyBody:
       "TEXTO DE RELLENO: foco de calidad, diferenciales y procesos. Este contenido será reemplazado por material oficial.",
     participationTitle: "Participación / Alianzas",
-    participationBody:
-      "TEXTO DE RELLENO: eventos, capacitaciones y vínculos institucionales.",
+    participationBody: "TEXTO DE RELLENO: eventos, capacitaciones y vínculos institucionales.",
   },
 
   participation: {
