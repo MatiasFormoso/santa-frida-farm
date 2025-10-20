@@ -80,13 +80,6 @@ src/
 
 ---
 
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js 18.17.0 or higher
-- npm 8.0.0 or higher
-
-
 ## 🌐 Deployment
 
 The project is configured for automatic deployment on **Vercel**:
