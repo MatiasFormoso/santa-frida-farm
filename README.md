@@ -86,49 +86,6 @@ src/
 - Node.js 18.17.0 or higher
 - npm 8.0.0 or higher
 
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/MatiasFormoso/santa-frida-farm.git
-   cd santa-frida-farm
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Start development server**
-   ```bash
-   npm run dev
-   ```
-
-4. **Open your browser**
-   ```
-   http://localhost:3000
-   ```
-
-### Available Scripts
-
-```bash
-# Development
-npm run dev              # Start development server
-npm run build           # Build for production
-npm run start           # Start production server
-
-# Code Quality
-npm run lint            # Run ESLint
-npm run lint:fix        # Fix ESLint errors
-npm run format          # Format code with Prettier
-npm run typecheck       # TypeScript type checking
-
-# Analysis
-npm run analyze         # Analyze bundle size
-npm run clean           # Clean build artifacts
-```
-
----
 
 ## 🌐 Deployment
 
@@ -139,16 +96,6 @@ The project is configured for automatic deployment on **Vercel**:
 - **Build Command**: `npm run build`
 - **Output Directory**: `.next`
 
-### Environment Variables
-
-Create a `.env.local` file for local development:
-
-```env
-# Optional: Custom configuration
-CUSTOM_KEY=your_value_here
-```
-
----
 
 ## 📊 Performance
 
@@ -185,30 +132,9 @@ Consistent code formatting:
 
 ---
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
----
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
-
-## 📞 Contact
-
-**Santa Frida Farm**
-- 📧 Email: santafrida.colombia@gmail.com
-- 📱 WhatsApp: +57 301 955 3003
-- 📍 Location: Marinilla, Antioquia, Colombia
-- 🌐 Website: [https://santafridafarm.com](https://santafridafarm.com)
-
----
-
-*Built with ❤️ for premium agricultural excellence*
