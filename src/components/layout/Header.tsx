@@ -56,7 +56,6 @@ export default function Header({ t, locale }: HeaderProps) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname() || "/";
-  const isHistory = /\/(es|en)\/historia\/?$/.test(pathname);
   const isHome = pathname === `/${locale}` || pathname === `/${locale}/`;
   const contactLink = isHome ? `/${locale}#contacto` : `/${locale}/contacto`;
 
