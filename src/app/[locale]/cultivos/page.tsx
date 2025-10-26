@@ -113,10 +113,10 @@ export default async function CultivosPage({ params }: { params: { locale: Local
       <HassSection t={t} locale={locale} />
 
       {/* Sección Catimor */}
-      <Catimori locale={locale} />
+      <Catimori t={t} locale={locale} />
 
       {/* Sección Hortalizas */}
-      <Hortalizas locale={locale} />
+      <Hortalizas t={t} locale={locale} />
 
       {/* Call to Action */}
       <Section tone="alt" className="py-20">
