@@ -124,6 +124,8 @@ type ButtonProps = {
   variant?: "primary" | "ghost" | "outline";
   size?: "sm" | "md" | "lg";
   ariaLabel?: string;
+  target?: string;
+  rel?: string;
 };
 export const Button = ({
   href = "#",
@@ -131,6 +133,8 @@ export const Button = ({
   variant = "primary",
   size = "md",
   ariaLabel,
+  target,
+  rel,
 }: ButtonProps) => {
   const base =
     "group inline-flex items-center justify-center gap-2 font-medium transition-all duration-200 outline-none " +
@@ -156,6 +160,8 @@ export const Button = ({
     <a
       href={href}
       aria-label={ariaLabel}
+      target={target}
+      rel={rel}
       className={`${base} ${sizeStyles[size]} ${variantStyles[variant]}`}
     >
       {children}
