@@ -86,46 +86,6 @@ const PRODUCTS_EN: Product[] = [
   },
 ];
 
-function AvocadoIcon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-      <path d="M12 3C7 3 3 6 3 10c0 4 3 8 7 10 2 1 2 1 2 1s0 0 2-1c4-2 7-6 7-10 0-4-4-7-9-7zm0 2c4 0 7 3 7 7 0 3-2.5 6-5 7.5C12 18 10 16 10 15s0-2 2-2 2 1 2 2c2-1.5 5-4.5 5-7.5 0-4-3-7-7-7z" />
-      <circle cx="10" cy="11" r="1" fill="currentColor" opacity="0.6" />
-      <circle cx="14" cy="11" r="1" fill="currentColor" opacity="0.6" />
-    </svg>
-  );
-}
-
-function CoffeeIcon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-      <path d="M19 6h-2V4H7v2H5c-1.1 0-2 .9-2 2v8c0 2.2 1.8 4 4 4h8c2.2 0 4-1.8 4-4V8c0-1.1-.9-2-2-2zm0 10c0 1.1-.9 2-2 2H7c-1.1 0-2-.9-2-2V8h14v8z" />
-      <path d="M20 18h1v2c0 1.1-.9 2-2 2h-8v-2h8v-2z" />
-    </svg>
-  );
-}
-
-function LeafIcon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-      <path d="M12 2C6.5 2 2 6.5 2 12c0 6 4.5 11 10 13 2.5 1 2.5 1 2.5 1s0 0 2.5-1C23 23 27.5 18 27.5 12c0-5.5-4.5-10-10-10zm0 2c4.5 0 8 3.5 8 8 0 5-3.5 9-6.5 10C13 21 11 18.5 11 17s0-2 1-2 1 0.5 1 1.5C16 22 20 17.5 20 12c0-4.5-3.5-8-8-8z" />
-      <path d="M8 16c-1-2-3-3-5-3v2c1.5 0 3 0.5 4 2v-1z" />
-      <path d="M16 16v1c1-1.5 2.5-2 4-2v-2c-2 0-4 1-5 3z" />
-    </svg>
-  );
-}
-
-function getIcon(key: ProductKey) {
-  switch (key) {
-    case "avocado":
-      return AvocadoIcon;
-    case "coffee":
-      return CoffeeIcon;
-    case "greens":
-      return LeafIcon;
-  }
-}
-
 export default function Products({ t, locale }: { t: Dict; locale: Locale }) {
   const products = locale === "en" ? PRODUCTS_EN : PRODUCTS_ES;
 
