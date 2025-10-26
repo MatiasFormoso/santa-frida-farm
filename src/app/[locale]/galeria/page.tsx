@@ -41,7 +41,6 @@ export async function generateMetadata({
 
 export default async function GaleriaPage({ params }: { params: { locale: Locale } }) {
   const { locale } = params;
-  const isEN = locale === "en";
   const t: Dict = await getDictionary(locale);
 
   return (
