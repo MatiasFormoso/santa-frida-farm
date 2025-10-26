@@ -65,13 +65,17 @@ export default function Company({ t, locale }: Props) {
         <ScrollReveal delay={0.2}>
           <Card className="p-8 hover:shadow-lg transition-all duration-300">
             <h4 className="font-semibold text-slate-900 text-lg mb-3">{t.company.visionTitle}</h4>
-            <p className="text-slate-600 leading-relaxed">{locale === "en" ? visionEN : visionES}</p>
+            <p className="text-slate-600 leading-relaxed">
+              {locale === "en" ? visionEN : visionES}
+            </p>
           </Card>
         </ScrollReveal>
         <ScrollReveal delay={0.3}>
           <Card className="p-8 hover:shadow-lg transition-all duration-300">
             <h4 className="font-semibold text-slate-900 text-lg mb-3">{t.company.missionTitle}</h4>
-            <p className="text-slate-600 leading-relaxed">{locale === "en" ? missionEN : missionES}</p>
+            <p className="text-slate-600 leading-relaxed">
+              {locale === "en" ? missionEN : missionES}
+            </p>
           </Card>
         </ScrollReveal>
       </div>

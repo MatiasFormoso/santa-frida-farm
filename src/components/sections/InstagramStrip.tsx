@@ -8,38 +8,58 @@ import type { Dict, Locale } from "@/i18n/config";
 import { CONFIG } from "@/lib/config";
 
 const POSTS = [
-  { url: "https://www.instagram.com/p/DPWtK6kk6ZI/", thumb: "/images/instagram/ig-1.webp", fallback: "/images/instagram/ig-1.jpg", alt: "Post 1 de Instagram" },
-  { url: "https://www.instagram.com/p/DPRqghTk4SA/", thumb: "/images/instagram/ig-2.webp", fallback: "/images/instagram/ig-2.jpg", alt: "Post 2 de Instagram" },
-  { url: "https://www.instagram.com/p/DPCJC6bE1VB/", thumb: "/images/instagram/ig-3.webp", fallback: "/images/instagram/ig-3.jpg", alt: "Post 3 de Instagram" },
-  { url: "https://www.instagram.com/p/DO6bfK_k9FX/", thumb: "/images/instagram/ig-4.webp", fallback: "/images/instagram/ig-4.jpg", alt: "Post 4 de Instagram" },
-  { url: "https://www.instagram.com/p/DO1iI_zE3aL/", thumb: "/images/instagram/ig-5.webp", fallback: "/images/instagram/ig-5.jpg", alt: "Post 5 de Instagram" },
-  { url: "https://www.instagram.com/p/DOsFzR6iLTw/", thumb: "/images/instagram/ig-6.webp", fallback: "/images/instagram/ig-6.jpg", alt: "Post 6 de Instagram" },
+  {
+    thumb: "/images/instagram/ig-1-new.webp",
+    fallback: "/images/instagram/ig-1-new.jpg",
+    alt: "Aguacate Hass - Cosecha premium",
+  },
+  {
+    thumb: "/images/instagram/ig-2-new.webp",
+    fallback: "/images/instagram/ig-2-new.jpg",
+    alt: "Café de especialidad - Proceso artesanal",
+  },
+  {
+    thumb: "/images/instagram/ig-3-new.webp",
+    fallback: "/images/instagram/ig-3-new.jpg",
+    alt: "Campo de cultivo - Vida en la finca",
+  },
+  {
+    thumb: "/images/instagram/ig-4-new.webp",
+    fallback: "/images/instagram/ig-4-new.jpg",
+    alt: "Hortalizas frescas - Cultivo orgánico",
+  },
+  {
+    thumb: "/images/instagram/ig-5-new.webp",
+    fallback: "/images/instagram/ig-5-new.jpg",
+    alt: "Cosecha de temporada",
+  },
+  {
+    thumb: "/images/instagram/ig-6.webp",
+    fallback: "/images/instagram/ig-6.jpg",
+    alt: "Comunidad agrícola - Santa Frida Farm",
+  },
 ];
 
 export default function InstagramStrip({ t, locale }: { t: Dict; locale: Locale }) {
-  const eyebrow = t.mediaKit?.title ?? (locale === "en" ? "Community" : "Comunidad");
-  const title = locale === "en" ? "What we share" : "Lo que compartimos";
-  const intro =
-    t.mediaKit?.subtitle ??
-    (locale === "en"
-      ? "Harvests, processes and daily life at the farm. More on our Instagram."
-      : "Cosechas, procesos y vida en finca. Más en nuestro Instagram.");
+  const eyebrow = t.gallery.eyebrow;
+  const title = t.gallery.title;
+  const intro = t.gallery.intro;
 
   const ariaPrefix = locale === "en" ? "Open Instagram post" : "Abrir publicación de Instagram";
   const cta = locale === "en" ? "Follow on Instagram" : "Seguir en Instagram";
 
   return (
     <Section id="instagram" eyebrow={eyebrow} title={title} intro={intro}>
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6">
         {POSTS.map((p, i) => (
-          <ScrollReveal key={i} delay={i * 0.06} duration={0.6}>
+          <ScrollReveal key={i} delay={i * 0.08} duration={0.6}>
             <a
-              href={p.url || CONFIG.contact.instagram}
+              href={CONFIG.contact.instagram}
               target="_blank"
               rel="noreferrer"
               aria-label={`${ariaPrefix} ${i + 1}`}
-              title={locale === "en" ? "View on Instagram" : "Ver en Instagram"}
-              className="group block overflow-hidden rounded-lg border border-slate-200 bg-white hover:border-slate-300 hover:shadow-md transition-all duration-300"
+              title={locale === "en" ? "Follow us on Instagram" : "Síguenos en Instagram"}
+              className="group block overflow-hidden rounded-xl border border-slate-200 bg-white hover:border-emerald-300 hover:shadow-lg transition-all duration-300"
             >
               <div className="aspect-square overflow-hidden">
                 <picture>
@@ -67,7 +87,12 @@ export default function InstagramStrip({ t, locale }: { t: Dict; locale: Locale 
             className="inline-flex items-center gap-2 px-8 py-3.5 font-medium text-slate-900 border-2 border-slate-900 hover:bg-slate-900 hover:text-white rounded-lg transition-all duration-300 shadow-sm hover:shadow-md"
           >
             <span>{cta}</span>
-            <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg
+              className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </a>

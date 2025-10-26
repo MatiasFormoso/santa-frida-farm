@@ -50,9 +50,7 @@ const es: Dict = {
 
   contact: {
     title: "Pedidos y consultas",
-    subtitle:
-      "Canales oficiales para escribirnos. WhatsApp y correo electrónico disponibles para consultas y pedidos.\n\n" +
-      "Dónde estamos — Marinilla, Antioquia, Colombia. Oriente antioqueño — microclimas ideales para aguacate Hass y café.",
+    subtitle: "Escribinos por WhatsApp o correo. Estamos en Marinilla, oriente antioqueño — microclimas ideales para aguacate Hass y café.",
     whatsappCta: "Abrir WhatsApp",
   },
 
@@ -82,25 +80,29 @@ const es: Dict = {
     eyebrow: "Comunidad e instituciones",
     title: "Participación en eventos y programas",
     intro:
-      "TEXTO DE RELLENO — Participamos en eventos, programas y capacitaciones con instituciones y entidades agrícolas en Colombia.",
+      "Colaboramos con instituciones locales y nacionales para fortalecer el desarrollo agrícola sostenible en la región.",
     items: [
-      "Gobierno de Colombia — entidades agrícolas",
-      "Municipio / programas locales",
-      "Talleres técnicos y jornadas de campo",
-      "Redes de productores y comunidades de café",
+      "Entidades y programas",
+      "Eventos y ferias locales",
+      "Talleres y jornadas",
+      "Redes de productores",
     ],
   },
 
-  training: {
-    eyebrow: "Visitas de aprendizaje",
-    title: "Capacitaciones y talleres",
+  events: {
+    eyebrow: "Eventos",
+    title: "Eventos y actividades",
     intro:
-      "TEXTO DE RELLENO — Sesiones prácticas en café y huerto, enfocadas en procesos, buenas prácticas y trazabilidad.",
-    cta: "Ver actualizaciones en Instagram",
-    items: [
-      { title: "Capacitación 1", body: "TEXTO DE RELLENO" },
-      { title: "Capacitación 2", body: "TEXTO DE RELLENO" },
-    ],
+      "Ferias, eventos agrícolas y actividades de la comunidad en las que participa Santa Frida Farm.",
+    gallery: "Galería",
+    videos: "Videos",
+  },
+
+  gallery: {
+    eyebrow: "Comunidad",
+    title: "Galería comunitaria",
+    intro:
+      "Cosechas, procesos y momentos del día a día en Santa Frida Farm. Vida en la finca y actividades de la comunidad agrícola.",
   },
 };
 

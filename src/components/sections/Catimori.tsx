@@ -4,17 +4,19 @@
 import { Section } from "@/components/ui/primitives";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import type { Dict, Locale } from "@/i18n/config";
+import { CONFIG } from "@/lib/config";
 
 type Props = { t: Dict; locale: Locale };
 
 export default function Catimori({ locale }: Props) {
   const eyebrow = locale === "en" ? "Crops" : "Cultivos";
-  const title = locale === "en" ? "Catimor Coffee (Caturra × Timor cross)" : "Café Catimor (cruce Caturra x Timor)";
+  const title =
+    locale === "en"
+      ? "Catimor Coffee (Caturra × Timor cross)"
+      : "Café Catimor (cruce Caturra x Timor)";
 
-  const introES =
-    "Cultivo y proceso cuidados para maximizar su potencial en taza.";
-  const introEN =
-    "Careful cultivation and processing to maximize cup potential.";
+  const introES = "Cultivo y proceso cuidados para maximizar su potencial en taza.";
+  const introEN = "Careful cultivation and processing to maximize cup potential.";
 
   const statsES: [string, string][] = [
     ["Variedad", "Catimor (cruce Caturra × Timor)"],
@@ -33,14 +35,17 @@ export default function Catimori({ locale }: Props) {
     ["Trees planted", "510"],
     ["Harvests per year", "2"],
     ["Annual production", "~612 kg parchment (≈ 490–510 kg green coffee)"],
-    [
-      "Cup notes",
-      "Dark cocoa, dried fruits, gentle spices; medium body and balanced acidity",
-    ],
+    ["Cup notes", "Dark cocoa, dried fruits, gentle spices; medium body and balanced acidity"],
     ["Traceability", "From tree to wet mill and packing"],
   ];
 
   const stats = locale === "en" ? statsEN : statsES;
+
+  const whatsappPreset =
+    locale === "en"
+      ? "Hello! I'm interested in Catimor specialty coffee availability, pricing and delivery options. Thank you!"
+      : "¡Hola! Me interesa conocer disponibilidad, precios y opciones de entrega de café Catimor de especialidad. ¡Gracias!";
+  const waUrl = `https://wa.me/${CONFIG.contact.whatsappNumber.replace(/^\+/, "")}?text=${encodeURIComponent(whatsappPreset)}`;
 
   return (
     <Section id="catimori" eyebrow={eyebrow} title={title}>
@@ -64,9 +69,7 @@ export default function Catimori({ locale }: Props) {
                   <dt className="text-[0.6875rem] font-bold uppercase tracking-[0.15em] text-slate-500 mb-2.5">
                     {label}
                   </dt>
-                  <dd className="text-slate-900 text-base font-semibold leading-snug">
-                    {value}
-                  </dd>
+                  <dd className="text-slate-900 text-base font-semibold leading-snug">{value}</dd>
                 </div>
               </ScrollReveal>
             ))}
@@ -112,11 +115,18 @@ export default function Catimori({ locale }: Props) {
       <ScrollReveal delay={0.4}>
         <div className="flex justify-center md:justify-start mt-10">
           <a
-            href="#contacto"
+            href={waUrl}
+            target="_blank"
+            rel="noreferrer"
             className="group inline-flex items-center justify-center gap-2 px-8 py-3.5 text-slate-900 border-2 border-slate-300/80 hover:border-slate-900 hover:bg-slate-50 rounded-lg transition-all duration-300 font-semibold shadow-sm hover:shadow-md hover:scale-[1.02]"
           >
             <span>{locale === "en" ? "Check availability" : "Consultar disponibilidad"}</span>
-            <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg
+              className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </a>

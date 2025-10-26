@@ -9,12 +9,9 @@ type WithChildren<T = {}> = T & { children?: React.ReactNode };
 // ====== Container ======
 type ContainerProps = WithChildren<{ className?: string; size?: "default" | "narrow" | "wide" }>;
 export const Container = ({ className = "", size = "default", children }: ContainerProps) => {
-  const sizeClass = size === "narrow" ? "max-w-5xl" : size === "wide" ? "max-w-[90rem]" : "max-w-7xl";
-  return (
-    <div className={`mx-auto ${sizeClass} px-4 sm:px-6 lg:px-8 ${className}`}>
-      {children}
-    </div>
-  );
+  const sizeClass =
+    size === "narrow" ? "max-w-5xl" : size === "wide" ? "max-w-[90rem]" : "max-w-7xl";
+  return <div className={`mx-auto ${sizeClass} px-4 sm:px-6 lg:px-8 ${className}`}>{children}</div>;
 };
 
 // ====== Section ======
@@ -44,21 +41,21 @@ export const Section = ({
       setIsMobile(window.innerWidth < 768);
     };
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   return (
     <section
       id={id}
       ref={ref}
-      className={`py-16 sm:py-24 lg:py-32 scroll-mt-20 transition-colors duration-300 ${tone === "alt" ? "bg-slate-50" : "bg-white"} ${className}`}
+      className={`pt-20 pb-16 sm:pt-24 sm:pb-24 lg:pt-32 lg:pb-32 scroll-mt-20 transition-colors duration-300 ${tone === "alt" ? "bg-slate-50" : "bg-white"} ${className}`}
     >
       <Container>
         {(eyebrow || title || intro) && (
           <header className="mb-12 sm:mb-16 lg:mb-20 max-w-4xl">
-            {eyebrow && (
-              isMobile ? (
+            {eyebrow &&
+              (isMobile ? (
                 <p className="uppercase tracking-[0.25em] text-[0.6875rem] text-slate-500 font-semibold mb-4">
                   {eyebrow}
                 </p>
@@ -67,15 +64,14 @@ export const Section = ({
                   initial={{ opacity: 0, y: 10 }}
                   animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
                   transition={{ duration: 0.5, ease: "easeOut" }}
-                  style={{ willChange: 'opacity, transform' }}
+                  style={{ willChange: "opacity, transform" }}
                   className="uppercase tracking-[0.25em] text-[0.6875rem] text-slate-500 font-semibold mb-4"
                 >
                   {eyebrow}
                 </motion.p>
-              )
-            )}
-            {title && (
-              isMobile ? (
+              ))}
+            {title &&
+              (isMobile ? (
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-slate-900 leading-[1.2] tracking-tight mb-6">
                   {title}
                 </h2>
@@ -84,15 +80,14 @@ export const Section = ({
                   initial={{ opacity: 0, y: 15 }}
                   animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
                   transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-                  style={{ willChange: 'opacity, transform' }}
+                  style={{ willChange: "opacity, transform" }}
                   className="text-3xl sm:text-4xl lg:text-5xl font-medium text-slate-900 leading-[1.2] tracking-tight mb-6"
                 >
                   {title}
                 </motion.h2>
-              )
-            )}
-            {intro && (
-              isMobile ? (
+              ))}
+            {intro &&
+              (isMobile ? (
                 <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl">
                   {intro}
                 </p>
@@ -101,13 +96,12 @@ export const Section = ({
                   initial={{ opacity: 0, y: 15 }}
                   animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
                   transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                  style={{ willChange: 'opacity, transform' }}
+                  style={{ willChange: "opacity, transform" }}
                   className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl"
                 >
                   {intro}
                 </motion.p>
-              )
-            )}
+              ))}
           </header>
         )}
         {children}
@@ -142,21 +136,28 @@ export const Button = ({
     "group inline-flex items-center justify-center gap-2 font-medium transition-all duration-200 outline-none " +
     "focus-visible:ring-2 focus-visible:ring-emerald-600/30 focus-visible:ring-offset-2 focus-visible:ring-offset-white " +
     "transform hover:scale-[1.01] active:scale-[0.99] will-change-transform";
-  
+
   const sizeStyles = {
     sm: "rounded-xl px-4 py-2 text-sm",
     md: "rounded-xl px-6 py-3 text-base",
-    lg: "rounded-xl px-8 py-4 text-lg"
+    lg: "rounded-xl px-8 py-4 text-lg",
   };
-  
+
   const variantStyles = {
-    primary: "bg-slate-900 text-white hover:bg-slate-800 shadow-sm hover:shadow-md border border-slate-900",
-    ghost: "text-slate-700 border border-slate-200 hover:bg-slate-50 hover:border-slate-300 hover:shadow-sm",
-    outline: "text-slate-900 border border-slate-900 hover:bg-slate-900 hover:text-white shadow-sm hover:shadow-md"
+    primary:
+      "bg-slate-900 text-white hover:bg-slate-800 shadow-sm hover:shadow-md border border-slate-900",
+    ghost:
+      "text-slate-700 border border-slate-200 hover:bg-slate-50 hover:border-slate-300 hover:shadow-sm",
+    outline:
+      "text-slate-900 border border-slate-900 hover:bg-slate-900 hover:text-white shadow-sm hover:shadow-md",
   };
-  
+
   return (
-    <a href={href} aria-label={ariaLabel} className={`${base} ${sizeStyles[size]} ${variantStyles[variant]}`}>
+    <a
+      href={href}
+      aria-label={ariaLabel}
+      className={`${base} ${sizeStyles[size]} ${variantStyles[variant]}`}
+    >
       {children}
     </a>
   );
@@ -164,25 +165,32 @@ export const Button = ({
 
 // ====== Card ======
 type CardProps = WithChildren<
-  { className?: string; hover?: boolean; variant?: "default" | "elevated" | "subtle" | "minimal" } & React.ComponentProps<"div">
+  {
+    className?: string;
+    hover?: boolean;
+    variant?: "default" | "elevated" | "subtle" | "minimal";
+  } & React.ComponentProps<"div">
 >;
-export const Card = ({ className = "", hover = true, variant = "default", children, ...rest }: CardProps) => {
+export const Card = ({
+  className = "",
+  hover = true,
+  variant = "default",
+  children,
+  ...rest
+}: CardProps) => {
   const variantStyles = {
     default: "rounded-2xl border border-slate-200/60 bg-white shadow-xs",
     elevated: "rounded-2xl border border-slate-200/80 bg-white shadow-sm",
     subtle: "rounded-2xl border border-slate-200/40 bg-slate-50/30",
-    minimal: "border-l-2 border-slate-300/60 pl-6 bg-transparent"
+    minimal: "border-l-2 border-slate-300/60 pl-6 bg-transparent",
   };
-  
-  const hoverClass = hover 
-    ? "hover:border-slate-300/80 hover:shadow-md hover:-translate-y-1 transition-all duration-250 ease-out" 
+
+  const hoverClass = hover
+    ? "hover:border-slate-300/80 hover:shadow-md hover:-translate-y-1 transition-all duration-250 ease-out"
     : "transition-all duration-200";
-  
+
   return (
-    <div
-      {...rest}
-      className={`${variantStyles[variant]} ${hoverClass} ${className}`}
-    >
+    <div {...rest} className={`${variantStyles[variant]} ${hoverClass} ${className}`}>
       {children}
     </div>
   );
@@ -196,7 +204,9 @@ type ImgProps = {
   ratio?: string;
 };
 export const Img = ({ src, alt, className = "", ratio = "aspect-[4/3]" }: ImgProps) => (
-  <div className={`group w-full overflow-hidden rounded-2xl sm:rounded-3xl bg-slate-100 ${ratio} shadow-md hover:shadow-xl transition-all duration-500`}>
+  <div
+    className={`group w-full overflow-hidden rounded-2xl sm:rounded-3xl bg-slate-100 ${ratio} shadow-md hover:shadow-xl transition-all duration-500`}
+  >
     {/* eslint-disable-next-line @next/next/no-img-element */}
     <img
       src={src}

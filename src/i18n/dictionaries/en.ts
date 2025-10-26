@@ -82,25 +82,29 @@ const en: Dict = {
     eyebrow: "Community & Institutions",
     title: "Participation in events & programs",
     intro:
-      "PLACEHOLDER TEXT — We participate in events, programs and trainings with local institutions and agricultural entities in Colombia.",
+      "We collaborate with local and national institutions to strengthen sustainable agricultural development in the region.",
     items: [
-      "Government of Colombia — agricultural entities",
-      "Municipality / local programs",
-      "Technical workshops and field days",
-      "Producer networks and coffee communities",
+      "Entities and programs",
+      "Local events and fairs",
+      "Workshops and field days",
+      "Producer networks",
     ],
   },
 
-  training: {
-    eyebrow: "Learning visits",
-    title: "Workshops & Trainings",
+  events: {
+    eyebrow: "Events",
+    title: "Events & activities",
     intro:
-      "PLACEHOLDER TEXT — Practical sessions in coffee and garden, focused on processes, good practices and traceability.",
-    cta: "See updates on Instagram",
-    items: [
-      { title: "Training 1", body: "PLACEHOLDER TEXT" },
-      { title: "Training 2", body: "PLACEHOLDER TEXT" },
-    ],
+      "Fairs, agricultural events and community activities in which Santa Frida Farm participates.",
+    gallery: "Gallery",
+    videos: "Videos",
+  },
+
+  gallery: {
+    eyebrow: "Community",
+    title: "Community gallery",
+    intro:
+      "Harvests, processes and moments of daily life at Santa Frida Farm. Farm life and agricultural community activities.",
   },
 };
 

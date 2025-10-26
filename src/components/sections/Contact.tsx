@@ -37,18 +37,40 @@ export default function Contact({ t, locale }: Props) {
   };
 
   return (
-    <Section id="contacto" tone="alt" eyebrow={strings.contact} title={t.contact.title} intro={t.contact.subtitle || ""}>
-      <div className="space-y-10">
+    <Section
+      id="contacto"
+      eyebrow={strings.contact}
+      title={t.contact.title}
+      intro={t.contact.subtitle || ""}
+    >
+      <div className="space-y-12">
         {/* Grid de contactos */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* WhatsApp */}
-          <ScrollReveal delay={0.2}>
-            <div className="border-l-2 border-emerald-600 pl-6 py-2 group hover:border-emerald-700 transition-colors duration-250">
-              <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">{strings.whatsapp}</h3>
-              <p className="text-slate-900 mb-5 text-base font-medium">
+          <ScrollReveal delay={0.1}>
+            <div className="p-6 rounded-xl border border-slate-200 bg-white hover:border-emerald-300 hover:shadow-md transition-all duration-300 h-full flex flex-col">
+              <div className="w-12 h-12 rounded-lg bg-emerald-100 flex items-center justify-center mb-5">
+                <svg
+                  className="w-6 h-6 text-emerald-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                  />
+                </svg>
+              </div>
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-900 mb-2">
+                {strings.whatsapp}
+              </h3>
+              <p className="text-slate-600 mb-6 text-sm">
                 {CONFIG.contact.whatsappIntl || CONFIG.contact.whatsappNumber}
               </p>
-              <Button href={waUrl || "#"} size="md" variant="primary">
+              <Button href={waUrl || "#"} size="md" variant="primary" target="_blank">
                 {locale === "en" ? "Open WhatsApp" : "Abrir WhatsApp"}
               </Button>
             </div>
@@ -56,10 +78,27 @@ export default function Contact({ t, locale }: Props) {
 
           {/* Correo */}
           {hasEmail && (
-            <ScrollReveal delay={0.3}>
-              <div className="border-l-2 border-slate-300 pl-6 py-2 group hover:border-slate-400 transition-colors duration-300">
-                <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">{strings.email}</h3>
-                <p className="text-slate-900 mb-5 text-base font-medium break-all">{email}</p>
+            <ScrollReveal delay={0.15}>
+              <div className="p-6 rounded-xl border border-slate-200 bg-white hover:border-slate-300 hover:shadow-md transition-all duration-300 h-full flex flex-col">
+                <div className="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center mb-5">
+                  <svg
+                    className="w-6 h-6 text-slate-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-900 mb-2">
+                  {strings.email}
+                </h3>
+                <p className="text-slate-600 mb-6 text-sm break-all">{email}</p>
                 <Button href={`mailto:${email}`} variant="outline" size="md">
                   {strings.writeEmail}
                 </Button>
@@ -68,19 +107,52 @@ export default function Contact({ t, locale }: Props) {
           )}
 
           {/* Ubicación */}
-          <ScrollReveal delay={0.4}>
-            <div className="border-l-2 border-slate-300 pl-6 py-2 group hover:border-slate-400 transition-colors duration-300">
-              <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">{strings.where}</h3>
-              <p className="text-slate-900 mb-5 text-base font-medium">{CONFIG.contact.locationLabel}</p>
+          <ScrollReveal delay={0.2}>
+            <div className="p-6 rounded-xl border border-slate-200 bg-white hover:border-slate-300 hover:shadow-md transition-all duration-300 h-full flex flex-col">
+              <div className="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center mb-5">
+                <svg
+                  className="w-6 h-6 text-slate-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                  />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+              </div>
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-900 mb-2">
+                {strings.where}
+              </h3>
+              <p className="text-slate-600 mb-6 text-sm">{CONFIG.contact.locationLabel}</p>
               <a
-                className="inline-flex items-center gap-1 text-slate-900 hover:text-emerald-700 font-medium transition-colors duration-250 underline underline-offset-4 decoration-1"
+                className="inline-flex items-center gap-1 text-emerald-700 hover:text-emerald-800 font-semibold transition-colors duration-250"
                 href={CONFIG.contact.mapsUrl}
                 target="_blank"
                 rel="noreferrer"
               >
                 <span>{strings.maps}</span>
-                <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                <svg
+                  className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
                 </svg>
               </a>
             </div>
@@ -88,8 +160,8 @@ export default function Contact({ t, locale }: Props) {
         </div>
 
         {/* Mapa */}
-        <ScrollReveal delay={0.4}>
-          <div className="rounded-lg overflow-hidden border border-slate-200 shadow-md hover:shadow-lg transition-shadow duration-300">
+        <ScrollReveal delay={0.25}>
+          <div className="rounded-xl overflow-hidden border border-slate-200 shadow-sm">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.1234567890!2d-75.284000!3d6.216000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e4428c4c6b6b6b6%3A0x1234567890abcdef!2sSanta%20Frida%20Farm%2C%20Marinilla%2C%20Antioquia%2C%20Colombia!5e0!3m2!1ses!2sco!4v1234567890123!5m2!1ses!2sco"
               width="100%"
@@ -104,15 +176,15 @@ export default function Contact({ t, locale }: Props) {
         </ScrollReveal>
 
         {/* Nota sobre Instagram */}
-        <ScrollReveal delay={0.5}>
-          <div className="text-center pt-2">
+        <ScrollReveal delay={0.3}>
+          <div className="text-center pt-4">
             <p className="text-slate-600 text-sm">
               {strings.quick}{" "}
               <a
                 href={CONFIG.contact.instagram}
                 target="_blank"
                 rel="noreferrer"
-                className="text-slate-900 hover:text-teal-700 font-semibold underline underline-offset-4 decoration-1 transition-colors duration-300"
+                className="text-emerald-700 hover:text-emerald-800 font-semibold transition-colors duration-300"
               >
                 {strings.ig}
               </a>
@@ -123,5 +195,3 @@ export default function Contact({ t, locale }: Props) {
     </Section>
   );
 }
-
-

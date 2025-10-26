@@ -65,12 +65,24 @@ export type Dict = {
     intro: string;
     items: string[];
   };
-  training: {
+  training?: {
     eyebrow: string;
     title: string;
     intro: string;
     cta: string;
     items: { title: string; body: string }[];
+  };
+  events: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    gallery: string;
+    videos: string;
+  };
+  gallery: {
+    eyebrow: string;
+    title: string;
+    intro: string;
   };
 };
 
