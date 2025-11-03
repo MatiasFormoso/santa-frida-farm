@@ -4,46 +4,49 @@
 // import { motion } from "framer-motion";
 import { Section } from "@/components/ui/primitives";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import type { Dict, Locale } from "@/i18n/config";
+import type { Locale } from "@/i18n/config";
 import { CONFIG } from "@/lib/config";
 
 const POSTS = [
   {
-    thumb: "/images/instagram/ig-1-new.webp",
-    fallback: "/images/instagram/ig-1-new.jpg",
-    alt: "Aguacate Hass - Cosecha premium",
+    thumb: "/images/gallery-community/gallery-1.jpeg",
+    fallback: "/images/gallery-community/gallery-1.jpeg",
+    alt: "Santa Frida Farm",
   },
   {
-    thumb: "/images/instagram/ig-2-new.webp",
-    fallback: "/images/instagram/ig-2-new.jpg",
-    alt: "Café de especialidad - Proceso artesanal",
+    thumb: "/images/gallery-community/gallery-2.jpeg",
+    fallback: "/images/gallery-community/gallery-2.jpeg",
+    alt: "Santa Frida Farm",
   },
   {
-    thumb: "/images/instagram/ig-3-new.webp",
-    fallback: "/images/instagram/ig-3-new.jpg",
-    alt: "Campo de cultivo - Vida en la finca",
+    thumb: "/images/gallery-community/gallery-3.jpeg",
+    fallback: "/images/gallery-community/gallery-3.jpeg",
+    alt: "Santa Frida Farm",
   },
   {
-    thumb: "/images/instagram/ig-4-new.webp",
-    fallback: "/images/instagram/ig-4-new.jpg",
-    alt: "Hortalizas frescas - Cultivo orgánico",
+    thumb: "/images/gallery-community/gallery-4.jpeg",
+    fallback: "/images/gallery-community/gallery-4.jpeg",
+    alt: "Santa Frida Farm",
   },
   {
-    thumb: "/images/instagram/ig-5-new.webp",
-    fallback: "/images/instagram/ig-5-new.jpg",
-    alt: "Cosecha de temporada",
+    thumb: "/images/gallery-community/gallery-5.jpeg",
+    fallback: "/images/gallery-community/gallery-5.jpeg",
+    alt: "Santa Frida Farm",
   },
   {
-    thumb: "/images/instagram/ig-6.webp",
-    fallback: "/images/instagram/ig-6.jpg",
-    alt: "Comunidad agrícola - Santa Frida Farm",
+    thumb: "/images/gallery-community/gallery-6.jpeg",
+    fallback: "/images/gallery-community/gallery-6.jpeg",
+    alt: "Santa Frida Farm",
   },
 ];
 
-export default function InstagramStrip({ t, locale }: { t: Dict; locale: Locale }) {
-  const eyebrow = t.gallery.eyebrow;
-  const title = t.gallery.title;
-  const intro = t.gallery.intro;
+export default function InstagramStrip({ locale }: { locale: Locale }) {
+  const eyebrow = locale === "en" ? "Gallery" : "Galería";
+  const title = locale === "en" ? "Latest updates" : "Últimas actualizaciones";
+  const intro =
+    locale === "en"
+      ? "Follow us on Instagram for daily updates and behind-the-scenes content."
+      : "Seguinos en Instagram para contenido diario y detrás de escena.";
 
   const ariaPrefix = locale === "en" ? "Open Instagram post" : "Abrir publicación de Instagram";
   const cta = locale === "en" ? "Follow on Instagram" : "Seguir en Instagram";
@@ -52,7 +55,7 @@ export default function InstagramStrip({ t, locale }: { t: Dict; locale: Locale 
     <Section id="instagram" eyebrow={eyebrow} title={title} intro={intro}>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6">
         {POSTS.map((p, i) => (
-          <ScrollReveal key={i} delay={i * 0.08} duration={0.6}>
+          <ScrollReveal key={i} delay={i * 0.03} duration={0.5}>
             <a
               href={CONFIG.contact.instagram}
               target="_blank"
@@ -69,7 +72,7 @@ export default function InstagramStrip({ t, locale }: { t: Dict; locale: Locale 
                     alt={p.alt}
                     loading="lazy"
                     decoding="async"
-                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.08]"
+                    className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.08]"
                   />
                 </picture>
               </div>
@@ -78,7 +81,7 @@ export default function InstagramStrip({ t, locale }: { t: Dict; locale: Locale 
         ))}
       </div>
 
-      <ScrollReveal delay={0.4} duration={0.6}>
+      <ScrollReveal delay={0.2} duration={0.5}>
         <div className="mt-12 flex justify-center">
           <a
             href={CONFIG.contact.instagram}

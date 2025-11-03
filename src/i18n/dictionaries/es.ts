@@ -50,7 +50,8 @@ const es: Dict = {
 
   contact: {
     title: "Pedidos y consultas",
-    subtitle: "Escribinos por WhatsApp o correo. Estamos en Marinilla, oriente antioqueño — microclimas ideales para aguacate Hass y café.",
+    subtitle:
+      "Escribinos por WhatsApp o correo. Estamos en Marinilla, oriente antioqueño — microclimas ideales para aguacate Hass y café.",
     whatsappCta: "Abrir WhatsApp",
   },
 
@@ -100,9 +101,9 @@ const es: Dict = {
 
   gallery: {
     eyebrow: "Comunidad",
-    title: "Galería comunitaria",
+    title: "Nuestra comunidad",
     intro:
-      "Cosechas, procesos y momentos del día a día en Santa Frida Farm. Vida en la finca y actividades de la comunidad agrícola.",
+      "Compartimos el día a día de quienes hacemos Santa Frida Farm. Procesos, cosechas, encuentros y actividades que enriquecen nuestra labor en el campo.",
   },
 };
 

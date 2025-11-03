@@ -79,10 +79,28 @@ export default async function GaleriaPage({ params }: { params: { locale: Locale
         </Container>
       </section>
 
+      {/* Separador decorativo */}
+      <div className="relative w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+
+      {/* Instagram Strip Section */}
+      <InstagramStrip locale={locale} />
+
       {/* Informative Section */}
       <section className="relative py-16 sm:py-20 bg-white">
         <Container className="relative">
           <div className="max-w-5xl mx-auto">
+            <ScrollReveal>
+              <div className="text-center mb-12">
+                <h2 className="text-2xl sm:text-3xl font-semibold text-slate-900 mb-4">
+                  {locale === "en" ? "About our work" : "Sobre nuestro trabajo"}
+                </h2>
+                <p className="text-slate-600 max-w-2xl mx-auto">
+                  {locale === "en"
+                    ? "How we approach agriculture at Santa Frida Farm."
+                    : "Cómo abordamos la agricultura en Santa Frida Farm."}
+                </p>
+              </div>
+            </ScrollReveal>
             <div className="grid md:grid-cols-3 gap-6 text-center">
               <ScrollReveal>
                 <div className="h-full flex flex-col p-8 rounded-2xl bg-gradient-to-br from-emerald-50/80 to-emerald-50/40 border border-emerald-100/60 hover:shadow-lg transition-all duration-300">
@@ -171,9 +189,6 @@ export default async function GaleriaPage({ params }: { params: { locale: Locale
           </div>
         </Container>
       </section>
-
-      {/* Instagram Strip Section */}
-      <InstagramStrip t={t} locale={locale} />
 
       <Footer t={t} locale={locale} />
     </main>

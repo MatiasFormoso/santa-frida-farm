@@ -102,9 +102,9 @@ const en: Dict = {
 
   gallery: {
     eyebrow: "Community",
-    title: "Community gallery",
+    title: "Our community",
     intro:
-      "Harvests, processes and moments of daily life at Santa Frida Farm. Farm life and agricultural community activities.",
+      "We share the daily life of those who make Santa Frida Farm. Processes, harvests, gatherings and activities that enrich our work in the field.",
   },
 };
 

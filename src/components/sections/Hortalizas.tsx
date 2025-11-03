@@ -58,7 +58,7 @@ export default function Hortalizas({ locale }: Props) {
           {/* Estadísticas */}
           <dl className="space-y-4 mb-10">
             {stats.map(([label, value], idx) => (
-              <ScrollReveal key={label} delay={idx * 0.05} duration={0.6}>
+              <ScrollReveal key={label} delay={idx * 0.02} duration={0.5}>
                 <div className="border-b border-slate-200/80 pb-4 group hover:border-teal-500/50 transition-all duration-300">
                   <dt className="text-[0.6875rem] font-bold uppercase tracking-[0.15em] text-slate-500 mb-2.5">
                     {label}
@@ -72,7 +72,7 @@ export default function Hortalizas({ locale }: Props) {
       </div>
 
       {/* Botón de disponibilidad */}
-      <ScrollReveal delay={0.4}>
+      <ScrollReveal delay={0.2}>
         <div className="flex justify-center md:justify-start mt-10">
           <a
             href={waUrl}

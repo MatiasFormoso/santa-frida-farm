@@ -75,8 +75,14 @@ export default async function ContactoPage({ params }: { params: { locale: Local
         </Container>
       </section>
 
+      {/* Separador decorativo */}
+      <div className="relative w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+
       {/* Contact Section */}
       <Contact t={t} locale={locale} />
+
+      {/* Separador decorativo */}
+      <div className="relative w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
 
       {/* Additional Info Section */}
       <section className="py-20 bg-slate-50">

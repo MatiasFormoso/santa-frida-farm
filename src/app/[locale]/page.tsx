@@ -43,11 +43,17 @@ export default async function HomeByLocale({ params }: Props) {
     <main>
       <Header t={t} locale={params.locale} />
       <Hero t={t} locale={params.locale} />
+      <div className="relative w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
       <FraseHomenaje t={t} locale={params.locale} />
+      <div className="relative w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
       <About t={t} locale={params.locale} />
+      <div className="relative w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
       <Company t={t} locale={params.locale} />
+      <div className="relative w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
       <FarmGallery t={t} locale={params.locale} />
+      <div className="relative w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
       <Products t={t} locale={params.locale} />
+      <div className="relative w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
       <Contact t={t} locale={params.locale} />
       <Footer t={t} locale={params.locale} />
     </main>

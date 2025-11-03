@@ -12,8 +12,7 @@ type Props = {
 
 export default function Footer({ t, locale }: Props) {
   const year = new Date().getFullYear();
-  const rights =
-    locale === "en" ? "All rights reserved." : "Todos los derechos reservados.";
+  const rights = locale === "en" ? "All rights reserved." : "Todos los derechos reservados.";
 
   // Tagline corto, 100% en el idioma actual
   const tagline =
@@ -36,13 +35,17 @@ export default function Footer({ t, locale }: Props) {
       <Container className="py-14 sm:py-18 lg:py-20 grid gap-10 sm:gap-12 lg:gap-14 sm:grid-cols-2 lg:grid-cols-4">
         {/* Col 1: marca + tagline corto */}
         <div>
-          <h4 className="font-bold text-slate-900 text-lg mb-4 tracking-tight">{CONFIG.site.name}</h4>
+          <h4 className="font-bold text-slate-900 text-lg mb-4 tracking-tight">
+            {CONFIG.site.name}
+          </h4>
           <p className="text-slate-600 text-sm leading-relaxed max-w-xs">{tagline}</p>
         </div>
 
         {/* Col 2: contacto */}
         <div>
-          <h5 className="font-bold text-slate-900 mb-3 text-sm uppercase tracking-wide">{t.nav.contact}</h5>
+          <h5 className="font-bold text-slate-900 mb-3 text-sm uppercase tracking-wide">
+            {t.nav.contact}
+          </h5>
           <ul className="text-slate-600 space-y-2.5 text-sm">
             {waLink && (
               <li>
@@ -89,19 +92,28 @@ export default function Footer({ t, locale }: Props) {
           </h5>
           <ul className="text-slate-600 space-y-2.5 text-sm">
             <li>
-              <a className="hover:text-teal-600 transition-colors duration-300 inline-flex items-center gap-2 group" href="#sobre">
+              <a
+                className="hover:text-teal-600 transition-colors duration-300 inline-flex items-center gap-2 group"
+                href="#sobre"
+              >
                 <span className="w-1 h-1 rounded-full bg-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                 {t.nav.about}
               </a>
             </li>
             <li>
-              <a className="hover:text-teal-600 transition-colors duration-300 inline-flex items-center gap-2 group" href="#hass">
+              <a
+                className="hover:text-teal-600 transition-colors duration-300 inline-flex items-center gap-2 group"
+                href="#hass"
+              >
                 <span className="w-1 h-1 rounded-full bg-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                 {t.nav.products}
               </a>
             </li>
             <li>
-              <a className="hover:text-teal-600 transition-colors duration-300 inline-flex items-center gap-2 group" href="#contacto">
+              <a
+                className="hover:text-teal-600 transition-colors duration-300 inline-flex items-center gap-2 group"
+                href="#contacto"
+              >
                 <span className="w-1 h-1 rounded-full bg-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                 {t.nav.contact}
               </a>
@@ -120,7 +132,7 @@ export default function Footer({ t, locale }: Props) {
           <p className="text-xs text-slate-500 leading-relaxed">
             {locale === "en" ? "Designed by" : "Diseñado por"}{" "}
             <a
-              href="https://landing-fawn-tau.vercel.app/"
+              href="https://modularsoluciones.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-teal-600 hover:text-teal-700 font-semibold underline underline-offset-2 transition-colors duration-300"

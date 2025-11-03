@@ -1,73 +1,25 @@
 // src/app/[locale]/cultivos/CultivosNav.tsx
 "use client";
 
-import { useEffect, useState } from "react";
-
-type Section = {
-  id: string;
-  labelES: string;
-  labelEN: string;
-};
-
-const SECTIONS: Section[] = [
+const SECTIONS = [
   { id: "hass", labelES: "Aguacate Hass", labelEN: "Hass Avocado" },
   { id: "catimori", labelES: "Café Catimor", labelEN: "Catimor Coffee" },
   { id: "hortalizas", labelES: "Hortalizas", labelEN: "Fresh Greens" },
 ];
 
 export default function CultivosNav({ locale }: { locale: string }) {
-  const [activeSection, setActiveSection] = useState<string>("");
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = SECTIONS.map(s => s.id);
-      const scrollPosition = window.scrollY + 120; // Offset para el header
-
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const sectionId = sections[i];
-        if (!sectionId) continue;
-        const element = document.getElementById(sectionId);
-        if (element && element.offsetTop <= scrollPosition) {
-          setActiveSection(sectionId);
-          break;
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Check initial position
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 100; // Offset para el header sticky
-      const elementPosition = element.offsetTop - offset;
-      window.scrollTo({
-        top: elementPosition,
-        behavior: "smooth",
-      });
-    }
-  };
-
   return (
-    <nav className="sticky top-16 z-30 bg-white/95 backdrop-blur-sm border-b border-slate-200/60 shadow-sm">
+    <nav className="border-b border-slate-200 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex space-x-1 overflow-x-auto py-3 hide-scrollbar">
+        <div className="flex gap-2 py-4">
           {SECTIONS.map(section => (
-            <button
+            <a
               key={section.id}
-              onClick={() => scrollToSection(section.id)}
-              className={`px-4 py-2 rounded-lg whitespace-nowrap font-medium text-sm transition-all duration-200 touch-manipulation ${
-                activeSection === section.id
-                  ? "bg-emerald-100 text-emerald-700 shadow-sm"
-                  : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
-              }`}
+              href={`#${section.id}`}
+              className="flex-1 px-4 py-3 rounded-lg font-medium text-sm bg-white text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors border border-slate-200 hover:border-emerald-300 text-center"
             >
               {locale === "en" ? section.labelEN : section.labelES}
-            </button>
+            </a>
           ))}
         </div>
       </div>

@@ -53,9 +53,9 @@ export default function Hero({ t }: Props) {
         <div className="w-full flex justify-center sm:justify-start px-4 sm:px-0">
           <div className="w-full max-w-4xl sm:pl-4 lg:pl-0 text-center sm:text-left">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+              transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
               style={{ willChange: "opacity, transform" }}
               className="inline-flex items-center gap-2 px-4 py-2 mb-5 sm:mb-6 text-[0.9375rem] sm:text-sm font-medium text-white border border-white/60 rounded-full backdrop-blur-md bg-black/60 shadow-xl"
             >
@@ -64,9 +64,9 @@ export default function Hero({ t }: Props) {
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 25 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.35, ease: "easeOut" }}
+              transition={{ duration: 0.5, delay: 0.15, ease: "easeOut" }}
               style={{
                 textShadow:
                   "0 4px 24px rgba(0,0,0,0.9), 0 2px 10px rgba(0,0,0,0.7), 0 1px 3px rgba(0,0,0,0.5)",
@@ -78,9 +78,9 @@ export default function Hero({ t }: Props) {
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 25 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+              transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
               style={{
                 textShadow:
                   "0 3px 16px rgba(0,0,0,0.8), 0 2px 6px rgba(0,0,0,0.6), 0 1px 3px rgba(0,0,0,0.4)",
@@ -92,9 +92,9 @@ export default function Hero({ t }: Props) {
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.65, ease: "easeOut" }}
+              transition={{ duration: 0.4, delay: 0.25, ease: "easeOut" }}
               style={{ willChange: "opacity, transform" }}
               className="relative flex flex-row items-center justify-center sm:justify-start gap-2 sm:gap-3 flex-nowrap"
             >

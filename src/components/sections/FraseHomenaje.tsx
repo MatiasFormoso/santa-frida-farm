@@ -20,8 +20,8 @@ export default function FraseHomenaje({ locale }: Props) {
       setIsMobile(window.innerWidth < 768);
     };
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
   const isEN = locale === "en";
 
@@ -60,44 +60,44 @@ export default function FraseHomenaje({ locale }: Props) {
             <motion.div
               initial={{ opacity: 0, scaleX: 0 }}
               whileInView={{ opacity: 1, scaleX: 1 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 1.0, delay: 0.1, ease: "easeOut" }}
+              viewport={{ once: true, amount: 0 }}
+              transition={{ duration: 0.5, delay: 0, ease: "easeOut" }}
               className="w-16 h-px bg-slate-300 mx-auto"
             />
           )}
-          
+
           {/* Texto principal */}
           {isMobile ? (
             <p className="text-lg sm:text-xl md:text-2xl font-light leading-relaxed text-slate-700 tracking-tight">
               {isEN ? (
                 <>
-                  "Opportunities come to those who don't give up. Thank you, {name}, for teaching us that{" "}
-                  sowing with love is harvesting the future."
+                  "Opportunities come to those who don't give up. Thank you, {name}, for teaching us
+                  that sowing with love is harvesting the future."
                 </>
               ) : (
                 <>
-                  "Las oportunidades llegan para quienes no se rinden. Gracias, {name}, por enseñarnos que{" "}
-                  sembrar con amor es cosechar futuro."
+                  "Las oportunidades llegan para quienes no se rinden. Gracias, {name}, por
+                  enseñarnos que sembrar con amor es cosechar futuro."
                 </>
               )}
             </p>
           ) : (
             <motion.p
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 1.0, delay: 0.3, ease: "easeOut" }}
+              viewport={{ once: true, amount: 0 }}
+              transition={{ duration: 0.5, delay: 0.05, ease: "easeOut" }}
               className="text-lg sm:text-xl md:text-2xl font-light leading-relaxed text-slate-700 tracking-tight"
             >
               {isEN ? (
                 <>
-                  "Opportunities come to those who don't give up. Thank you, {name}, for teaching us that{" "}
-                  sowing with love is harvesting the future."
+                  "Opportunities come to those who don't give up. Thank you, {name}, for teaching us
+                  that sowing with love is harvesting the future."
                 </>
               ) : (
                 <>
-                  "Las oportunidades llegan para quienes no se rinden. Gracias, {name}, por enseñarnos que{" "}
-                  sembrar con amor es cosechar futuro."
+                  "Las oportunidades llegan para quienes no se rinden. Gracias, {name}, por
+                  enseñarnos que sembrar con amor es cosechar futuro."
                 </>
               )}
             </motion.p>
@@ -110,8 +110,8 @@ export default function FraseHomenaje({ locale }: Props) {
             <motion.div
               initial={{ opacity: 0, scaleX: 0 }}
               whileInView={{ opacity: 1, scaleX: 1 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+              viewport={{ once: true, amount: 0 }}
+              transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
               className="w-16 h-px bg-slate-300 mx-auto"
             />
           )}

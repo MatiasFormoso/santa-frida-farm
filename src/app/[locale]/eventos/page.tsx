@@ -73,6 +73,9 @@ export default async function EventosPage({ params }: { params: { locale: Locale
         </Container>
       </section>
 
+      {/* Separador decorativo */}
+      <div className="relative w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+
       {/* Events Gallery Section */}
       <EventsGallery t={t} locale={locale} />
 
