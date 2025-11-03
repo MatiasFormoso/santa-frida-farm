@@ -78,7 +78,7 @@ const ALL_CLIENT_PHOTOS = [
   },
 ];
 
-export default function FarmGallery({ t, locale }: Props) {
+export default function FarmGallery({ locale }: Props) {
   const [currentPhotos, setCurrentPhotos] = useState<number[]>([0, 1, 2]);
   const [usedPhotos, setUsedPhotos] = useState<number[]>([0, 1, 2]);
   const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null);
@@ -131,13 +131,16 @@ export default function FarmGallery({ t, locale }: Props) {
     setSelectedPhoto(null);
   };
 
+  const eyebrow = locale === "en" ? "Commitment & Quality" : "Compromiso y Calidad";
+  const title =
+    locale === "en" ? "Excellence in Coffee Production" : "Excelencia en Producción de Café";
+  const intro =
+    locale === "en"
+      ? "Discover our commitment to quality and sustainable coffee production through our professional processes and dedication to excellence."
+      : "Descubrí nuestro compromiso con la calidad y la producción sostenible de café a través de nuestros procesos profesionales y dedicación a la excelencia.";
+
   return (
-    <Section
-      id="farm-gallery"
-      eyebrow={t.gallery.eyebrow}
-      title={t.gallery.title}
-      intro={t.gallery.intro}
-    >
+    <Section id="farm-gallery" eyebrow={eyebrow} title={title} intro={intro}>
       <ScrollReveal>
         <div className="relative max-w-7xl mx-auto">
           {/* Carrusel Container - 3 marcos verticales */}
